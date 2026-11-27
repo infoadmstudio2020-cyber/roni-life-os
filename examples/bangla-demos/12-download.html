@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>১২ · Download</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>১২ · Download</h1>
+  <p>Download/RONiLiFEOS ফোল্ডারে সেভ <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>টেক্সট ফাইল</h2>
+    <input id="txt-name" value="hello.txt" placeholder="ফাইল নাম">
+    <textarea id="txt-body" rows="3">হ্যালো RONiLiFEOS!
+এটি একটি টেস্ট ফাইল।</textarea>
+    <button id="dl-txt">ডাউনলোড</button>
+  </div>
+
+  <div class="card">
+    <h2>CSV (বাংলা সহ)</h2>
+    <button id="dl-csv">report.csv ডাউনলোড</button>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      BOM (<code>\uFEFF</code>) যোগ করা হয়েছে যাতে Excel-এ বাংলা ঠিক দেখায়।
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>JSON</h2>
+    <button id="dl-json" class="secondary">data.json ডাউনলোড</button>
+  </div>
+
+  <div class="card">
+    <h2>URL থেকে</h2>
+    <input id="url" value="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" placeholder="https://…">
+    <input id="url-name" value="dummy.pdf" placeholder="ফাইল নাম">
+    <div class="row">
+      <button id="dl-url">লিংক দিয়ে</button>
+      <button id="dl-bridge" class="secondary">RONiDownload</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function triggerDownload(url, filename) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename || '';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  function downloadBlob(filename, blob) {
+    var url = URL.createObjectURL(blob);
+    triggerDownload(url, filename);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+    Native.log('log', 'blob download', filename);
+  }
+
+  function toCsv(rows, headers) {
+    function esc(v) {
+      var s = String(v == null ? '' : v);
+      return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    }
+    var lines = [headers.map(esc).join(',')];
+    rows.forEach(function (r) {
+      lines.push(headers.map(function (h) { return esc(r[h]); }).join(','));
+    });
+    return '\uFEFF' + lines.join('\r\n');
+  }
+
+  document.getElementById('dl-txt').addEventListener('click', function () {
+    var name = document.getElementById('txt-name').value || 'hello.txt';
+    var body = document.getElementById('txt-body').value;
+    downloadBlob(name, new Blob([body], { type: 'text/plain;charset=utf-8' }));
+  });
+
+  document.getElementById('dl-csv').addEventListener('click', function () {
+    var rows = [
+      { id: 1, title: 'প্রথম নোট', amount: 1200 },
+      { id: 2, title: 'দ্বিতীয় নোট', amount: 850 },
+      { id: 3, title: 'তৃতীয়, বিশেষ', amount: 4300 }
+    ];
+    var csv = toCsv(rows, ['id', 'title', 'amount']);
+    downloadBlob('report.csv', new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  });
+
+  document.getElementById('dl-json').addEventListener('click', function () {
+    var data = { app: 'bangla-demos', at: new Date().toISOString(), items: [1, 2, 3] };
+    downloadBlob('data.json', new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+  });
+
+  document.getElementById('dl-url').addEventListener('click', function () {
+    triggerDownload(document.getElementById('url').value, document.getElementById('url-name').value);
+    Native.log('log', 'link download', document.getElementById('url-name').value);
+  });
+
+  document.getElementById('dl-bridge').addEventListener('click', function () {
+    if (typeof window.RONiDownload === 'undefined') {
+      Native.log('log', 'RONiDownload নেই', 'ব্রাউজার মোড');
+      return;
+    }
+    try {
+      window.RONiDownload.download(
+        document.getElementById('url').value,
+        document.getElementById('url-name').value
+      );
+      Native.log('log', 'RONiDownload.download', 'ok');
+    } catch (e) {
+      Native.log('log', 'ERROR', e.message);
+    }
+  });
+})();
+</script>
+</body>
+</html>

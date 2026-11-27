@@ -1,0 +1,145 @@
+/* ── Modals & Popups (Screen Center Aligned on Desktop & Mobile) ── */
+#modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  pointer-events: auto;
+}
+#modal-layer[aria-hidden="true"] { display: none; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  z-index: 1000;
+  overflow-y: auto;
+  animation: backdropFadeIn 0.2s ease-out;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Scroll lock while a modal is open */
+body.modal-open { overflow: hidden; }
+
+.modal {
+  position: relative;
+  background: var(--bg-elevated, var(--bg-surface));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
+  max-width: 520px;
+  width: 100%;
+  max-height: min(90vh, calc(100dvh - 32px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: auto;
+  align-self: center;
+  animation: modalCenterIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modal Sizes */
+.modal.sm { max-width: 400px; }
+.modal.lg { max-width: 720px; }
+.modal.xl { max-width: 900px; }
+.modal.full { max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); }
+
+@keyframes modalCenterIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg-surface);
+}
+
+.modal-icon {
+  font-size: 22px;
+  color: var(--accent);
+  font-variation-settings: 'FILL' 1, 'wght' 400;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.modal-close {
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  transition: all 0.15s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.modal-body {
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  flex-wrap: wrap;
+}
+
+/* Prompt input */
+.modal-input {
+  width: 100%;
+  margin-top: var(--sp-3);
+}

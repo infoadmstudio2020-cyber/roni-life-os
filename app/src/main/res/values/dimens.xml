@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Industrial HUD geometry: sharp corners only. -->
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="card_radius">0dp</dimen>
+    <dimen name="chip_radius">0dp</dimen>
+    <dimen name="badge_size">40dp</dimen>
+    <dimen name="icon_size">20dp</dimen>
+
+    <dimen name="hud_hairline">1dp</dimen>
+    <dimen name="hud_gutter">8dp</dimen>
+    <dimen name="hud_panel_padding">14dp</dimen>
+    <dimen name="hud_row_height">44dp</dimen>
+    <dimen name="hud_status_height">30dp</dimen>
+    <dimen name="hud_core_height">196dp</dimen>
+    <dimen name="hud_meter_height">10dp</dimen>
+</resources>

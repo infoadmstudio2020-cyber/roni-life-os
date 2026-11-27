@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Native Dashboard — Industrial HUD console.
+    Obsidian surfaces, neon-orange signal, monospaced readouts, sharp corners, zero elevation.
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hud_void">
+
+    <com.roni.life.os.app.ui.HudGridBackdrop
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/hud_void"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/hud_void"
+            android:theme="@style/ThemeOverlay.RONiLiFEOS.Toolbar"
+            app:contentInsetStart="16dp"
+            app:subtitle="@string/dashboard_subtitle"
+            app:subtitleTextAppearance="@style/TextAppearance.RONiLiFEOS.ToolbarSubtitle"
+            app:title="@string/app_name"
+            app:titleTextAppearance="@style/TextAppearance.RONiLiFEOS.ToolbarTitle" />
+
+        <!-- Instrument status strip -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hud_status_height"
+            android:background="@color/hud_panel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/runtime_dot"
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/bg_hud_dot" />
+
+                <TextView
+                    android:id="@+id/status_runtime"
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:layout_marginStart="6dp"
+                    android:textSize="8sp"
+                    android:textColor="@color/hud_text"
+                    tools:text="ONLINE" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/hud_line" />
+
+            <TextView
+                android:id="@+id/status_engines"
+                style="@style/Widget.RONiLiFEOS.HudLabel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="8sp"
+                tools:text="ENG 10/10" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/hud_line" />
+
+            <TextView
+                android:id="@+id/status_mode"
+                style="@style/Widget.RONiLiFEOS.HudLabel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/hud_accent"
+                android:textSize="8sp"
+                tools:text="NATIVE" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/hud_line" />
+
+            <TextView
+                android:id="@+id/status_uptime"
+                style="@style/Widget.RONiLiFEOS.HudLabel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="8sp"
+                tools:text="UP 00:00:00" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/hud_accent" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dashboard_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ==================== CORE VISUAL ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hud_hero"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="14dp">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:text="@string/hud_core_tag"
+                        android:textColor="@color/hud_accent" />
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/hud_core_title" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/hud_line" />
+
+                    <TextView
+                        android:id="@+id/dashboard_mode_chip"
+                        style="@style/Widget.RONiLiFEOS.HudChipAccent"
+                        tools:text="NATIVE" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/hud_core_height">
+
+                    <com.roni.life.os.app.ui.HudCoreView
+                        android:id="@+id/hud_core"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:text="@string/hud_core_node" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/hud_core_node_id"
+                            android:textColor="@color/hud_accent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|start"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="monospace"
+                            android:letterSpacing="0.06"
+                            android:text="@string/app_name"
+                            android:textColor="@color/hud_text"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/dashboard_hero_subtitle" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="14dp"
+                        android:layout_marginBottom="12dp"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hero_load"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="monospace"
+                            android:letterSpacing="0.02"
+                            android:textColor="@color/hud_accent"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="72%" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:text="@string/hud_engine_load" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <com.roni.life.os.app.ui.HudMeterView
+                    android:id="@+id/hud_meter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/hud_meter_height"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:text="@string/hud_runtime" />
+
+                    <TextView
+                        android:id="@+id/runtime_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:lineSpacingExtra="2dp"
+                        android:maxLines="2"
+                        android:textColor="@color/hud_text_dim"
+                        android:textSize="9sp"
+                        tools:text="Runtime ready · 10/10 engines · internal storage" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ==================== STAT READOUTS ==================== -->
+            <LinearLayout
+                android:id="@+id/stats_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_line"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_panel"
+                    android:orientation="vertical"
+                    android:paddingStart="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudIndex"
+                        android:text="01" />
+
+                    <TextView
+                        android:id="@+id/stat_projects"
+                        style="@style/Widget.RONiLiFEOS.HudValue"
+                        android:layout_marginTop="4dp"
+                        android:textSize="18sp"
+                        tools:text="3" />
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/stat_projects" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_panel"
+                    android:orientation="vertical"
+                    android:paddingStart="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudIndex"
+                        android:text="02" />
+
+                    <TextView
+                        android:id="@+id/stat_sessions"
+                        style="@style/Widget.RONiLiFEOS.HudValue"
+                        android:layout_marginTop="4dp"
+                        android:textSize="18sp"
+                        tools:text="1/5" />
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/stat_sessions" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_panel"
+                    android:orientation="vertical"
+                    android:paddingStart="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudIndex"
+                        android:text="03" />
+
+                    <TextView
+                        android:id="@+id/stat_engines"
+                        style="@style/Widget.RONiLiFEOS.HudValue"
+                        android:layout_marginTop="4dp"
+                        android:textSize="18sp"
+                        tools:text="10/10" />
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/stat_engines" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/hud_panel"
+                    android:orientation="vertical"
+                    android:paddingStart="12dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudIndex"
+                        android:text="04" />
+
+                    <TextView
+                        android:id="@+id/stat_storage"
+                        style="@style/Widget.RONiLiFEOS.HudValue"
+                        android:layout_marginTop="6dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        tools:text="INTERNAL" />
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/stat_storage" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ==================== QUICK ACTIONS ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_panel_alt"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="9dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="9dp">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_section_actions"
+                    android:textColor="@color/hud_accent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_line"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/action_create"
+                    style="@style/Widget.RONiLiFEOS.HudButtonPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/action_create"
+                    app:icon="@drawable/ic_add" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/action_import"
+                    style="@style/Widget.RONiLiFEOS.HudButton"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:text="@string/action_import_zip" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/action_folder"
+                style="@style/Widget.RONiLiFEOS.HudButton"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="1dp"
+                android:text="@string/action_select_folder" />
+
+            <!-- ==================== PROJECT SLOTS ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_panel_alt"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="9dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="9dp">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_section_slots"
+                    android:textColor="@color/hud_accent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_line" />
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_slot_count" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_line"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/slot_card_splash"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_hud_panel_clickable"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudIndex"
+                            android:text="01" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/hud_line" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:text="@string/hud_slot_arrow"
+                            android:textColor="@color/hud_accent" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="@string/slot_quick_splash"
+                        android:textAllCaps="true"
+                        android:textColor="@color/hud_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:maxLines="1"
+                        android:text="@string/slot_quick_splash_desc"
+                        android:textColor="@color/hud_text_dim"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/slot_card_dashboard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_hud_panel_clickable"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudIndex"
+                            android:text="02" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/hud_line" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:text="@string/hud_slot_arrow"
+                            android:textColor="@color/hud_accent" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="@string/slot_quick_dashboard"
+                        android:textAllCaps="true"
+                        android:textColor="@color/hud_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:maxLines="1"
+                        android:text="@string/slot_quick_dashboard_desc"
+                        android:textColor="@color/hud_text_dim"
+                        android:textSize="9sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/hud_line"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/slot_card_app"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_hud_panel_clickable"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudIndex"
+                            android:text="03" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/hud_line" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:text="@string/hud_slot_arrow"
+                            android:textColor="@color/hud_accent" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="@string/slot_quick_app"
+                        android:textAllCaps="true"
+                        android:textColor="@color/hud_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:maxLines="1"
+                        android:text="@string/slot_quick_app_desc"
+                        android:textColor="@color/hud_text_dim"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/slot_card_workspace"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_hud_panel_clickable"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudIndex"
+                            android:text="04" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:background="@color/hud_line" />
+
+                        <TextView
+                            style="@style/Widget.RONiLiFEOS.HudLabel"
+                            android:text="@string/hud_slot_arrow"
+                            android:textColor="@color/hud_accent" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="@string/slot_quick_workspace"
+                        android:textAllCaps="true"
+                        android:textColor="@color/hud_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace"
+                        android:maxLines="1"
+                        android:text="@string/slot_quick_workspace_desc"
+                        android:textColor="@color/hud_text_dim"
+                        android:textSize="9sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ==================== ACTIVE SESSIONS ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_panel_alt"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="9dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="9dp">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_section_sessions"
+                    android:textColor="@color/hud_accent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_line" />
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_session_limit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:id="@+id/running_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="@string/pm_running_empty"
+                    android:textColor="@color/hud_text_dim"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:id="@+id/running_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <!-- ==================== RECENT ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_panel_alt"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="9dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="9dp">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_section_recent"
+                    android:textColor="@color/hud_accent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_line" />
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_recent_limit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/recent_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="@string/recent_empty"
+                    android:textColor="@color/hud_text_dim"
+                    android:textSize="10sp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/recent_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/recent_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <!-- ==================== REGISTERED PROJECTS ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_panel_alt"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="9dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="9dp">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_section_registry"
+                    android:textColor="@color/hud_accent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_line" />
+
+                <TextView
+                    android:id="@+id/project_count"
+                    style="@style/Widget.RONiLiFEOS.HudIndex"
+                    tools:text="03" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hud_panel"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingTop="30dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="30dp"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_empty_code"
+                    android:textColor="@color/hud_accent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.08"
+                    android:text="@string/empty_title"
+                    android:textAllCaps="true"
+                    android:textColor="@color/hud_text"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/empty_message"
+                    android:textColor="@color/hud_text_dim"
+                    android:textSize="10sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/empty_action"
+                    style="@style/Widget.RONiLiFEOS.HudButtonPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/empty_action" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/project_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:paddingStart="14dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp" />
+
+            <!-- ==================== NODE LOG ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/hud_panel_alt"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="9dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="9dp">
+
+                <TextView
+                    style="@style/Widget.RONiLiFEOS.HudLabel"
+                    android:text="@string/hud_section_log"
+                    android:textColor="@color/hud_accent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/hud_line" />
+
+                <TextView
+                    android:id="@+id/log_count"
+                    style="@style/Widget.RONiLiFEOS.HudIndex"
+                    tools:text="06/06" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_hud_console"
+                android:orientation="vertical"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:id="@+id/log_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/hud_line_soft" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:text="@string/hud_log_footer" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        style="@style/Widget.RONiLiFEOS.HudLabel"
+                        android:text="@string/hud_log_autoscroll"
+                        android:textColor="@color/hud_accent" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hud_line" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_new_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="18dp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.12"
+        android:text="@string/action_create"
+        android:textAllCaps="true"
+        android:textColor="@color/hud_void"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/hud_accent"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_add"
+        app:iconTint="@color/hud_void"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.RONiLiFEOS.Square" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

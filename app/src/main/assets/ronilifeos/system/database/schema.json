@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "engine": "sqlite",
+  "tables": [],
+  "notes": "Runtime tables are created on demand by the storage engine."
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "layoutVersion": 3,
+  "count": 1,
+  "projects": [
+    {
+      "id": "default",
+      "name": "Default project",
+      "type": "WEB",
+      "sourceType": "FILE",
+      "entryPoint": "ui/index.html",
+      "directory": "app/projects/default"
+    }
+  ]
+}

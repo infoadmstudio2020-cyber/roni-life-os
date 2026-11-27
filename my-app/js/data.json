@@ -1,0 +1,5 @@
+{
+  "message": "fetch() works — JSON parsed from the virtual origin",
+  "fixture": "my-app",
+  "version": "1.0.0"
+}

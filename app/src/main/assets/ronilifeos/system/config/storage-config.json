@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "layoutVersion": 3,
+  "root": "RONiLiFEOS",
+  "projectsRoot": "app/projects",
+  "resourcesRoot": "shared/resources",
+  "registryFile": "app/config/project-registry.json",
+  "activeProjectFile": "app/config/active-project.json",
+  "appConfigFile": "system/config/app-config.json",
+  "runtimeConfigFile": "system/config/runtime-config.json",
+  "workspaceRoot": "runtime/workspace",
+  "backupsRoot": "app/backups",
+  "importsRoot": "app/imports",
+  "generated": true
+}

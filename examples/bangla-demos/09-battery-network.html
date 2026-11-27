@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৯ · Battery ও Network</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৯ · Battery ও Network</h1>
+  <p>polling দিয়ে live অবস্থা <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>ব্যাটারি</h2>
+    <div style="font-size:32px;font-weight:700" id="batt-pct">—</div>
+    <div style="height:12px;background:var(--border);border-radius:999px;overflow:hidden;margin:8px 0">
+      <div id="batt-bar" style="height:100%;width:0;background:var(--ok);transition:width .3s"></div>
+    </div>
+    <dl class="kv" id="batt-kv"></dl>
+  </div>
+
+  <div class="card">
+    <h2>নেটওয়ার্ক</h2>
+    <div id="net-state" style="font-size:20px;font-weight:700">—</div>
+    <dl class="kv" id="net-kv" style="margin-top:8px"></dl>
+  </div>
+
+  <div class="card">
+    <h2>নিয়ন্ত্রণ</h2>
+    <div class="row">
+      <button id="refresh">এখনই রিফ্রেশ</button>
+      <button id="toggle-poll" class="secondary">polling বন্ধ</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      মনে রাখুন: battery/network-এ কোনো live listener নেই — তাই polling।
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var timer = null;
+  var polling = true;
+
+  function kv(id, obj) {
+    var el = document.getElementById(id);
+    el.innerHTML = '';
+    Object.keys(obj).forEach(function (k) {
+      var dt = document.createElement('dt');
+      dt.textContent = k;
+      var dd = document.createElement('dd');
+      dd.textContent = String(obj[k]);
+      el.appendChild(dt);
+      el.appendChild(dd);
+    });
+  }
+
+  async function readBattery() {
+    try {
+      var b = await Native.call('device.getBattery');
+      var pct = b.percent != null ? b.percent : Math.round((b.level / (b.scale || 100)) * 100);
+      document.getElementById('batt-pct').textContent = pct + '%';
+      var bar = document.getElementById('batt-bar');
+      bar.style.width = pct + '%';
+      bar.style.background = pct > 40 ? 'var(--ok)' : pct > 15 ? 'var(--warn)' : 'var(--err)';
+      kv('batt-kv', b);
+      return b;
+    } catch (e) {
+      document.getElementById('batt-pct').textContent = 'n/a';
+      Native.log('log', 'battery ERROR', e.message);
+      return null;
+    }
+  }
+
+  async function readNetwork() {
+    try {
+      var n = await Native.call('device.getNetworkState');
+      var el = document.getElementById('net-state');
+      el.textContent = n.connected ? 'সংযুক্ত · ' + (n.type || 'unknown') : 'বিচ্ছিন্ন';
+      el.style.color = n.connected ? 'var(--ok)' : 'var(--err)';
+      kv('net-kv', n);
+      document.body.classList.toggle('offline', !n.connected);
+      return n;
+    } catch (e) {
+      var online = navigator.onLine;
+      document.getElementById('net-state').textContent = online ? 'সংযুক্ত (browser)' : 'বিচ্ছিন্ন (browser)';
+      Native.log('log', 'network ERROR', e.message);
+      return { connected: online };
+    }
+  }
+
+  async function refresh() {
+    await Promise.all([readBattery(), readNetwork()]);
+  }
+
+  function startPolling() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(refresh, 8000);
+    polling = true;
+    document.getElementById('toggle-poll').textContent = 'polling বন্ধ';
+  }
+
+  function stopPolling() {
+    if (timer) clearInterval(timer);
+    timer = null;
+    polling = false;
+    document.getElementById('toggle-poll').textContent = 'polling চালু';
+  }
+
+  document.getElementById('refresh').addEventListener('click', refresh);
+  document.getElementById('toggle-poll').addEventListener('click', function () {
+    if (polling) stopPolling(); else startPolling();
+  });
+
+  window.addEventListener('online', refresh);
+  window.addEventListener('offline', refresh);
+
+  refresh();
+  startPolling();
+})();
+</script>
+</body>
+</html>

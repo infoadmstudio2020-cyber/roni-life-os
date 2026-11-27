@@ -1,0 +1,46 @@
+/* ── Typography helpers ── */
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.25; color: var(--text-primary); }
+p { line-height: 1.6; color: var(--text-secondary); }
+
+.text-xs   { font-size: var(--text-xs); }
+.text-sm   { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg   { font-size: var(--text-lg); }
+.text-xl   { font-size: var(--text-xl); }
+.text-2xl  { font-size: var(--text-2xl); }
+
+.text-primary   { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted     { color: var(--text-muted) !important; }
+.text-accent    { color: var(--accent) !important; }
+.text-success   { color: var(--success) !important; }
+.text-warning   { color: var(--warning) !important; }
+.text-error     { color: var(--error) !important; }
+
+.font-mono    { font-family: var(--font-mono); }
+.font-medium  { font-weight: 500; }
+.font-semibold{ font-weight: 600; }
+.font-bold    { font-weight: 700; }
+
+code, .code-inline {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-surface);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.code-block {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: var(--bg-base);
+  color: var(--text-secondary);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  white-space: pre;
+  line-height: 1.6;
+}

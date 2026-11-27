@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৭ · System UI</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৭ · System UI ও Theme</h1>
+  <p>Status bar, nav bar, fullscreen, theme <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>Status Bar</h2>
+    <input id="sb-color" value="#0F172A" placeholder="#RRGGBB">
+    <label><input type="checkbox" id="sb-light" checked style="width:auto"> lightIcons</label>
+    <button id="sb">setStatusBar</button>
+  </div>
+
+  <div class="card">
+    <h2>Navigation Bar</h2>
+    <input id="nb-color" value="#0F172A" placeholder="#RRGGBB">
+    <label><input type="checkbox" id="nb-light" checked style="width:auto"> lightButtons</label>
+    <button id="nb">setNavigationBar</button>
+  </div>
+
+  <div class="card">
+    <h2>মোড</h2>
+    <div class="row">
+      <button id="fs-on" class="secondary">fullscreen on</button>
+      <button id="fs-off" class="secondary">fullscreen off</button>
+      <button id="im-on" class="secondary">immersive on</button>
+      <button id="im-off" class="secondary">immersive off</button>
+      <button id="e2e-on" class="secondary">edgeToEdge on</button>
+      <button id="e2e-off" class="secondary">edgeToEdge off</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Theme</h2>
+    <div class="row">
+      <button id="get-theme">getTheme</button>
+      <button id="get-config" class="secondary">getConfig</button>
+      <button id="get-state" class="secondary">getSystemUIState</button>
+      <button id="toggle-theme" class="secondary">নিজের dark mode</button>
+    </div>
+    <dl class="kv" id="theme-kv" style="margin-top:12px"></dl>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function run(action, payload) {
+    Native.call(action, payload)
+      .then(function (r) { Native.log('log', action, r); return r; })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  }
+
+  document.getElementById('sb').addEventListener('click', function () {
+    run('ui.setStatusBar', {
+      color: document.getElementById('sb-color').value,
+      lightIcons: document.getElementById('sb-light').checked
+    });
+  });
+
+  document.getElementById('nb').addEventListener('click', function () {
+    run('ui.setNavigationBar', {
+      color: document.getElementById('nb-color').value,
+      lightButtons: document.getElementById('nb-light').checked
+    });
+  });
+
+  document.getElementById('fs-on').addEventListener('click', function () { run('ui.setFullscreen', { enabled: true }); });
+  document.getElementById('fs-off').addEventListener('click', function () { run('ui.setFullscreen', { enabled: false }); });
+  document.getElementById('im-on').addEventListener('click', function () { run('ui.setImmersive', { enabled: true }); });
+  document.getElementById('im-off').addEventListener('click', function () { run('ui.setImmersive', { enabled: false }); });
+  document.getElementById('e2e-on').addEventListener('click', function () { run('ui.setEdgeToEdge', { enabled: true }); });
+  document.getElementById('e2e-off').addEventListener('click', function () { run('ui.setEdgeToEdge', { enabled: false }); });
+
+  document.getElementById('get-state').addEventListener('click', function () { run('ui.getSystemUIState'); });
+  document.getElementById('get-config').addEventListener('click', function () { run('ui.getConfig'); });
+
+  document.getElementById('get-theme').addEventListener('click', function () {
+    Native.call('ui.getTheme').then(function (t) {
+      Native.log('log', 'ui.getTheme', t);
+      var kv = document.getElementById('theme-kv');
+      kv.innerHTML = '';
+      Object.keys(t).forEach(function (k) {
+        var dt = document.createElement('dt');
+        dt.textContent = k;
+        var dd = document.createElement('dd');
+        dd.textContent = String(t[k]);
+        kv.appendChild(dt);
+        kv.appendChild(dd);
+      });
+      document.documentElement.dataset.theme = t.themeMode === 'dark' ? 'dark' : 'light';
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+    });
+  });
+
+  document.getElementById('toggle-theme').addEventListener('click', function () {
+    var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    Native.log('log', 'নিজের theme', next);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.roni.library.ui'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 36
+        versionCode 1
+        versionName "1.0.1"
+        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            matchingFallbacks = ['release']
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+}
+
+dependencies {
+    api project(':native-web-bridge-sdk')
+    api project(':native-runtime-contracts')
+    implementation project(':native-theme-engine')
+    implementation project(':native-storage-engine')
+    implementation project(':native-platform-engine')
+    implementation project(':native-security-engine')
+
+    api 'androidx.appcompat:appcompat:1.6.1'
+    api 'com.google.android.material:material:1.11.0'
+    api 'androidx.constraintlayout:constraintlayout:2.1.4'
+    api 'androidx.drawerlayout:drawerlayout:1.2.0'
+    api 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+    api 'androidx.core:core:1.12.0'
+    implementation 'androidx.annotation:annotation:1.7.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.findByName('release') ?: components.findByName('java') ?: components.findByName('default')
+                groupId    = 'com.roni.library.ui'
+                artifactId = 'native-runtime-ui'
+                version    = '1.0.1'
+
+                pom {
+                    name        = 'NativeRuntimeUI'
+                    description = 'Native dialogs, bottom sheets, toasts, and web-synchronized UI overlays.'
+                    url         = 'https://github.com/infoadmstudio2020-cyber/native-runtime-ui'
+                    licenses {
+                        license {
+                            name = 'Apache-2.0'
+                        }
+                    }
+                    developers {
+                        developer {
+                            name = 'infoadmstudio2020-cyber'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    tasks.matching { it.name in ['publishToMavenLocal', 'publishReleasePublicationToMavenLocal'] }.configureEach {
+        mustRunAfter(tasks.matching { it.name == 'assembleRelease' })
+    }
+
+    tasks.withType(Javadoc).configureEach {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.encoding = 'UTF-8'
+    }
+}

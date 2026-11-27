@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>১৪ · Upload</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>১৪ · ফাইল বাছাই ও Upload</h1>
+  <p>&lt;input type="file"&gt; → Android picker <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>একটি ফাইল</h2>
+    <input type="file" id="one">
+    <div id="one-info" style="font-size:14px;margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h2>একাধিক ছবি</h2>
+    <input type="file" id="many" accept="image/*" multiple>
+    <div id="many-info" style="font-size:14px;margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <h2>ছবি প্রিভিউ</h2>
+    <input type="file" id="img" accept="image/*">
+    <div id="preview" style="margin-top:10px"></div>
+  </div>
+
+  <div class="card">
+    <h2>টেক্সট ফাইল পড়া</h2>
+    <input type="file" id="txt" accept=".txt,.csv,.json,text/*">
+    <textarea id="txt-out" rows="6" readonly placeholder="ফাইলের 내용 এখানে আসবে"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function human(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+  }
+
+  document.getElementById('one').addEventListener('change', function (e) {
+    var f = e.target.files[0];
+    if (!f) return;
+    document.getElementById('one-info').textContent =
+      f.name + ' · ' + human(f.size) + ' · ' + (f.type || 'unknown');
+    Native.log('log', 'file', { name: f.name, size: f.size, type: f.type });
+  });
+
+  document.getElementById('many').addEventListener('change', function (e) {
+    var files = Array.from(e.target.files);
+    document.getElementById('many-info').textContent = files.length + 'টি ফাইল বাছা হয়েছে';
+    files.forEach(function (f) {
+      Native.log('log', 'image', f.name + ' (' + human(f.size) + ')');
+    });
+  });
+
+  document.getElementById('img').addEventListener('change', function (e) {
+    var f = e.target.files[0];
+    var box = document.getElementById('preview');
+    box.innerHTML = '';
+    if (!f) return;
+    var img = document.createElement('img');
+    img.style.maxWidth = '100%';
+    img.style.borderRadius = '10px';
+    img.alt = f.name;
+    img.src = URL.createObjectURL(f);
+    img.onload = function () { URL.revokeObjectURL(img.src); };
+    box.appendChild(img);
+  });
+
+  document.getElementById('txt').addEventListener('change', function (e) {
+    var f = e.target.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      document.getElementById('txt-out').value = String(reader.result).slice(0, 4000);
+      Native.log('log', 'read text', f.name);
+    };
+    reader.onerror = function () {
+      Native.log('log', 'read ERROR', f.name);
+    };
+    reader.readAsText(f, 'UTF-8');
+  });
+})();
+</script>
+</body>
+</html>

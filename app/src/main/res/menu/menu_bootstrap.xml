@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_bootstrap"
+        android:title="Open Bootstrap project"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_downloads"
+        android:title="Downloads"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_repair_storage"
+        android:title="Repair storage"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_sources"
+        android:title="Sources"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_diagnostics"
+        android:title="Diagnostics"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_about"
+        android:title="About"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_notifications"
+        android:title="Notifications"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_notification_settings"
+        android:title="Notification settings"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_file_manager"
+        android:title="File manager"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/action_automation"
+        android:title="Automation"
+        android:showAsAction="never" />
+</menu>

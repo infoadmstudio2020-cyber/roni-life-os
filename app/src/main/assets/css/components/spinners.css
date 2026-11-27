@@ -1,0 +1,132 @@
+/**
+ * spinners.css
+ *
+ * Resilient, theme-aware Loading Spinner & Activity Indicator Component
+ * Designed specifically for buttons, modals, cards, table rows, and inline badges.
+ *
+ * Prevents UI breakage, layout shift, or overflow when spinners are active.
+ */
+
+/* ── Base Spinner ── */
+.spinner {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 2px solid var(--border-color, rgba(255, 255, 255, 0.18));
+  border-top-color: var(--accent, #6366f1);
+  animation: spinner-spin 0.75s linear infinite;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+@keyframes spinner-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Spinner Size Variations ── */
+.spinner-xs {
+  width: 13px;
+  height: 13px;
+  border-width: 1.75px;
+}
+
+.spinner-sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.spinner-md {
+  width: 24px;
+  height: 24px;
+  border-width: 2.5px;
+}
+
+.spinner-lg {
+  width: 36px;
+  height: 36px;
+  border-width: 3px;
+}
+
+.spinner-xl {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+/* ── Spinner Color Variants ── */
+.spinner-primary {
+  border-color: rgba(99, 102, 241, 0.2);
+  border-top-color: var(--accent, #6366f1);
+}
+
+.spinner-light {
+  border-color: rgba(255, 255, 255, 0.25);
+  border-top-color: #ffffff;
+}
+
+.spinner-dark {
+  border-color: rgba(0, 0, 0, 0.15);
+  border-top-color: #1e293b;
+}
+
+/* ── Inline Spinner in Buttons & Actions (Fixes UI break) ── */
+button .spinner,
+.btn .spinner,
+.toolbar-btn .spinner {
+  display: inline-block;
+  vertical-align: -0.125em;
+  margin-right: 6px;
+  border-top-color: currentColor;
+}
+
+button:disabled .spinner,
+.btn:disabled .spinner {
+  opacity: 0.85;
+}
+
+/* Fix flex buttons containing spinners */
+.btn:has(.spinner),
+button:has(.spinner) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* ── Centered Card & Modal Spinner Containers ── */
+.spinner-container,
+.spinner-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3, 12px);
+  padding: var(--sp-6, 24px);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.spinner-overlay {
+  min-height: 160px;
+}
+
+.spinner-label,
+.spinner-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary, #94a3b8);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Resilient Material Icon Spinner & Spanner Fallback ── */
+.spin,
+.icon-spin {
+  display: inline-block;
+  animation: spinner-spin 0.8s linear infinite;
+  transform-origin: center center;
+}

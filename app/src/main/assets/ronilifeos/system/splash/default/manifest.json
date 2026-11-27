@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "default",
+  "name": "Default splash",
+  "type": "splash",
+  "protected": true,
+  "entry": "index.html",
+  "assets": {
+    "stylesheet": "css/splash.css",
+    "script": "js/splash.js",
+    "logo": "assets/logo.svg"
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৮ · Device Info</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৮ · ডিভাইস ও অ্যাপ তথ্য</h1>
+  <p>device.getInfo / getAppInfo / getScreenInfo / getLocale / getSafeArea <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>সব তথ্য একসাথে</h2>
+    <button id="all">device.getInfo</button>
+    <dl class="kv" id="kv" style="margin-top:12px"></dl>
+  </div>
+
+  <div class="card">
+    <h2>আলাদা কল</h2>
+    <div class="row">
+      <button class="secondary" data-a="device.getAppInfo">App</button>
+      <button class="secondary" data-a="device.getDeviceInfo">Device</button>
+      <button class="secondary" data-a="device.getScreenInfo">Screen</button>
+      <button class="secondary" data-a="device.getLocale">Locale</button>
+      <button class="secondary" data-a="device.getSafeArea">SafeArea</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Safe area প্রয়োগ</h2>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 8px">
+      নিচের বাক্সে সবুজ অংশ = safe area-র ভেতরে।
+    </p>
+    <div id="safe-demo" style="background:#fee2e2;border-radius:10px;padding:0">
+      <div id="safe-inner" style="background:#dcfce7;border-radius:10px;padding:12px;text-align:center">
+        নিরাপদ এলাকা
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function render(obj) {
+    var kv = document.getElementById('kv');
+    kv.innerHTML = '';
+    Object.keys(obj).forEach(function (k) {
+      var v = obj[k];
+      if (v && typeof v === 'object') v = JSON.stringify(v);
+      var dt = document.createElement('dt');
+      dt.textContent = k;
+      var dd = document.createElement('dd');
+      dd.textContent = String(v);
+      kv.appendChild(dt);
+      kv.appendChild(dd);
+    });
+  }
+
+  document.getElementById('all').addEventListener('click', function () {
+    Native.call('device.getInfo').then(function (info) {
+      Native.log('log', 'device.getInfo', 'ok');
+      render(info);
+      applySafe(info);
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+      render({ error: e.message, fallback: 'ব্রাউজার মোড' });
+    });
+  });
+
+  document.querySelectorAll('[data-a]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var action = b.getAttribute('data-a');
+      Native.call(action).then(function (r) {
+        Native.log('log', action, r);
+        render(r);
+        if (action === 'device.getSafeArea') applySafe({ safeArea: r });
+      }).catch(function (e) {
+        Native.log('log', 'ERROR', e.message);
+      });
+    });
+  });
+
+  function applySafe(info) {
+    var top = info.safeAreaTop || (info.safeArea && info.safeArea.top) || 0;
+    var bottom = info.safeAreaBottom || (info.safeArea && info.safeArea.bottom) || 0;
+    var inner = document.getElementById('safe-inner');
+    inner.style.marginTop = top + 'px';
+    inner.style.marginBottom = bottom + 'px';
+    Native.log('log', 'safe area', { top: top, bottom: bottom });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    Native.call('device.getInfo').then(function (info) {
+      render(info);
+      applySafe(info);
+    }).catch(function () {});
+  });
+})();
+</script>
+</body>
+</html>

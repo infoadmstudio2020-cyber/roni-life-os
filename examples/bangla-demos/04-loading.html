@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৪ · Loading</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৪ · Loading Overlay</h1>
+  <p>showLoading → কাজ → hideLoading (try/finally) <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>সাধারণ ব্যবহার</h2>
+    <input id="text" value="লোড হচ্ছে…" placeholder="বার্তা">
+    <label><input type="checkbox" id="cancelable" checked style="width:auto"> cancelable</label>
+    <div class="row">
+      <button id="run">২ সেকেন্ডের কাজ</button>
+      <button id="show" class="secondary">শুধু show</button>
+      <button id="hide" class="secondary">শুধু hide</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>নিরাপদ প্যাটার্ন</h2>
+    <pre style="font-size:12px;overflow-x:auto;background:var(--bg);padding:10px;border-radius:10px">async function withLoading(text, task) {
+  let shown = false;
+  try {
+    await Native.call('ui.showLoading', { text, cancelable: false });
+    shown = true;
+  } catch (e) {}
+  try { return await task(); }
+  finally {
+    if (shown) await Native.call('ui.hideLoading').catch(() => {});
+  }
+}</pre>
+    <button id="safe" class="secondary">নিরাপদ প্যাটার্ন চালান</button>
+  </div>
+
+  <div class="card">
+    <h2>অবস্থা</h2>
+    <button class="secondary" id="is">isLoading</button>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function sleep(ms) {
+    return new Promise(function (r) { setTimeout(r, ms); });
+  }
+
+  async function withLoading(text, task) {
+    var shown = false;
+    try {
+      await Native.call('ui.showLoading', { text: text, cancelable: false });
+      shown = true;
+    } catch (e) {
+      Native.log('log', 'showLoading ব্যর্থ', e.message);
+    }
+    try {
+      return await task();
+    } finally {
+      if (shown) {
+        await Native.call('ui.hideLoading').catch(function () {});
+      }
+    }
+  }
+
+  document.getElementById('run').addEventListener('click', async function () {
+    var text = document.getElementById('text').value;
+    await withLoading(text, async function () {
+      await sleep(2000);
+      Native.log('log', 'কাজ শেষ', '২ সেকেন্ড');
+    });
+    Native.log('log', 'overlay বন্ধ', 'ok');
+  });
+
+  document.getElementById('safe').addEventListener('click', async function () {
+    await withLoading('নিরাপদ প্যাটার্ন…', async function () {
+      await sleep(1200);
+      throw new Error('ইচ্ছাকৃত ব্যর্থতা');
+    }).catch(function (e) {
+      Native.log('log', 'task ব্যর্থ (overlay তবুও বন্ধ)', e.message);
+    });
+  });
+
+  document.getElementById('show').addEventListener('click', function () {
+    Native.call('ui.showLoading', {
+      text: document.getElementById('text').value,
+      cancelable: document.getElementById('cancelable').checked
+    }).then(function (r) { Native.log('log', 'showLoading', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('hide').addEventListener('click', function () {
+    Native.call('ui.hideLoading')
+      .then(function (r) { Native.log('log', 'hideLoading', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('is').addEventListener('click', function () {
+    Native.call('ui.isLoading')
+      .then(function (r) { Native.log('log', 'isLoading', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+})();
+</script>
+</body>
+</html>

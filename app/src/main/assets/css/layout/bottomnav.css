@@ -1,0 +1,73 @@
+/* ── Bottom navigation (mobile only) ── */
+#bottom-nav {
+  display: none;
+  flex-shrink: 0;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 90;
+}
+
+.bottom-nav-items {
+  display: flex;
+  width: 100%;
+  height: var(--bottomnav-h);
+}
+
+.bottom-nav-item {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--transition);
+  cursor: pointer;
+}
+
+.bottom-nav-item .material-symbols-outlined {
+  font-size: 22px;
+  font-variation-settings: 'FILL' 0, 'wght' 400;
+}
+
+.bottom-nav-item.active { color: var(--accent); }
+.bottom-nav-item.active .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400; }
+
+.bottom-nav-label {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+html[lang="bn"] .bottom-nav-label { font-size: 10px; }
+
+/* ── Center FAB (New Project) ── */
+.bottom-nav-fab-btn {
+  width: 50px;
+  height: 50px;
+  margin-top: -16px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--text-on-accent, var(--bg-base));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow), var(--shadow-glow);
+  transition: transform var(--transition);
+}
+.bottom-nav-fab-btn .material-symbols-outlined {
+  font-size: 26px;
+  color: var(--text-on-accent, var(--bg-base));
+}
+.bottom-nav-fab:active .bottom-nav-fab-btn { transform: scale(0.94); }
+
+@media (max-width: 767px) {
+  #bottom-nav { display: block; }
+}

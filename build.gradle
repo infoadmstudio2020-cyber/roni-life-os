@@ -1,0 +1,18 @@
+// Top-level build file
+buildscript {
+    ext {
+        agp_version       = "8.10.1"
+        compileSdkVersion = 36
+        minSdkVersion     = 21
+        targetSdkVersion  = 36
+    }
+}
+
+plugins {
+    id "com.android.application" version "8.10.1" apply false
+    id "com.android.library"     version "8.10.1" apply false
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.layout.buildDirectory
+}

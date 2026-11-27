@@ -1,0 +1,19 @@
+/* ── Badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--sp-2);
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.badge-accent  { background: var(--accent-subtle);  color: var(--accent);  border-color: var(--accent-subtle); }
+.badge-accent2 { background: var(--accent2-subtle); color: var(--accent2); border-color: var(--accent2-subtle); }
+.badge-success { background: rgba(16,185,129,0.1);  color: var(--success); border-color: rgba(16,185,129,0.2); }
+.badge-warning { background: rgba(245,158,11,0.1);  color: var(--warning); border-color: rgba(245,158,11,0.2); }
+.badge-error   { background: rgba(239,68,68,0.1);   color: var(--error);   border-color: rgba(239,68,68,0.2); }

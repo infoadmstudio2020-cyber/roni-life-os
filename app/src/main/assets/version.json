@@ -1,0 +1,175 @@
+{
+  "name": "RONi Android Library Generator",
+  "currentVersion": "0.1.3.6",
+  "previousVersion": "0.1.3.5",
+  "releaseDate": "2026-11-01",
+  "updateStatus": "up_to_date",
+  "changelog": {
+    "0.1.3.6": [
+      "Ecosystem Version Management Page UI Update & Mobile Responsiveness: Enhanced mobile responsive layout with adaptive 2-column/1-column HUD cards, responsive filter groups with full-width search input, momentum-scrolling tables with scroll indicators, stacked comparison rows, and mobile-friendly candidate cards.",
+      "JitPack Log Retry System: Added dedicated 'Retry Log' button with live attempt counter, retry alert banner with one-click 'Retry Now' trigger, and automated 5-second polling countdown ('Auto-Retry') for in-progress or failed JitPack builds.",
+      "Popup Dialog System Overhaul: Screen center-aligned all modals on both desktop and mobile viewports with smooth zoom-in animation, responsive max-widths (sm, default, lg, xl, full), safe touch targets, non-overflowing internal scrolling body, and robust backdrop blur.",
+      "Complete Version Base Update to v0.1.3.6: Synchronized version metadata across version.json, package.json, index.html, DownloadsPage, VersionManagerPage, and documentation.",
+      "Zero Regressions: Preserved 100% Vanilla JS ES6 Native Modules, IndexedDB persistence, Android WebView compatibility, and verified all 18 test suites."
+    ],
+    "0.1.3.5": [
+      "Complete Project Audit & Reliability Hardening: Executed thorough audit across all 131 JS modules and CSS design system. Fixed unhandled empty-state navigation in ManifestPage (#manifest-empty-goto-gen-btn) and imported missing EventBus reference.",
+      "Downloads & Release ZIP Action Integration: Connected release package download actions in DownloadsPage and VersionManagerPage to WebViewBridge.downloadFile, preventing download dropouts in Android WebViews lacking native download listeners.",
+      "Global Promise & Module Rejection Guard: Added window unhandledrejection event listener to index.html fatal error boundary, ensuring failed dynamic module imports or restricted file:// contexts display clear guidance and WebViewAssetLoader integration instructions.",
+      "Browser & Android WebView Verification: Preserved pure Vanilla JS ES6 Modules, offline IndexedDB storage with resilient memory fallback, offline local JSZip bundling, and unified ClipboardUtil.",
+      "Full Automated Test Suite Expansion: Added comprehensive v0.1.3.5 audit test suite, verifying 100% test pass rate with zero skips or regressions."
+    ],
+    "0.1.3.4": [
+      "Android WebView & Cross-Browser Compatibility: Added WebViewBridge for native Android JavaScript interface integration (window.AndroidBridge / window.Android), WebViewAssetLoader support, and safe Blob/Base64 download fallback.",
+      "Blob Download Lifecycle Hardening: Eliminated synchronous revokeObjectURL across all modules (ZipService, EditorModule, ConsoleService, ManifestPage, JitPackPage, GradlePage, VersionManagerPage), preventing download cancellations in Android WebView and mobile browsers.",
+      "File Picker DOM-Attachment Protection: Fortified file input creation with DOM attachment to guarantee WebChromeClient.onShowFileChooser compatibility in Android WebViews.",
+      "WebView Diagnostics & Developer Documentation: Added real-time compatibility diagnostics panel in SettingsPage and published comprehensive docs/android-webview-integration.md with Kotlin & Java WebViewAssetLoader implementation guides.",
+      "Zero Regressions & 100% Verification: Maintained 100% pass rate across all automated test suites, preserved pure Vanilla JS ES6 architecture without external frameworks."
+    ],
+    "0.1.3.3": [
+      "Runtime Module Resolution Fix: Fixed dynamic import path error in EcosystemManagerPage.js ('../../core/EventBus.js' -> '../core/EventBus.js') resolving the 'Failed to fetch dynamically imported module' error when navigating to ecosystem-manager.",
+      "NativeRuntime Ecosystem Version Manager: Full integration of multi-source version comparison matrix (Project vs GitHub Release vs Git Tag vs JitPack), live JitPack build diagnostics, log viewer, candidate scanner, and dependency topology graph.",
+      "Interactive SVG Dependency Graph & Cycle Guard: Complete visualization of inter-library dependencies, conflict detection, and DFS-based circular dependency prevention.",
+      "Zero Regressions & 100% Verification: All 14 automated test suites passing with 100% success rate, packaged clean v0.1.3.3 standalone distribution."
+    ],
+    "0.1.3.2": [
+      "Modular Architecture & Clean File Structure: Reorganized complete project structure into dedicated core, ui, pages, modules (storage, generator, analyzer, github, zip, conflict, environment, editor, explorer, build, version), css, assets, test, tests, and docs directories with clear ownership and zero spaghetti coupling.",
+      "Removal of Unused Scaffold & Zero Dependency Footprint: Eliminated orphaned React/TypeScript starter boilerplate (src/) and 45+ unused npm package dependencies. Preserved 100% pure Vanilla JavaScript ES6 Modules, HTML5, and CSS3 architecture.",
+      "Offline-First Asset Organization: Standardized offline brand assets into /assets/ directory (favicon, logos, icons, illustrations) with graceful fallbacks.",
+      "Comprehensive Verification & Zero Regression: 100% test pass rate across all automated test suites, verified offline JSZip bundling, dynamic template schema generation, and safe clipboard fallbacks."
+    ],
+    "0.1.3.1": [
+      "100% Offline Usability: Integrated local JSZip library vendor package directly within the repository, eliminating external CDN network dependence and guaranteeing complete offline project generation, template loading, and ZIP exporting.",
+      "Resilient Cross-Browser & Android WebView Compatibility: Implemented unified ClipboardUtil with safe document.execCommand fallback, eliminating clipboard crashes and NotAllowedError exceptions in Android WebView, insecure contexts, and file:// protocols.",
+      "Export Required Information Schema Feature: Enabled template-specific dynamic JSON Schema Draft-07 generation and interactive preview modal with Copy JSON, Download JSON, and Close actions for all project templates.",
+      "Cleaned Project Structure & Storage Fortification: Removed obsolete backup archives, streamlined ES6 modules, and ensured resilient memory-backed fallback for StorageService under restricted or Incognito WebView environments.",
+      "Updated Viewport & Touch Ergonomics: Removed restrictive user-scalable constraints for modern mobile and Android WebView accessibility standards."
+    ],
+    "0.1.3.0": [
+      "Project Files Editor Section Fixed: Editor page Project Files section is now strictly collapsed/hidden by default, only expanding when the user explicitly clicks the folder toggle button. Preserves clean editor real-estate across page reloads and tab navigations without automatically popping open.",
+      "New Templates Page & Gallery: Integrated comprehensive Templates page featuring reusable architectures for Android Library (AAR + companion demo), Android Application (APK + AAB), Multi-Module Android SDK (:core + :ui + :app), and Pure Java Library (JAR).",
+      "Interactive Template Configuration & File Hierarchy: Interactive form allowing custom package names, group IDs, artifact IDs, SDK versions, and description with visual file tree view and dependency table.",
+      "AI-Ready JSON Specification Export & Download: One-click generation of fully structured, autonomous AI-Ready JSON specs suitable for ChatGPT, Claude, Gemini, and DeepSeek, with instant clipboard copy and .json download.",
+      "Generator Integration: Added 1-click 'Load into Generator' action passing configured template parameters directly into the project generation wizard."
+    ],
+    "0.1.2.9": [
+      "Theme & Color Contrast Engine: Guaranteed high contrast (WCAG AA compliant) for all background, text, input, dropdown select, option list, and button elements in both Dark and Light themes with zero invisible text or white-on-white dropdowns.",
+      "Project Environment Manager Enhancement: Added comprehensive analysis and management for Gradle Wrapper (7.x - 8.13), Android Gradle Plugin AGP (7.x - 8.10.1), JDK (8, 11, 17, 21), compileSdk (31 - 36), minSdk (21 - 28), and targetSdk with 1-click configuration sync.",
+      "Intelligent Dependency Version Compatibility Advisor: Implemented automated dependency analysis against project compileSdk/minSdk/AGP/JDK, detecting SDK incompatibilities and legacy libraries with 1-click upgrade and batch migration.",
+      "AST-Safe Dependency Patcher & Verified Library Catalog: Integrated catalog of verified AndroidX, Jetpack, Coroutines, Material 3, and HTTP libraries with one-click insertion and zero brace syntax corruption."
+    ],
+    "0.1.2.8": [
+      "Production-Ready UI/UX Modernization: Enhanced typography hierarchy, subtle 1px calm borders, polished elevation, and responsive container layout aligned with modern dark engineering aesthetic.",
+      "Universal Toolbar Language Switcher: Added direct 1-click language switcher (EN / বাং) to the top navigation toolbar with live document re-translation, language indicator badge, and persistent synchronization across settings and storage.",
+      "Enhanced Mobile & Tablet Usability: Optimized toolbar spacing, responsive action buttons, touch targets (>=44px), smooth drawer transitions, and zero horizontal page clipping across 320px–1920px viewports.",
+      "Code Hardening & Stability: Reinforced error boundaries, sanitized user inputs, fortified AST Gradle patcher and modal lifecycles, and verified zero memory leaks across EventBus and L1 storage caches.",
+      "Comprehensive Testing & Distribution: 100% test pass rate across all 13 test suites (including new v0.1.2.8 production upgrade suite), and created an integrity-verified v0.1.2.8 release package."
+    ],
+    "0.1.2.7": [
+      "Resolved 'modal.show is not a function' error: upgraded ModalService with complete .show(opts) compatibility alias, parameter-less close() support, flexible buttons, callbacks, and content rendering for Toolbar Resolution Test and GradlePage Scaffold Gradle.",
+      "Upgraded Library build.gradle Generator: merged old and new generation architectures, supporting com.android.library, singleVariant('release') with sourcesJar and javadocJar, Java 17, consumer ProGuard rules, Maven POM metadata, dynamic coordinates, and safe afterEvaluate task ordering.",
+      "Editor Auto/Manual Project Files Toggle: added Auto/Manual mode toggle directly on the Editor toolbar and in Settings page preferences, allowing users to toggle auto-loading of primary project files or manual selection with zero data loss.",
+      "Systematic Verification & Release Package: updated all project metadata and UI references to v0.1.2.7, executed automated test suites, and created an integrity-verified downloadable release ZIP."
+    ],
+    "0.1.2.6": [
+      "Editor Line Number Gutter & Visibility Fix: Guaranteed line number gutter is permanently visible without auto-hiding or vanishing; reset rendered line counter on editor re-renders, file opens, and tab switches.",
+      "Integrated Project Files Explorer in Editor Page: Added responsive File Explorer sidebar directly into the Editor Page with instant single-click file loading, active selection highlighting, filter search, and toggle button.",
+      "Accurate Scroll Synchronization: Enhanced scroll sync with translate3d and subpixel alignment between line numbers gutter and textarea; preserved per-tab scroll positions.",
+      "Single-Click Loading & Event Loss Prevention: Fixed event binding loss on dynamic tree re-renders in ExplorerModule, eliminated artificial delays on file clicks, and ensured smooth tab switching and editor refresh."
+    ],
+    "0.1.2.5": [
+      "Project Generator HTML & Event Fix: Fixed malformed card-body closing tags in project metadata form, added direct click fallback on Generate Project button, and auto-trimmed inputs to guarantee reliable project generation.",
+      "MultiModule & Standalone Dynamic Support: Upgraded MultiModuleTemplate with dynamic library module resolution, dynamic jitpack.yml, companion app dependencies, and GitHub Actions CI/release workflows.",
+      "Enhanced Pre-Validator: Allowed natural project names with spaces and graceful sanitization, preventing spurious validation failures.",
+      "Downloadable Version Release Package: Updated Downloads page and system metadata to version 0.1.2.5 with direct downloadable release ZIP package and verification indicators."
+    ],
+    "0.1.2.4": [
+      "Dynamic Library Module Name: Replaced hardcoded 'java-library' module naming with flexible dynamic module resolution. Supports custom user input in Generator UI or automatic fallback to sanitized project name.",
+      "Safe GitHub Actions CI & JitPack Publishing: Dynamic library module path automatically wired into settings.gradle, build.gradle, jitpack.yml (:publishToMavenLocal), companion :app dependencies, and GitHub Actions workflows.",
+      "UI Generator & Structure Verification: Live dynamic module hint and preview in Generator form with automatic derivation, input placeholder sync, and full backward-compatible repository structure validation."
+    ],
+    "0.1.2.3": [
+      "Application Module Migration: Migrated Android companion sample app module (:sample) to standard :app module across project generator templates, settings.gradle, build.gradle, and manifest files.",
+      "CI/CD & JitPack Hardening: Synchronized GitHub Actions CI workflows and jitpack.yml automation to build :app:assembleRelease / :app:assembleDebug seamlessly with fallback protection, guaranteeing zero build failures.",
+      "Full Project & Validator Compatibility: Updated project structure verifier, Gradle dependency prioritization, and workflow analyzers with 100% backward compatibility and test verification."
+    ],
+    "0.1.2.2": [
+      "Mobile Console Icon Cleanup: Removed console/terminal toggle button from mobile screen toolbar (<768px) to eliminate clutter and provide more space for essential project operations.",
+      "Comprehensive Language & I18n Coverage: Enhanced I18n dictionary covering Version Manager, Environment Manager, GitHub Actions Wizard, Testing, and Build tools with 100% complete English consistency.",
+      "Full Project Optimization: Verified zero console.log leakage, zero lint errors, L1 memory caching, syntax highlighter LRU memoization, and 100% test suite pass rate."
+    ],
+    "0.1.2.1": [
+      "Version Manager Mobile Layout Fix: Solved card inside/outside text and element overlap on small screens (<768px down to 320px). Transformed mobile diff comparison to clean stacked layout with Old/New tag badges, wrapped long file paths, responsive 2-column header action buttons, and vertical arrow flow.",
+      "GitHub & Repository Card Mobile Layout Fix: Eliminated raw JavaScript code snippet leakage inside the GitHub setup instructions card. Restructured repository cards with wrapped long repository names, badge wrapping, multi-line descriptions, and 2-column responsive action buttons with full-width primary action.",
+      "Zero Regressions: 100% backward compatibility maintained across all desktop views and workflows, with all 86 comprehensive test suites passing and zero lint errors."
+    ],
+    "0.1.2.0": [
+      "EventBus Memory Safety & Lifecycle: Added listenerCount tracking, safe per-listener exception containment, auto-clearing unsubscriptions, and debounced dispatch support.",
+      "Router & Page Instance Caching: Implemented page instance caching to eliminate repeated dynamic module re-imports and DOM node leaks; added clean destroy() lifecycle across pages.",
+      "StorageService L1 Memory Cache: Added ultra-fast in-memory L1 cache for settings and project records, providing near-instantaneous synchronous reads and reduced IndexedDB transactions.",
+      "ProjectService Debounced Sync & Batch Operations: Debounced high-frequency disk writes during active typing in Editor, and converted multi-file ZIP imports and generation into single-transaction batch setFiles.",
+      "SyntaxHighlighter Pre-compiled Regexes & LRU Memoization: Converted tokenization regexes into static singletons and added an LRU memoization cache (up to 64 snippets) for instant 0ms re-highlighting.",
+      "Editor DOM & Undo Optimization: Coalesced consecutive typing into single undo steps, and eliminated 1000-line DOM destruction on every keystroke by updating gutter line numbers only when line counts change.",
+      "Explorer & Source Analyzer Optimization: Debounced directory tree re-renderings and introduced early-break scanner stopping on class/interface declarations to skip thousands of unnecessary regex body scans."
+    ],
+    "0.1.1.0": [
+      "Desktop Navigation Restored: Fixed media query boundary leak in mobile.css that was causing mobile drawer off-canvas positioning (transform: translateX(-105%)) to apply to desktop screens. Desktop sidebar navigation is now fully visible by default at 220px width.",
+      "Universal Navigation Toggle: Enabled navigation toggle button on the desktop toolbar with dual behavior: toggles smooth sidebar collapse/expand on desktop screens (>=768px) and opens the mobile off-canvas drawer on mobile screens (<768px).",
+      "Desktop Sidebar Hierarchy & Accessibility: Restored full navigation item visibility with section headers (Main, Files, Generate, Publish, GitHub, Tools), icons, labels, badges, and bottom chevron expander (expandable to 280px)."
+    ],
+    "0.1.0.9": [
+      "Mobile Toolbar Layout Polish: Eliminated collision between brand title and toolbar action buttons on narrow mobile viewports by setting clean flex spacing and hiding non-essential indicator badges.",
+      "Version Manager Mobile Tab Segmented Control: Resolved mobile tab label truncation ('Chang' cutoff) by switching to an equal-width 3-column responsive layout with clear icons, compact labels (Mismatch, Tests, Changelog), and zero horizontal overflow.",
+      "Version Manager Responsive Card Layout: Replaced truncated 4-column data table on mobile viewports with structured, readable file cards displaying full path, status badge, diff line references, old vs new code comparisons, and touch-friendly (40px+) 'Update Line' actions."
+    ],
+    "0.1.0.8": [
+      "Mobile Toolbar & Version Navigation: Hidden version badge on mobile viewports (<768px) to keep the toolbar clean and compact. Moved interactive version navigation badge into the mobile drawer header with 1-click navigation to Version Manager.",
+      "GitHub Repository List Mobile Redesign: Overhauled mobile repository listing into responsive, accessible cards with complete repository name, owner badge, visibility tag, language indicator, formatted update timestamp, multi-line description, and touch-friendly (42px+) action buttons.",
+      "Version Manager Mobile Tab Fix: Fixed tab switching and content visibility by eliminating disruptive full-page re-renders. Implemented smooth horizontal swipe tabs with compact responsive labels, touch-friendly 44px hit targets, and high-contrast active state indicators."
+    ],
+    "0.1.0.7": [
+      "Dark & Light Theme Overhaul: Modern, high-contrast, professional Dark and Light themes with dedicated semantic CSS variables, refined borders, and seamless switching without flicker.",
+      "Full Responsive Mobile & Tablet Experience: Enhanced collapsible off-canvas navigation drawer, mobile bottom navigation bar with active section tracking, tablet navigation rail, adaptive form layouts, and zero horizontal overflow.",
+      "Toolbar & Navigation Refinement: Integrated active section indicator badge, breadcrumb-level awareness, touch-friendly 44px+ hit targets, and mobile bottom sheet modals.",
+      "Code Editor Theme Adapters: Light and dark syntax highlighting for Java, Kotlin, Groovy Gradle, XML, JSON, and Markdown files."
+    ],
+    "0.1.0.6": [
+      "Fixed GradlePage Dependency Addition Persistence: Fixed bug where dependencies added in GradlePage were lost due to overwrite during auto-sync. Now dependencies are permanently saved to ProjectService first.",
+      "Target Module Prioritization: Fixed active file selection to automatically prioritize library module build.gradle over root build.gradle for dependency additions.",
+      "Real-Time UI Re-render: Added full re-render on dependency insertion and missing auto-injection so declared dependency badges and lists update instantly.",
+      "Enter Key Submission: Added Enter key listener on custom dependency input field for fast keyboard-driven additions."
+    ],
+    "0.1.0.5": [
+      "Resolved GitHub Publish & JitPack build failures: Guaranteed openjdk17 and safe.directory '*' wildcard configuration in jitpack.yml.",
+      "Automated jitpack.yml Generation & Sync in GitHubPublisher: Every repository published to GitHub now automatically carries an optimized, verified jitpack.yml matching active library modules.",
+      "Build Configuration Hardening: Switched settings.gradle RepositoriesMode to PREFER_SETTINGS and injected Xdoclint:none Javadoc protection to eliminate AGP 8+ JitPack build crashes.",
+      "Live JitPack Build Monitor & Log Viewer: Integrated real-time JitPack API status polling, live build log retrieval, and syntax-highlighted error search.",
+      "Automated Build Error Diagnosis & 1-Click Auto-Fix: Automatically diagnoses common JitPack failure patterns (JDK mismatch, safe.directory, sample module publish, doclint, repo modes) with one-click automated remediation.",
+      "Seamless GitHub Publish to JitPack Bridge: Added direct 'View on JitPack' links and one-click navigation from publish completion directly into the JitPack Live Monitor."
+    ],
+    "0.1.0.4": [
+      "Fixed GradlePage loading: Corrected closure boundary in GradlePage.js resolving 'Private field #noProject must be declared in an enclosing class' syntax error.",
+      "Brace-Aware AST Gradle Engine: Introduced GradleAstHelper with balanced-brace tracking, string/comment-safe character scanner, and closure block replacement.",
+      "Fixed Gradle closure bug: Eliminated extra closing brace and 'Unmatched closing brace' syntax errors in build.gradle after adding dependencies or publishing blocks.",
+      "Comprehensive Maven Coordinate Parser: Added support for full coordinates (group:name:version, e.g. com.github.infoadmstudio2020-cyber:native-logger-sdk:v1.0.1) and shorthand library aliases.",
+      "Flexible Dependency Scopes: Full support for api, implementation, compileOnly, runtimeOnly, testImplementation, and androidTestImplementation.",
+      "Intelligent Auto-Scope Analysis: Automatic detection of public ABI exposure vs internal encapsulation vs test isolation.",
+      "Automated JitPack Repository Injection: Automatically adds JitPack repository to settings.gradle when GitHub dependencies are detected, with duplicate prevention.",
+      "Safe Snapshot & Rollback: Added safety backup snapshots and automatic rollback if Gradle syntax validation fails."
+    ],
+    "0.1.0.3": [
+      "JitPack File Generator & Manager: Automatic Gradle project analysis (settings.gradle, build.gradle, gradle-wrapper.properties).",
+      "Module-qualified Gradle command generator with support for assembleRelease, publishToMavenLocal, and custom tasks.",
+      "Strict task safety: Prevents invalid publishToMavenLocal execution on sample/application modules.",
+      "Existing jitpack.yml detection with reuse, merge, edit, preview, copy, download, and ZIP export.",
+      "Project Version Update Manager: File scanner, version mismatch report, selective update, backup and rollback protection.",
+      "Third-party dependency version protection to ensure zero breakage.",
+      "Synchronized project documentation, metadata, and references to version 0.1.0.3."
+    ],
+    "0.1.0.2": [
+      "Added multi-module Android library templates.",
+      "Initial Maven Publish configuration generator.",
+      "GitHub repo & tags management."
+    ]
+  }
+}

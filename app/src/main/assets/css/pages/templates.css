@@ -1,0 +1,515 @@
+/* Templates Page Styles */
+
+.templates-page {
+  padding: var(--sp-6) var(--sp-6) var(--sp-12);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.templates-header {
+  margin-bottom: var(--sp-6);
+}
+
+.templates-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.templates-title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.templates-subtitle {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  margin-top: var(--sp-1);
+}
+
+.templates-filters-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+  flex-wrap: wrap;
+}
+
+.templates-category-pills {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.category-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+}
+
+.category-pill.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.templates-search-box {
+  flex: 1;
+  min-width: 240px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.templates-search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+}
+
+.templates-search-box .search-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--text-muted);
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* Template Grid Cards */
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-8);
+}
+
+.tmpl-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+.tmpl-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.tmpl-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-subtle, rgba(34, 211, 238, 0.2));
+}
+
+.tmpl-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+
+.tmpl-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--bg-surface);
+}
+
+.tmpl-card-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.tmpl-card-name {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.tmpl-card-desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: var(--sp-4);
+}
+
+.tmpl-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--sp-4);
+}
+
+.tmpl-meta-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.tmpl-card-actions {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: auto;
+}
+
+/* Template Workspace Drawer/Detail Panel */
+.tmpl-detail-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  margin-top: var(--sp-6);
+  scroll-margin-top: 80px;
+}
+
+.tmpl-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--sp-4);
+  margin-bottom: var(--sp-6);
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+.tmpl-detail-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.tmpl-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.tmpl-nav-tabs {
+  display: flex;
+  gap: var(--sp-2);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--sp-6);
+  overflow-x: auto;
+}
+
+.tmpl-nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.tmpl-nav-tab:hover {
+  color: var(--text-primary);
+}
+
+.tmpl-nav-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Configuration Grid */
+.tmpl-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+}
+
+.tmpl-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tmpl-form-field label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tmpl-form-field .helper-text {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* File Tree View */
+.tmpl-file-tree {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.tmpl-file-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  gap: var(--sp-2);
+}
+
+.tmpl-file-row:hover {
+  background: var(--bg-card);
+}
+
+.tmpl-file-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+}
+
+.tmpl-file-badge {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* AI JSON Preview Box */
+.tmpl-json-preview-wrap {
+  position: relative;
+  background: #0B0F19;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+[data-theme="light"] .tmpl-json-preview-wrap {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+.tmpl-json-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="light"] .tmpl-json-toolbar {
+  background: #F1F5F9;
+  border-bottom-color: #CBD5E1;
+}
+
+.tmpl-json-pre {
+  margin: 0;
+  padding: var(--sp-4);
+  max-height: 500px;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #E2E8F0;
+  white-space: pre;
+}
+
+[data-theme="light"] .tmpl-json-pre {
+  color: #0F172A;
+}
+
+.ai-spec-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--text-primary);
+  margin-bottom: var(--sp-5);
+  font-size: var(--text-xs);
+}
+
+/* Required Information Schema Preview Modal & Panel */
+.tmpl-schema-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.tmpl-schema-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 1000px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  animation: scaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tmpl-schema-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-6);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.tmpl-schema-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.tmpl-schema-modal-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 8px var(--sp-6);
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  font-size: var(--text-xs);
+}
+
+.tmpl-schema-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.tmpl-schema-modal-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--sp-6);
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.01);
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.tmpl-schema-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-4) var(--sp-6);
+  background: #0B0F19;
+}
+
+[data-theme="light"] .tmpl-schema-modal-body {
+  background: #F8FAFC;
+}
+
+.tmpl-schema-code-pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #E2E8F0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+[data-theme="light"] .tmpl-schema-code-pre {
+  color: #0F172A;
+}
+
+.tmpl-schema-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--sp-6);
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+

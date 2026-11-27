@@ -1,0 +1,188 @@
+/* ── Design tokens ─────────────────────────────────────────────────────
+   Dark theme is the default. Light theme overrides below.
+   All legacy tokens are preserved for backwards compatibility;
+   semantic aliases (--color-*) are derived from them.
+   Theme modes: 'light' | 'dark' | 'system' (resolved by app.js before
+   the data-theme attribute is set; see index.html boot script).
+   ──────────────────────────────────────────────────────────────────── */
+:root, [data-theme="dark"] {
+  /* Backgrounds */
+  --bg-base:      #0B0F19;
+  --bg-secondary: #0F172A;
+  --bg-elevated:  #141B2D;
+  --bg-surface:   #1E293B;
+  --bg-card:      #141B2D;
+  --bg-panel:     #1E293B;
+  --bg-muted:     #1E293B;
+  --bg-hover:     #27354E;
+  --bg-input:     #0F172A;
+  --bg-toolbar:   rgba(11, 15, 25, 0.94);
+  --bg-sidebar:   #0F172A;
+  --bg-modal:     #141B2D;
+
+  /* Text */
+  --text-primary:   #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted:     #94A3B8;
+  --text-disabled:  #64748B;
+  --text-on-accent: #0B0F19;
+
+  /* Accent */
+  --accent:          #22D3EE;
+  --accent-hover:    #06B6D4;
+  --accent-subtle:   rgba(34,211,238,0.14);
+  --accent2:         #818CF8;
+  --accent2-subtle:  rgba(129,140,248,0.14);
+
+  /* Status */
+  --success:  #10B981;
+  --warning:  #F59E0B;
+  --error:    #EF4444;
+  --info:     #22D3EE;
+
+  /* Border */
+  --border:        rgba(255,255,255,0.10);
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-focus:  #22D3EE;
+
+  /* Background Gradient */
+  --body-bg-gradient: radial-gradient(circle at 18% 12%, rgba(6, 182, 212, 0.08) 0%, transparent 48%),
+                      radial-gradient(circle at 82% 80%, rgba(129, 140, 248, 0.06) 0%, transparent 48%);
+
+  /* Sidebar */
+  --sidebar-width:          220px;
+  --sidebar-collapsed-width: 56px;
+
+  /* Layout heights */
+  --toolbar-h:    48px;
+  --statusbar-h:  24px;
+  --console-h:    180px;
+  --bottomnav-h:  58px;
+
+  /* Spacing scale (4px base) */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+
+  /* Radius */
+  --radius:    6px;
+  --radius-sm: 4px;
+  --radius-lg: 10px;
+
+  /* Typography */
+  --font-body: 'Montserrat', 'Noto Sans Bengali', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 14px;
+  --text-md:   15px;
+  --text-lg:   18px;
+  --text-xl:   22px;
+  --text-2xl:  28px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.45);
+  --shadow:    0 4px 12px rgba(0,0,0,0.55);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.65);
+  --shadow-glow: 0 0 14px rgba(34,211,238,0.25);
+
+  /* Transitions */
+  --transition: 0.15s ease;
+  --transition-slow: 0.3s ease;
+
+  /* Muted */
+  --muted: var(--text-muted);
+  /* ── Alias tokens for backwards-compat ── */
+  --bg-primary:    var(--bg-base);
+  --border-subtle: rgba(255,255,255,0.06);
+  --accent-glow:   rgba(34,211,238,0.35);
+  --transition-fast: 0.1s ease;
+
+  /* ── Semantic theme tokens ── */
+  --color-background:      var(--bg-secondary);
+  --color-surface:         var(--bg-elevated);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-text-primary:    var(--text-primary);
+  --color-text-secondary:  var(--text-secondary);
+  --color-border:          var(--border);
+  --color-primary:         var(--accent);
+  --color-danger:          var(--error);
+  --color-success:         var(--success);
+  --color-warning:         var(--warning);
+
+  /* Touch target baseline */
+  --touch-target: 44px;
+}
+
+/* ── Light theme ── */
+[data-theme="light"] {
+  --bg-base:      #F8FAFC;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated:  #FFFFFF;
+  --bg-surface:   #F1F5F9;
+  --bg-card:      #FFFFFF;
+  --bg-panel:     #F1F5F9;
+  --bg-muted:     #E2E8F0;
+  --bg-hover:     #E2E8F0;
+  --bg-input:     #FFFFFF;
+  --bg-toolbar:   rgba(255, 255, 255, 0.94);
+  --bg-sidebar:   #FFFFFF;
+  --bg-modal:     #FFFFFF;
+
+  --text-primary:   #0F172A;
+  --text-secondary: #334155;
+  --text-muted:     #64748B;
+  --text-disabled:  #94A3B8;
+  --text-on-accent: #FFFFFF;
+
+  /* Rich royal sky/blue for AA contrast on clean light surfaces (4.8:1+) */
+  --accent:          #0284C7;
+  --accent-hover:    #0369A1;
+  --accent-subtle:   rgba(2, 132, 199, 0.10);
+  --accent2:         #4F46E5;
+  --accent2-subtle:  rgba(79, 70, 229, 0.09);
+
+  --success:  #059669;
+  --warning:  #D97706;
+  --error:    #DC2626;
+  --info:     #0284C7;
+
+  --border:        rgba(15, 23, 42, 0.12);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-focus:  #0284C7;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow:    0 4px 14px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 0 14px rgba(2, 132, 199, 0.20);
+
+  --accent-glow:   rgba(2, 132, 199, 0.25);
+  --body-bg-gradient: radial-gradient(circle at 18% 12%, rgba(2, 132, 199, 0.05) 0%, transparent 48%),
+                      radial-gradient(circle at 82% 80%, rgba(79, 70, 229, 0.04) 0%, transparent 48%);
+
+  /* Semantic tokens (re-resolved from overridden values) */
+  --color-background:      var(--bg-secondary);
+  --color-surface:         var(--bg-elevated);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-text-primary:    var(--text-primary);
+  --color-text-secondary:  var(--text-secondary);
+  --color-border:          var(--border);
+  --color-primary:         var(--accent);
+  --color-danger:          var(--error);
+  --color-success:         var(--success);
+  --color-warning:         var(--warning);
+}
+
+/* ── Bangla script typography adjustments ── */
+html[lang="bn"] body { line-height: 1.65; }
+html[lang="bn"] .btn,
+html[lang="bn"] .toolbar-btn,
+html[lang="bn"] .tab-btn,
+html[lang="bn"] .bottom-nav-label { line-height: 1.45; }
+html[lang="bn"] .form-label,
+html[lang="bn"] .console-title,
+html[lang="bn"] .generator-preview-title,
+html[lang="bn"] .property-section-title,
+html[lang="bn"] .sidebar-section-title {
+  text-transform: none;   /* uppercase is meaningless for Bangla */
+  letter-spacing: 0;      /* tracking breaks conjuncts */
+}

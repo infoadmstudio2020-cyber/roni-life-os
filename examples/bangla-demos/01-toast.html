@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০১ · Toast</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০১ · নেটিভ Toast</h1>
+  <p>ui.showToast — চার ধরনের বার্তা <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>বার্তার ধরন</h2>
+    <div class="row">
+      <button data-type="info">info</button>
+      <button data-type="success">success</button>
+      <button data-type="warning">warning</button>
+      <button data-type="error">error</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>সময়কাল</h2>
+    <div class="row">
+      <button class="secondary" data-duration="short">short</button>
+      <button class="secondary" data-duration="long">long</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>নিজের বার্তা</h2>
+    <input id="msg" value="সেভ হয়েছে" placeholder="বার্তা লিখুন">
+    <div class="row">
+      <button id="send">পাঠান</button>
+      <button id="dismiss" class="secondary">dismiss</button>
+      <button id="visible" class="secondary">isToastVisible</button>
+    </div>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var lastType = 'info';
+  var lastDuration = 'short';
+
+  document.querySelectorAll('[data-type]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lastType = b.getAttribute('data-type');
+      send();
+    });
+  });
+
+  document.querySelectorAll('[data-duration]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lastDuration = b.getAttribute('data-duration');
+      send();
+    });
+  });
+
+  function send() {
+    var message = document.getElementById('msg').value || 'হ্যালো';
+    Native.call('ui.showToast', {
+      message: message,
+      type: lastType,
+      duration: lastDuration
+    }).then(function (r) {
+      Native.log('log', 'showToast', r);
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+    });
+  }
+
+  document.getElementById('send').addEventListener('click', send);
+
+  document.getElementById('dismiss').addEventListener('click', function () {
+    Native.call('ui.dismissToast')
+      .then(function (r) { Native.log('log', 'dismissToast', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('visible').addEventListener('click', function () {
+    Native.call('ui.isToastVisible')
+      .then(function (r) { Native.log('log', 'isToastVisible', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+})();
+</script>
+</body>
+</html>

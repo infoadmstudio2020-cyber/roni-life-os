@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "my-app",
+  "name": "my-app",
+  "type": "WEB",
+  "entryPoint": "index.html",
+  "source": { "type": "FILE", "path": ".", "entryPoint": "index.html" }
+}

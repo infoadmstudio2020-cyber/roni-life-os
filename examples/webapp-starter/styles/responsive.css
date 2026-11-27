@@ -1,0 +1,8 @@
+@media (min-width: 600px) {
+  .content { grid-template-columns: 1fr 1fr; }
+  .content .card:first-child { grid-column: 1 / -1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

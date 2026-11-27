@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>About NativeRuntime</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+  <div class="kicker">file:///android_asset/about.html</div>
+  <h1>About NativeRuntime</h1>
+  <p>A six layer Android runtime that gives a WebView application a fully native shell.</p>
+</header>
+<main>
+  <div class="card">
+    <h2>Layer contract</h2>
+    <ul>
+      <li><code>native-runtime-contracts</code> &mdash; shared interfaces</li>
+      <li><code>native-runtime-engine</code> &mdash; lifecycle orchestration</li>
+      <li><code>native-runtime-ui</code> &mdash; native component shell</li>
+      <li><code>native-runtime-sdk</code> &mdash; public consumer API</li>
+      <li><code>native-web-bridge-sdk</code> &mdash; JS to native RPC</li>
+      <li><code>native-*-engine</code> &mdash; storage, network, security</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Consumer contract</h2>
+    <p>Extend <code>NativeRuntimeActivity</code>, return a <code>NativeRuntimeUIConfig</code> from <code>onConfigureUI</code>, then supply any web content source. The shell is built once and never recreated when the source changes.</p>
+    <div class="actions">
+      <button class="dark" data-native="confirm" data-message="Reload the current web source?">Confirmation Dialog</button>
+      <button data-native="custom">Custom Dialog</button>
+    </div>
+  </div>
+</main>
+<footer>NativeRuntime Sample &middot; about</footer>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+:root {
+  --bg: #0b1220;
+  --surface: #131c2e;
+  --surface-2: #1b2740;
+  --border: #24314d;
+  --text: #e8eefc;
+  --muted: #93a3c0;
+  --primary: #3b82f6;
+  --primary-ink: #ffffff;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --radius: 14px;
+  --gap: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  padding: 0 16px calc(32px + env(safe-area-inset-bottom));
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------- */
+/* hero                                                              */
+/* ---------------------------------------------------------------- */
+
+.hero {
+  padding: calc(28px + env(safe-area-inset-top)) 0 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex: 0 0 auto;
+}
+
+.dot.ok { background: var(--success); box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15); }
+.dot.bad { background: var(--danger); box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15); }
+
+/* ---------------------------------------------------------------- */
+/* cards                                                             */
+/* ---------------------------------------------------------------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: var(--gap);
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.hint {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hint code,
+footer code {
+  background: var(--surface-2);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ---------------------------------------------------------------- */
+/* controls                                                          */
+/* ---------------------------------------------------------------- */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.row:last-child { margin-bottom: 0; }
+
+button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover { background: #22304d; border-color: #33456b; }
+button:active { transform: scale(0.97); }
+button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+button[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+button.ghost {
+  background: transparent;
+  color: var(--muted);
+}
+
+input[type="text"] {
+  flex: 1 1 140px;
+  min-width: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+}
+
+/* ---------------------------------------------------------------- */
+/* output                                                            */
+/* ---------------------------------------------------------------- */
+
+pre#output {
+  margin: 0 0 12px;
+  padding: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #c7d6f2;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 340px;
+  overflow: auto;
+}
+
+pre#output.error { color: #fca5a5; border-color: rgba(239, 68, 68, 0.4); }
+
+footer {
+  padding: 8px 0 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- */
+/* light theme (native theme.changed ইভেন্টে বডি ক্লাস বদলায়)         */
+/* ---------------------------------------------------------------- */
+
+body.theme-light {
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-2: #eef2f9;
+  --border: #dbe3f0;
+  --text: #0f172a;
+  --muted: #5b6b86;
+}
+
+body.theme-light button:hover { background: #e3eaf6; border-color: #c3d0e6; }
+body.theme-light pre#output { color: #1e293b; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

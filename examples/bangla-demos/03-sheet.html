@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৩ · Sheet ও Menu</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৩ · Bottom Sheet, Action Sheet, Popup</h1>
+  <p>তিনটিই ইভেন্টে উত্তর দেয় <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>Bottom Sheet</h2>
+    <button id="bottom">খুলুন</button>
+  </div>
+
+  <div class="card">
+    <h2>Action Sheet</h2>
+    <button id="action" class="secondary">খুলুন</button>
+  </div>
+
+  <div class="card">
+    <h2>Popup Menu</h2>
+    <button id="popup" class="secondary">খুলুন</button>
+  </div>
+
+  <div class="card">
+    <h2>ইভেন্ট লগ</h2>
+    <div class="row">
+      <button class="secondary" id="state">getActionSheetState</button>
+      <button class="secondary" id="dismiss">dismissActionSheet</button>
+    </div>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var ITEMS = [
+    { title: 'শেয়ার' },
+    { title: 'ডাউনলোড' },
+    { title: 'মুছে ফেলুন', destructive: true }
+  ];
+
+  Native.on('ui.actionSelected', function (p) {
+    Native.log('log', 'ui.actionSelected', p);
+    Native.toast('বেছে নিয়েছেন: ' + p.title, 'info');
+  });
+
+  Native.on('ui.popupItemSelected', function (p) {
+    Native.log('log', 'ui.popupItemSelected', p);
+    Native.toast('index ' + p.index + ' · ' + p.title, 'info');
+  });
+
+  document.getElementById('bottom').addEventListener('click', function () {
+    Native.call('ui.showBottomSheet', { title: 'ফাইল অপারেশন', items: ITEMS })
+      .then(function (r) { Native.log('log', 'showBottomSheet', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('action').addEventListener('click', function () {
+    Native.call('ui.showActionSheet', { title: 'কী করবেন?', items: ITEMS })
+      .then(function (r) { Native.log('log', 'showActionSheet', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('popup').addEventListener('click', function () {
+    Native.call('ui.showPopupMenu', {
+      items: [
+        { id: 'edit', title: 'সম্পাদনা' },
+        { id: 'copy', title: 'কপি' },
+        { id: 'del', title: 'মুছুন' }
+      ]
+    }).then(function (r) { Native.log('log', 'showPopupMenu', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('state').addEventListener('click', function () {
+    Native.call('ui.getActionSheetState')
+      .then(function (r) { Native.log('log', 'getActionSheetState', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('dismiss').addEventListener('click', function () {
+    Native.call('ui.dismissActionSheet')
+      .then(function (r) { Native.log('log', 'dismissActionSheet', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+})();
+</script>
+</body>
+</html>

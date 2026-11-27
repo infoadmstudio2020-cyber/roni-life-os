@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৫ · Toolbar</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৫ · Toolbar</h1>
+  <p>শিরোনাম, সাবটাইটেল, action বাটন <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>শিরোনাম</h2>
+    <input id="title" value="আমার অ্যাপ" placeholder="শিরোনাম">
+    <input id="subtitle" value="ড্যাশবোর্ড" placeholder="সাবটাইটেল">
+    <div class="row">
+      <button id="set-title">setToolbarTitle</button>
+      <button id="set-sub" class="secondary">setToolbarSubtitle</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>দৃশ্যমানতা</h2>
+    <div class="row">
+      <button id="show-bar" class="secondary">toolbar দেখান</button>
+      <button id="hide-bar" class="secondary">toolbar লুকান</button>
+      <button id="show-nav" class="secondary">nav icon দেখান</button>
+      <button id="hide-nav" class="secondary">nav icon লুকান</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Action বাটন</h2>
+    <input id="action-id" value="refresh" placeholder="id">
+    <input id="action-label" value="রিফ্রেশ" placeholder="label">
+    <div class="row">
+      <button id="add">addToolbarAction</button>
+      <button id="remove" class="secondary">remove</button>
+      <button id="clear" class="secondary">clear</button>
+      <button id="list" class="secondary">getToolbarActions</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      বাটনে চাপলে <code>ui.toolbarAction</code> ইভেন্ট আসে — নিচের লগে দেখুন।
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  Native.on('ui.toolbarAction', function (p) {
+    Native.log('log', 'ui.toolbarAction', p);
+    Native.toast('বাটন: ' + p.label, 'info');
+  });
+
+  function run(action, payload, label) {
+    Native.call(action, payload)
+      .then(function (r) { Native.log('log', label || action, r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  }
+
+  document.getElementById('set-title').addEventListener('click', function () {
+    run('ui.setToolbarTitle', { title: document.getElementById('title').value });
+  });
+
+  document.getElementById('set-sub').addEventListener('click', function () {
+    run('ui.setToolbarSubtitle', { subtitle: document.getElementById('subtitle').value });
+  });
+
+  document.getElementById('show-bar').addEventListener('click', function () {
+    run('ui.setToolbarVisible', { visible: true });
+  });
+
+  document.getElementById('hide-bar').addEventListener('click', function () {
+    run('ui.setToolbarVisible', { visible: false });
+  });
+
+  document.getElementById('show-nav').addEventListener('click', function () {
+    run('ui.setNavigationIconVisible', { visible: true });
+  });
+
+  document.getElementById('hide-nav').addEventListener('click', function () {
+    run('ui.setNavigationIconVisible', { visible: false });
+  });
+
+  document.getElementById('add').addEventListener('click', function () {
+    run('ui.addToolbarAction', {
+      id: document.getElementById('action-id').value,
+      label: document.getElementById('action-label').value
+    });
+  });
+
+  document.getElementById('remove').addEventListener('click', function () {
+    run('ui.removeToolbarAction', { id: document.getElementById('action-id').value });
+  });
+
+  document.getElementById('clear').addEventListener('click', function () {
+    run('ui.clearToolbarActions');
+  });
+
+  document.getElementById('list').addEventListener('click', function () {
+    run('ui.getToolbarActions');
+  });
+})();
+</script>
+</body>
+</html>

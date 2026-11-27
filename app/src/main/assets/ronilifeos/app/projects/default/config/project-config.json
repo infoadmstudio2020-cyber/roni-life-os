@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "theme": "default",
+  "locale": "en",
+  "features": {
+    "offline": true,
+    "telemetry": false
+  },
+  "generated": true
+}

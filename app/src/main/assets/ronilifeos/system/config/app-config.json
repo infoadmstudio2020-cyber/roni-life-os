@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "splashEnabled": true,
+  "bootstrapEnabled": true,
+  "splashDurationMs": 1600,
+  "splashMode": "WEB",
+  "splashLogoText": "",
+  "splashBackgroundColor": -16249573,
+  "splashAccentColor": -9675545,
+  "splashAnimation": "FADE",
+  "splashFullscreen": true,
+  "splashSkipOnTap": true,
+  "dashboardMode": "NATIVE_DASHBOARD",
+  "themeMode": "SYSTEM",
+  "telemetryEnabled": true,
+  "debugEnabled": false,
+  "seeded": true,
+  "generated": true
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563EB">
+  <title>RONiLiFEOS ডেভেলপার গাইড</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style id="native-theme"></style>
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">RONiLiFEOS Web SDK</p>
+    <h1>ডেভেলপার গাইড</h1>
+    <p class="lede">প্রতিটি বাটন একটি বাস্তব native action কল করে। কোনো নকল ডেমো নেই।</p>
+    <div class="status" id="status">
+      <span class="dot" id="status-dot"></span>
+      <span id="status-text">ব্রিজ পরীক্ষা করা হচ্ছে…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>১. UI ওভারলে</h2>
+      <p class="hint">প্যারামিটারের নাম <code>message</code> — <code>text</code> নয়।</p>
+      <div class="row">
+        <button data-action="toast">টোস্ট</button>
+        <button data-action="alert">অ্যালার্ট</button>
+        <button data-action="confirm">কনফার্ম</button>
+        <button data-action="sheet">অ্যাকশন শিট</button>
+        <button data-action="snackbar">স্ন্যাকবার</button>
+        <button data-action="loading">লোডিং (২ সেকেন্ড)</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>২. টুলবার ও নেভিগেশন</h2>
+      <div class="row">
+        <button data-action="title">শিরোনাম বদলাও</button>
+        <button data-action="toolbar-action">টুলবার অ্যাকশন</button>
+        <button data-action="tab">ট্যাব</button>
+        <button data-action="badge">ব্যাজ</button>
+      </div>
+      <p class="hint" id="toolbar-hint">টুলবার অ্যাকশন চাপলে <code>ui.toolbarAction</code> ইভেন্ট আসবে।</p>
+    </section>
+
+    <section class="card">
+      <h2>৩. ডিভাইস</h2>
+      <div class="row">
+        <button data-action="device-info">ডিভাইস তথ্য</button>
+        <button data-action="battery">ব্যাটারি</button>
+        <button data-action="network">নেটওয়ার্ক</button>
+        <button data-action="clipboard">ক্লিপবোর্ড</button>
+        <button data-action="share">শেয়ার</button>
+        <button data-action="vibrate">হ্যাপটিক</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>৪. স্টোরেজ</h2>
+      <p class="hint">প্রজেক্ট-স্কোপড, AES-GCM এনক্রিপ্টেড। কী: <code>__p:&lt;project&gt;:&lt;key&gt;</code></p>
+      <div class="row">
+        <input id="storage-key" type="text" value="নাম" aria-label="কী">
+        <input id="storage-value" type="text" value="রহিম" aria-label="মান">
+      </div>
+      <div class="row">
+        <button data-action="storage-set">সংরক্ষণ</button>
+        <button data-action="storage-get">পড়া</button>
+        <button data-action="storage-keys">সব কী</button>
+        <button data-action="storage-clear">মুছুন</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>৫. থিম</h2>
+      <div class="row">
+        <button data-action="theme-light">লাইট</button>
+        <button data-action="theme-dark">ডার্ক</button>
+        <button data-action="theme-system">সিস্টেম</button>
+        <button data-action="theme-css">CSS ভেরিয়েবল</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>৬. সিকিউরিটি</h2>
+      <div class="row">
+        <button data-action="sha256">SHA-256</button>
+        <button data-action="biometric">বায়োমেট্রিক</button>
+        <button data-action="keystore">কিস্টোর এনক্রিপ্ট</button>
+        <button data-action="permission">অনুমতি</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>৭. নোটিফিকেশন</h2>
+      <div class="row">
+        <button data-action="notif-permission">অনুমতি অবস্থা</button>
+        <button data-action="notif-post">নোটিফিকেশন</button>
+        <button data-action="notif-cancel">বাতিল</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>৮. নেটওয়ার্ক</h2>
+      <div class="row">
+        <button data-action="http">HTTP অনুরোধ</button>
+        <button data-action="echo">Echo টেস্ট</button>
+        <button data-action="inventory">রুট ইনভেন্টরি</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>আউটপুট</h2>
+      <pre id="output" aria-live="polite">এখনও কিছু চালানো হয়নি।</pre>
+      <div class="row">
+        <button data-action="clear-output" class="ghost">আউটপুট মুছুন</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>বিস্তারিত: <code>docs/web-sdk/</code></p>
+  </footer>
+
+  <script src="js/native.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

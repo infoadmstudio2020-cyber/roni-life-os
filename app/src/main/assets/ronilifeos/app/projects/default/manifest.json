@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "default",
+  "name": "Default project",
+  "description": "Generated on first launch. Edit or replace it freely.",
+  "version": 1,
+  "type": "WEB",
+  "entryPoint": "ui/index.html",
+  "source": {
+    "type": "FILE",
+    "path": ".",
+    "entryPoint": "ui/index.html"
+  },
+  "splash": {
+    "enabled": true,
+    "durationMs": 1600
+  },
+  "bootstrap": {
+    "enabled": true,
+    "renderingMode": "NATIVE",
+    "atStartup": false
+  },
+  "generated": true
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "default",
+  "name": "Default",
+  "colors": {
+    "background": "#080D1B",
+    "surface": "#111827",
+    "primary": "#6C5CE7",
+    "onPrimary": "#FFFFFF",
+    "text": "#F8FAFC",
+    "muted": "#9AA4BF"
+  }
+}

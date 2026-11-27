@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Runtime notification permission (Android 13+). The consumer app requests it. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Exact alarms for scheduled local notifications; the engine degrades to inexact when denied. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <application>
+        <!-- Not exported: only the app's own PendingIntents can reach it. -->
+        <receiver
+            android:name=".notification.NotificationReceiver"
+            android:exported="false" />
+    </application>
+</manifest>

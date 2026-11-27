@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/surface_alt"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="@string/ui_editor_title"
+        app:titleTextColor="@color/text_primary" />
+
+    <ScrollView
+        android:id="@+id/editor_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ==================== Presets ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_preset" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/preset_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <!-- ==================== Splash ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_splash" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_splash_enabled"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_splash_enabled" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_splash_mode" />
+
+            <Spinner
+                android:id="@+id/spinner_splash_mode"
+                style="@style/UiEditorSpinner" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_splash_duration" />
+
+            <EditText
+                android:id="@+id/edit_splash_duration"
+                style="@style/UiEditorInput"
+                android:inputType="number"
+                android:maxLength="5" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_splash_logo" />
+
+            <EditText
+                android:id="@+id/edit_splash_logo"
+                style="@style/UiEditorInput"
+                android:inputType="text"
+                android:maxLength="40" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_splash_animation" />
+
+            <Spinner
+                android:id="@+id/spinner_splash_animation"
+                style="@style/UiEditorSpinner" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_splash_fullscreen"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_splash_fullscreen" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_splash_skip"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_splash_skip" />
+
+            <!-- ==================== Dashboard ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_dashboard" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_enabled"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_enabled" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_dashboard_mode" />
+
+            <Spinner
+                android:id="@+id/spinner_dashboard_mode"
+                style="@style/UiEditorSpinner" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_dashboard_layout" />
+
+            <Spinner
+                android:id="@+id/spinner_dashboard_layout"
+                style="@style/UiEditorSpinner" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_toolbar"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_toolbar" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_drawer"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_drawer" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_bottom_nav"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_bottom_nav" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_fab"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_fab" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_fullscreen"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_fullscreen" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_stats"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_stats" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_dashboard_recent"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_dashboard_recent" />
+
+            <!-- ==================== Theme ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_theme" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_theme_mode" />
+
+            <Spinner
+                android:id="@+id/spinner_theme_mode"
+                style="@style/UiEditorSpinner" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_theme_primary" />
+
+            <EditText
+                android:id="@+id/edit_theme_primary"
+                style="@style/UiEditorInput"
+                android:hint="#6C5CE7"
+                android:inputType="text"
+                android:maxLength="9" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_theme_accent" />
+
+            <EditText
+                android:id="@+id/edit_theme_accent"
+                style="@style/UiEditorInput"
+                android:hint="#00B894"
+                android:inputType="text"
+                android:maxLength="9" />
+
+            <TextView
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_theme_animation" />
+
+            <EditText
+                android:id="@+id/edit_theme_animation"
+                style="@style/UiEditorInput"
+                android:inputType="number"
+                android:maxLength="4" />
+
+            <!-- ==================== Components ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_components" />
+
+            <TextView
+                android:id="@+id/component_summary"
+                style="@style/UiEditorLabel"
+                android:text="@string/ui_editor_section_components" />
+
+            <LinearLayout
+                android:id="@+id/component_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <!-- ==================== WebView ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_webview" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_webview_enabled"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_webview_enabled" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_webview_fullscreen"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_webview_fullscreen" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_webview_javascript"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_webview_javascript" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_webview_dom"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_webview_dom" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_webview_zoom"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_webview_zoom" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_webview_progress"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_webview_progress" />
+
+            <!-- ==================== System bars ==================== -->
+            <TextView
+                style="@style/UiEditorSection"
+                android:text="@string/ui_editor_section_navigation" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_nav_status_bar"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_nav_status_bar" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_nav_nav_bar"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_nav_nav_bar" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_nav_fullscreen"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_nav_fullscreen" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_nav_immersive"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_nav_immersive" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_nav_edge_to_edge"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_nav_edge_to_edge" />
+
+            <com.roni.library.ui.widget.SafeSwitchCompat
+                android:id="@+id/switch_nav_back"
+                style="@style/UiEditorSwitch"
+                android:text="@string/ui_editor_nav_back" />
+
+            <!-- ==================== Validation ==================== -->
+            <TextView
+                android:id="@+id/validation_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="12dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/ui_editor_menu_save" />
+
+</LinearLayout>

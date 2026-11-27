@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০২ · Alert ও Confirm</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০২ · Alert ও Confirm</h1>
+  <p>ui.showAlert · ui.showConfirm + ui.confirm ইভেন্ট <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>Alert</h2>
+    <input id="a-title" value="ত্রুটি" placeholder="শিরোনাম">
+    <input id="a-msg" value="সার্ভারে সংযোগ ব্যর্থ হয়েছে" placeholder="বার্তা">
+    <button id="alert">Alert দেখান</button>
+  </div>
+
+  <div class="card">
+    <h2>Confirm</h2>
+    <input id="c-title" value="মুছে ফেলবেন?" placeholder="শিরোনাম">
+    <input id="c-msg" value="এই কাজটি ফেরানো যাবে না" placeholder="বার্তা">
+    <input id="c-ok" value="মুছুন" placeholder="confirm টেক্সট">
+    <input id="c-no" value="বাতিল" placeholder="cancel টেক্সট">
+    <button id="confirm" class="danger">Confirm দেখান</button>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      মনে রাখুন: <code>await</code> শুধু <code>{shown:true}</code> দেয়। উত্তর আসে
+      <code>ui.confirm</code> ইভেন্টে।
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>অবস্থা</h2>
+    <div class="row">
+      <button class="secondary" id="is-showing">isDialogShowing</button>
+      <button class="secondary" id="dismiss">dismissDialog</button>
+    </div>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* listener আগে — confirm দেখানোর আগেই */
+  Native.on('ui.confirm', function (p) {
+    Native.log('log', 'ui.confirm', p);
+    if (p.confirmed) {
+      Native.toast('আপনি নিশ্চিত করেছেন', 'success');
+    } else {
+      Native.toast('বাতিল করা হয়েছে', 'info');
+    }
+  });
+
+  document.getElementById('alert').addEventListener('click', function () {
+    Native.call('ui.showAlert', {
+      title: document.getElementById('a-title').value,
+      message: document.getElementById('a-msg').value
+    }).then(function (r) {
+      Native.log('log', 'showAlert', r);
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+    });
+  });
+
+  document.getElementById('confirm').addEventListener('click', function () {
+    Native.call('ui.showConfirm', {
+      title: document.getElementById('c-title').value,
+      message: document.getElementById('c-msg').value,
+      confirmText: document.getElementById('c-ok').value,
+      cancelText: document.getElementById('c-no').value
+    }).then(function (r) {
+      Native.log('log', 'showConfirm', r);
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+    });
+  });
+
+  document.getElementById('is-showing').addEventListener('click', function () {
+    Native.call('ui.isDialogShowing')
+      .then(function (r) { Native.log('log', 'isDialogShowing', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('dismiss').addEventListener('click', function () {
+    Native.call('ui.dismissDialog')
+      .then(function (r) { Native.log('log', 'dismissDialog', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+})();
+</script>
+</body>
+</html>

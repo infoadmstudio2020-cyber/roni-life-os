@@ -1,0 +1,25 @@
+/* ── Status bar ── */
+#status-bar {
+  height: var(--statusbar-h);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 0 var(--sp-3);
+  background: var(--accent);
+  color: var(--text-on-accent, var(--bg-base));
+  font-size: var(--text-xs);
+  flex-shrink: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+.status-item .material-symbols-outlined { font-size: 13px; }
+.status-item.active { opacity: 1; font-weight: 600; }
+.status-spacer { flex: 1; }

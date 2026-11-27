@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "workspaceRoot": "runtime/workspace",
+  "cacheRoot": "runtime/cache",
+  "sessionsRoot": "runtime/sessions",
+  "logsRoot": "runtime/logs",
+  "configRoot": "runtime/config",
+  "debugEnabled": false,
+  "telemetryEnabled": true,
+  "generated": true
+}

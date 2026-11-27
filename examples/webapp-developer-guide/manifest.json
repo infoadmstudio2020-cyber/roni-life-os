@@ -1,0 +1,13 @@
+{
+  "id": "webapp-developer-guide",
+  "name": "RONiLiFEOS ডেভেলপার গাইড",
+  "short_name": "গাইড",
+  "version": "1.0.0",
+  "entryPoint": "index.html",
+  "entry": "index.html",
+  "description": "RONiLiFEOS Web SDK-এর সম্পূর্ণ কার্যকর উদাহরণ — bridge, UI, storage, theme, device, notification, security",
+  "theme_color": "#2563EB",
+  "background_color": "#0B1220",
+  "display": "standalone",
+  "orientation": "portrait"
+}

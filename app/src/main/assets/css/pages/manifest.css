@@ -1,0 +1,177 @@
+/**
+ * manifest.css — Styles for Dedicated Generate -> Manifest Page
+ */
+
+.manifest-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--sp-4, 16px);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .manifest-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.manifest-sidebar-card {
+  background: var(--bg-surface, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--sp-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.manifest-file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  font-size: 12px;
+  color: var(--text-primary, #F8FAFC);
+}
+
+.manifest-file-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.manifest-file-item.active {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38BDF8;
+}
+
+.manifest-main-card {
+  background: var(--bg-surface, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--sp-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4, 16px);
+  min-width: 0;
+}
+
+/* ── Permissions Grid ── */
+.manifest-perm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.manifest-perm-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.manifest-perm-card:hover {
+  border-color: #38BDF8;
+}
+
+.manifest-perm-card.active {
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.manifest-perm-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.manifest-perm-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #F8FAFC);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.manifest-perm-name {
+  font-size: 11px;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-muted, #94A3B8);
+  word-break: break-all;
+}
+
+.manifest-perm-desc {
+  font-size: 11px;
+  color: var(--text-secondary, #CBD5E1);
+  line-height: 1.35;
+}
+
+/* ── Application Form Controls ── */
+.manifest-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.manifest-field-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.manifest-field-card label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary, #CBD5E1);
+}
+
+/* ── Components List ── */
+.manifest-component-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 6px;
+  gap: 10px;
+}
+
+/* ── XML Code Editor ── */
+.manifest-editor-textarea {
+  width: 100%;
+  height: 480px;
+  background: #070B14;
+  color: #E2E8F0;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 14px;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  outline: none;
+  resize: vertical;
+  white-space: pre;
+}
+
+.manifest-editor-textarea:focus {
+  border-color: #38BDF8;
+}

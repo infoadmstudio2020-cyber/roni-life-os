@@ -1,0 +1,429 @@
+/**
+ * ghwizard.css — Enhanced Styles for Intelligent GitHub Actions Build & Release Wizard
+ */
+
+.ghw-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4, 16px);
+}
+
+.ghw-header-card {
+  background: var(--bg-surface, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--sp-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3, 12px);
+}
+
+.ghw-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-3, 12px);
+}
+
+.ghw-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2, 8px);
+  flex-wrap: wrap;
+}
+
+.ghw-select {
+  background: var(--bg-input, #0F172A);
+  color: var(--text-primary, #F8FAFC);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 6px);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  min-width: 170px;
+}
+
+.ghw-select:focus {
+  border-color: var(--color-primary, #38BDF8);
+}
+
+/* ── Project & Environment Intelligence Card ── */
+.ghw-intel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.ghw-intel-pill {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ghw-intel-icon {
+  font-size: 20px;
+  color: #38BDF8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.ghw-intel-label {
+  font-size: 11px;
+  color: var(--text-muted, #94A3B8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ghw-intel-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary, #F8FAFC);
+  margin-top: 1px;
+}
+
+/* ── Verification Banner ── */
+.ghw-verify-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ghw-verify-banner.verify-pass {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34D399;
+}
+
+.ghw-verify-banner.verify-failed {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #F87171;
+}
+
+.ghw-verify-banner.verify-running {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #FBBF24;
+}
+
+.ghw-verify-banner.verify-waiting {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60A5FA;
+}
+
+/* ── 7-Stage Horizontal / Responsive Stepper ── */
+.ghw-stepper-wrapper {
+  overflow-x: auto;
+  padding: var(--sp-2, 8px) 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ghw-stepper {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(130px, 1fr));
+  gap: var(--sp-2, 8px);
+  position: relative;
+  min-width: 920px;
+}
+
+.ghw-stage-card {
+  background: var(--bg-surface, #1E293B);
+  border: 2px solid var(--border-color, #334155);
+  border-radius: var(--radius-lg, 10px);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.ghw-stage-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ghw-stage-card.active {
+  border-color: var(--color-primary, #38BDF8);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+/* Status variants */
+.ghw-stage-card.stage-pass {
+  border-color: #10B981;
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(30, 41, 59, 0.9) 100%);
+}
+
+.ghw-stage-card.stage-failed {
+  border-color: #EF4444;
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.12) 0%, rgba(30, 41, 59, 0.9) 100%);
+}
+
+.ghw-stage-card.stage-running {
+  border-color: #F59E0B;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.12) 0%, rgba(30, 41, 59, 0.9) 100%);
+  animation: ghw-pulse-border 2s infinite ease-in-out;
+}
+
+.ghw-stage-card.stage-waiting {
+  border-color: #3B82F6;
+  opacity: 0.85;
+}
+
+.ghw-stage-card.stage-skipped {
+  border-color: #475569;
+  border-style: dashed;
+  opacity: 0.6;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+@keyframes ghw-pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2); }
+}
+
+.ghw-stage-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ghw-stage-index {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted, #94A3B8);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ghw-stage-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #F8FAFC);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Status Badges ── */
+.ghw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.ghw-badge.ghw-status-pass {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.ghw-badge.ghw-status-failed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.ghw-badge.ghw-status-running {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.ghw-badge.ghw-status-waiting {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60A5FA;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.ghw-badge.ghw-status-skipped {
+  background: rgba(148, 163, 184, 0.15);
+  color: #94A3B8;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.ghw-stage-desc {
+  font-size: 11px;
+  color: var(--text-muted, #94A3B8);
+  line-height: 1.4;
+  height: 32px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ── Live Banner ── */
+.ghw-pipeline-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-surface, #1E293B);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: var(--radius-md, 8px);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ghw-meta-chips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ghw-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary, #CBD5E1);
+  background: rgba(15, 23, 42, 0.6);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #334155);
+}
+
+/* ── Detail Panel & Log Terminal ── */
+.ghw-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4, 16px);
+}
+
+@media (max-width: 900px) {
+  .ghw-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ghw-log-card {
+  background: #0B0F19;
+  border: 1px solid #1E293B;
+  border-radius: var(--radius-lg, 10px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ghw-log-header {
+  background: #111827;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1F2937;
+}
+
+.ghw-log-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ghw-terminal {
+  background: #070B14;
+  color: #E2E8F0;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 14px;
+  max-height: 380px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.ghw-terminal .log-err {
+  color: #F87171;
+  font-weight: 600;
+}
+
+.ghw-terminal .log-warn {
+  color: #FBBF24;
+}
+
+.ghw-terminal .log-info {
+  color: #38BDF8;
+}
+
+.ghw-terminal .log-success {
+  color: #34D399;
+}
+
+/* ── Artifact & Release Visuals ── */
+.ghw-artifact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(14, 165, 233, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ghw-artifact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+/* ── Workflow Code Editor Box ── */
+.ghw-yaml-editor {
+  width: 100%;
+  height: 380px;
+  background: #070B14;
+  color: #E2E8F0;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 12px;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  outline: none;
+  resize: vertical;
+  white-space: pre;
+}
+
+.ghw-yaml-editor:focus {
+  border-color: #38BDF8;
+}

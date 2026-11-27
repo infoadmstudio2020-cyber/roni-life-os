@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.NativeRuntimeSDK"
+        parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/hud_accent</item>
+        <item name="colorPrimaryVariant">@color/hud_accent_deep</item>
+        <item name="colorOnPrimary">@color/hud_void</item>
+    </style>
+
+    <!-- ============================================================
+         Main Application Theme — Industrial HUD console.
+         Obsidian surfaces, neon-orange signal, monospaced type,
+         zero corner radius, zero elevation.
+         ============================================================ -->
+    <style name="Theme.RONiLiFEOS"
+        parent="Theme.MaterialComponents.NoActionBar">
+
+        <item name="colorPrimary">@color/hud_accent</item>
+        <item name="colorPrimaryVariant">@color/hud_accent_deep</item>
+        <item name="colorOnPrimary">@color/hud_void</item>
+
+        <item name="colorSecondary">@color/hud_accent</item>
+        <item name="colorSecondaryVariant">@color/hud_accent_deep</item>
+        <item name="colorOnSecondary">@color/hud_void</item>
+
+        <item name="colorSurface">@color/hud_panel</item>
+        <item name="colorOnSurface">@color/hud_text</item>
+        <item name="colorError">@color/state_danger</item>
+        <item name="colorOnError">@color/hud_void</item>
+
+        <item name="android:colorBackground">@color/hud_void</item>
+        <item name="android:windowBackground">@color/hud_void</item>
+        <item name="android:statusBarColor">@color/hud_void</item>
+        <item name="android:navigationBarColor">@color/hud_void</item>
+
+        <item name="android:textColorPrimary">@color/hud_text</item>
+        <item name="android:textColorSecondary">@color/hud_text_dim</item>
+        <item name="android:textColorHint">@color/hud_text_dim</item>
+
+        <item name="android:fontFamily">monospace</item>
+        <item name="fontFamily">monospace</item>
+
+        <item name="materialAlertDialogTheme">
+            @style/ThemeOverlay.RONiLiFEOS.Dialog
+        </item>
+        <item name="bottomSheetDialogTheme">
+            @style/ThemeOverlay.RONiLiFEOS.BottomSheet
+        </item>
+    </style>
+
+    <!-- Splash Theme -->
+    <style name="Theme.RONiLiFEOS.Splash"
+        parent="Theme.RONiLiFEOS">
+
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/hud_void</item>
+    </style>
+
+    <!-- Dialog Theme -->
+    <style name="ThemeOverlay.RONiLiFEOS.Dialog"
+        parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/hud_accent</item>
+        <item name="colorSurface">@color/hud_panel</item>
+        <item name="colorOnSurface">@color/hud_text</item>
+        <item name="android:textColorPrimary">@color/hud_text</item>
+        <item name="android:textColorSecondary">@color/hud_text_dim</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.RONiLiFEOS.Square</item>
+    </style>
+
+    <style name="ThemeOverlay.RONiLiFEOS.BottomSheet"
+        parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="colorPrimary">@color/hud_accent</item>
+        <item name="colorSurface">@color/hud_panel</item>
+        <item name="colorOnSurface">@color/hud_text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.RONiLiFEOS.Square</item>
+    </style>
+
+    <style name="ShapeAppearance.RONiLiFEOS.Square" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.RONiLiFEOS.Toolbar"
+        parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlNormal">@color/hud_text</item>
+        <item name="android:textColorPrimary">@color/hud_text</item>
+        <item name="android:textColorSecondary">@color/hud_text_dim</item>
+    </style>
+
+    <!-- ============================================================
+         Typography
+         ============================================================ -->
+    <style name="TextAppearance.RONiLiFEOS.ToolbarTitle"
+        parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/hud_text</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.16</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.RONiLiFEOS.ToolbarSubtitle"
+        parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/hud_accent</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:letterSpacing">0.22</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- ============================================================
+         Widgets
+         ============================================================ -->
+    <style name="Widget">
+        <item name="android:textColor">@color/hud_text</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS"
+        parent="Widget">
+        <item name="android:textColor">@color/hud_text</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <!-- Micro label: "// SECTION" -->
+    <style name="Widget.RONiLiFEOS.HudSection">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/hud_panel_alt</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">9dp</item>
+        <item name="android:paddingBottom">9dp</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.24</item>
+        <item name="android:textColor">@color/hud_text_dim</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <!-- Kept for legacy layouts -->
+    <style name="Widget.RONiLiFEOS.SectionLabel"
+        parent="Widget.RONiLiFEOS.HudSection" />
+
+    <style name="Widget.RONiLiFEOS.HudLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.2</item>
+        <item name="android:textColor">@color/hud_text_dim</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS.HudValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/hud_accent</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS.StatValue"
+        parent="Widget.RONiLiFEOS.HudValue" />
+
+    <style name="Widget.RONiLiFEOS.StatLabel"
+        parent="Widget.RONiLiFEOS.HudLabel">
+        <item name="android:layout_marginTop">3dp</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS.HudIndex">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textColor">@color/hud_accent</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS.HudChip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_hud_chip</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textColor">@color/hud_text_dim</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <!-- Kept for legacy layouts -->
+    <style name="Widget.RONiLiFEOS.Chip"
+        parent="Widget.RONiLiFEOS.HudChip" />
+
+    <style name="Widget.RONiLiFEOS.HudChipAccent"
+        parent="Widget.RONiLiFEOS.HudChip">
+        <item name="android:background">@drawable/bg_hud_chip_accent</item>
+        <item name="android:textColor">@color/hud_accent</item>
+    </style>
+
+    <!-- Mechanical button: sharp, bordered, orange on press -->
+    <style name="Widget.RONiLiFEOS.HudButton"
+        parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/hud_button_bg</item>
+        <item name="strokeColor">@color/hud_button_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.14</item>
+        <item name="android:textColor">@color/hud_text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="rippleColor">@color/hud_accent_ghost</item>
+        <item name="iconTint">@color/hud_accent</item>
+        <item name="iconSize">16dp</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS.HudButtonPrimary"
+        parent="Widget.RONiLiFEOS.HudButton">
+        <item name="backgroundTint">@color/hud_button_primary_bg</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:textColor">@color/hud_void</item>
+        <item name="iconTint">@color/hud_void</item>
+    </style>
+
+    <style name="Widget.RONiLiFEOS.HudInput"
+        parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:background">@drawable/bg_hud_input</item>
+        <item name="android:textColor">@color/hud_text</item>
+        <item name="android:textColorHint">@color/hud_text_dim</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+
+</resources>

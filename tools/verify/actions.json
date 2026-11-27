@@ -1,0 +1,1670 @@
+{
+  "handlers": {
+    "ui": {
+      "file": "native-runtime-ui/src/main/java/com/roni/library/ui/handler/NativeUICommandHandler.java",
+      "exists": true,
+      "path": "ui",
+      "supported": [
+        "addDrawerItem",
+        "addTab",
+        "addToolbarAction",
+        "applyTheme",
+        "clearToolbarActions",
+        "closeDrawer",
+        "dismissActionSheet",
+        "dismissBottomSheet",
+        "dismissDialog",
+        "dismissToast",
+        "getActionSheetState",
+        "getBadge",
+        "getComponentCount",
+        "getComponentState",
+        "getConfig",
+        "getSelectedDrawerItem",
+        "getSelectedTab",
+        "getSystemUIState",
+        "getTabs",
+        "getTheme",
+        "getToolbarActions",
+        "getWebViewState",
+        "hideLoading",
+        "isBottomSheetVisible",
+        "isComponentEnabled",
+        "isDialogShowing",
+        "isDrawerOpen",
+        "isFabVisible",
+        "isLoading",
+        "isToastVisible",
+        "listComponents",
+        "navigateBack",
+        "openDrawer",
+        "openExternal",
+        "reload",
+        "removeDrawerItem",
+        "removeToolbarAction",
+        "selectDrawerItem",
+        "selectTab",
+        "setBadge",
+        "setComponentEnabled",
+        "setComponentVisible",
+        "setEdgeToEdge",
+        "setFabVisible",
+        "setFullscreen",
+        "setImmersive",
+        "setNavigationBar",
+        "setNavigationIconVisible",
+        "setStatusBar",
+        "setToolbarSubtitle",
+        "setToolbarTitle",
+        "setToolbarVisible",
+        "setWebViewSource",
+        "showActionSheet",
+        "showAlert",
+        "showBottomSheet",
+        "showConfirm",
+        "showLoading",
+        "showPopupMenu",
+        "showSnackbar",
+        "showToast",
+        "toggleDrawer"
+      ],
+      "cases": [
+        "addDrawerItem",
+        "addTab",
+        "addToolbarAction",
+        "applyTheme",
+        "clearToolbarActions",
+        "closeDrawer",
+        "dismissActionSheet",
+        "dismissBottomSheet",
+        "dismissDialog",
+        "dismissToast",
+        "getActionSheetState",
+        "getBadge",
+        "getComponentCount",
+        "getComponentState",
+        "getConfig",
+        "getSelectedDrawerItem",
+        "getSelectedTab",
+        "getSystemUIState",
+        "getTabs",
+        "getTheme",
+        "getToolbarActions",
+        "getWebViewState",
+        "hideLoading",
+        "isBottomSheetVisible",
+        "isComponentEnabled",
+        "isDialogShowing",
+        "isDrawerOpen",
+        "isFabVisible",
+        "isLoading",
+        "isToastVisible",
+        "listComponents",
+        "navigateBack",
+        "openDrawer",
+        "openExternal",
+        "reload",
+        "removeDrawerItem",
+        "removeToolbarAction",
+        "selectDrawerItem",
+        "selectTab",
+        "setBadge",
+        "setComponentEnabled",
+        "setComponentVisible",
+        "setEdgeToEdge",
+        "setFabVisible",
+        "setFullscreen",
+        "setImmersive",
+        "setNavigationBar",
+        "setNavigationIconVisible",
+        "setStatusBar",
+        "setToolbarSubtitle",
+        "setToolbarTitle",
+        "setToolbarVisible",
+        "setWebViewSource",
+        "showActionSheet",
+        "showAlert",
+        "showBottomSheet",
+        "showConfirm",
+        "showLoading",
+        "showPopupMenu",
+        "showSnackbar",
+        "showToast",
+        "toggleDrawer"
+      ],
+      "supported_count": 62,
+      "case_count": 62,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {
+        "showAlert": {
+          "params": [
+            "message",
+            "title"
+          ],
+          "errors": []
+        },
+        "showConfirm": {
+          "params": [
+            "cancelText",
+            "confirmText",
+            "message",
+            "title"
+          ],
+          "errors": []
+        },
+        "showToast": {
+          "params": [
+            "duration",
+            "message",
+            "type"
+          ],
+          "errors": []
+        },
+        "showBottomSheet": {
+          "params": [
+            "title"
+          ],
+          "errors": []
+        },
+        "showActionSheet": {
+          "params": [
+            "title"
+          ],
+          "errors": []
+        },
+        "showLoading": {
+          "params": [
+            "text"
+          ],
+          "errors": []
+        },
+        "hideLoading": {
+          "params": [],
+          "errors": []
+        },
+        "showSnackbar": {
+          "params": [
+            "actionTitle",
+            "duration",
+            "message"
+          ],
+          "errors": []
+        },
+        "showPopupMenu": {
+          "params": [],
+          "errors": []
+        },
+        "dismissDialog": {
+          "params": [],
+          "errors": []
+        },
+        "isDialogShowing": {
+          "params": [],
+          "errors": []
+        },
+        "dismissBottomSheet": {
+          "params": [],
+          "errors": []
+        },
+        "isBottomSheetVisible": {
+          "params": [],
+          "errors": []
+        },
+        "dismissToast": {
+          "params": [],
+          "errors": []
+        },
+        "isToastVisible": {
+          "params": [],
+          "errors": []
+        },
+        "isLoading": {
+          "params": [],
+          "errors": []
+        },
+        "dismissActionSheet": {
+          "params": [],
+          "errors": []
+        },
+        "getActionSheetState": {
+          "params": [],
+          "errors": []
+        },
+        "setToolbarTitle": {
+          "params": [
+            "title"
+          ],
+          "errors": []
+        },
+        "setToolbarSubtitle": {
+          "params": [
+            "subtitle"
+          ],
+          "errors": []
+        },
+        "setToolbarVisible": {
+          "params": [],
+          "errors": []
+        },
+        "setNavigationIconVisible": {
+          "params": [],
+          "errors": []
+        },
+        "addToolbarAction": {
+          "params": [
+            "id",
+            "label"
+          ],
+          "errors": []
+        },
+        "removeToolbarAction": {
+          "params": [
+            "id"
+          ],
+          "errors": []
+        },
+        "clearToolbarActions": {
+          "params": [],
+          "errors": []
+        },
+        "getToolbarActions": {
+          "params": [],
+          "errors": []
+        },
+        "openDrawer": {
+          "params": [],
+          "errors": []
+        },
+        "closeDrawer": {
+          "params": [],
+          "errors": []
+        },
+        "toggleDrawer": {
+          "params": [],
+          "errors": []
+        },
+        "isDrawerOpen": {
+          "params": [],
+          "errors": []
+        },
+        "selectDrawerItem": {
+          "params": [
+            "id"
+          ],
+          "errors": []
+        },
+        "getSelectedDrawerItem": {
+          "params": [],
+          "errors": []
+        },
+        "addDrawerItem": {
+          "params": [
+            "id",
+            "title"
+          ],
+          "errors": []
+        },
+        "removeDrawerItem": {
+          "params": [
+            "id"
+          ],
+          "errors": []
+        },
+        "selectTab": {
+          "params": [
+            "tabId"
+          ],
+          "errors": []
+        },
+        "addTab": {
+          "params": [
+            "label",
+            "tabId"
+          ],
+          "errors": []
+        },
+        "setBadge": {
+          "params": [
+            "tabId"
+          ],
+          "errors": []
+        },
+        "getBadge": {
+          "params": [
+            "tabId"
+          ],
+          "errors": []
+        },
+        "getTabs": {
+          "params": [],
+          "errors": []
+        },
+        "getSelectedTab": {
+          "params": [],
+          "errors": []
+        },
+        "setFabVisible": {
+          "params": [],
+          "errors": []
+        },
+        "isFabVisible": {
+          "params": [],
+          "errors": []
+        },
+        "isComponentEnabled": {
+          "params": [
+            "category",
+            "key"
+          ],
+          "errors": []
+        },
+        "setComponentEnabled": {
+          "params": [
+            "category",
+            "key"
+          ],
+          "errors": []
+        },
+        "setComponentVisible": {
+          "params": [
+            "category",
+            "key"
+          ],
+          "errors": []
+        },
+        "getComponentState": {
+          "params": [
+            "category",
+            "key"
+          ],
+          "errors": []
+        },
+        "getComponentCount": {
+          "params": [],
+          "errors": []
+        },
+        "listComponents": {
+          "params": [],
+          "errors": []
+        },
+        "setStatusBar": {
+          "params": [
+            "color"
+          ],
+          "errors": []
+        },
+        "setNavigationBar": {
+          "params": [
+            "color"
+          ],
+          "errors": []
+        },
+        "setFullscreen": {
+          "params": [],
+          "errors": []
+        },
+        "setImmersive": {
+          "params": [],
+          "errors": []
+        },
+        "setEdgeToEdge": {
+          "params": [],
+          "errors": []
+        },
+        "getSystemUIState": {
+          "params": [],
+          "errors": []
+        },
+        "applyTheme": {
+          "params": [],
+          "errors": []
+        },
+        "getTheme": {
+          "params": [],
+          "errors": []
+        },
+        "getConfig": {
+          "params": [],
+          "errors": []
+        },
+        "reload": {
+          "params": [],
+          "errors": []
+        },
+        "getWebViewState": {
+          "params": [],
+          "errors": []
+        },
+        "setWebViewSource": {
+          "params": [],
+          "errors": []
+        },
+        "navigateBack": {
+          "params": [],
+          "errors": []
+        },
+        "openExternal": {
+          "params": [
+            "url"
+          ],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "web": {
+      "file": "native-runtime-ui/src/main/java/com/roni/library/ui/handler/NativeWebCommandHandler.java",
+      "exists": true,
+      "path": "web",
+      "supported": [
+        "canGoBack",
+        "canGoForward",
+        "clearCache",
+        "clearCookies",
+        "clearHistory",
+        "emitEvent",
+        "evaluate",
+        "getCookies",
+        "getSettings",
+        "getState",
+        "getTextZoom",
+        "getUserAgent",
+        "getZoom",
+        "goBack",
+        "goForward",
+        "loadHtml",
+        "loadSource",
+        "loadUrl",
+        "reload",
+        "setAlgorithmicDarkeningAllowed",
+        "setAllowContentAccess",
+        "setAllowFileAccess",
+        "setBackgroundColor",
+        "setBlockNetworkImage",
+        "setBlockNetworkLoads",
+        "setBuiltInZoomControls",
+        "setCacheMode",
+        "setCookie",
+        "setDatabaseEnabled",
+        "setDefaultFontSize",
+        "setDefaultTextEncodingName",
+        "setDisplayZoomControls",
+        "setDomStorage",
+        "setForceDark",
+        "setGeolocationEnabled",
+        "setJavaScript",
+        "setJavaScriptCanOpenWindowsAutomatically",
+        "setLoadWithOverviewMode",
+        "setLoadsImagesAutomatically",
+        "setMediaPlaybackRequiresUserGesture",
+        "setMinimumFontSize",
+        "setMixedContentMode",
+        "setOffscreenPreRaster",
+        "setProgressBarVisible",
+        "setSafeBrowsing",
+        "setSaveFormData",
+        "setSettings",
+        "setStandardFontFamily",
+        "setSupportMultipleWindows",
+        "setSupportZoom",
+        "setTextZoom",
+        "setUseWideViewPort",
+        "setUserAgent",
+        "setZoom",
+        "stop"
+      ],
+      "cases": [
+        "canGoBack",
+        "canGoForward",
+        "clearCache",
+        "clearCookies",
+        "clearHistory",
+        "emitEvent",
+        "evaluate",
+        "getCookies",
+        "getSettings",
+        "getState",
+        "getTextZoom",
+        "getUserAgent",
+        "getZoom",
+        "goBack",
+        "goForward",
+        "loadHtml",
+        "loadSource",
+        "loadUrl",
+        "reload",
+        "setAlgorithmicDarkeningAllowed",
+        "setAllowContentAccess",
+        "setAllowFileAccess",
+        "setBackgroundColor",
+        "setBlockNetworkImage",
+        "setBlockNetworkLoads",
+        "setBuiltInZoomControls",
+        "setCacheMode",
+        "setCookie",
+        "setDatabaseEnabled",
+        "setDefaultFontSize",
+        "setDefaultTextEncodingName",
+        "setDisplayZoomControls",
+        "setDomStorage",
+        "setForceDark",
+        "setGeolocationEnabled",
+        "setJavaScript",
+        "setJavaScriptCanOpenWindowsAutomatically",
+        "setLoadWithOverviewMode",
+        "setLoadsImagesAutomatically",
+        "setMediaPlaybackRequiresUserGesture",
+        "setMinimumFontSize",
+        "setMixedContentMode",
+        "setOffscreenPreRaster",
+        "setProgressBarVisible",
+        "setSafeBrowsing",
+        "setSaveFormData",
+        "setSettings",
+        "setStandardFontFamily",
+        "setSupportMultipleWindows",
+        "setSupportZoom",
+        "setTextZoom",
+        "setUseWideViewPort",
+        "setUserAgent",
+        "setZoom",
+        "stop"
+      ],
+      "supported_count": 55,
+      "case_count": 55,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {
+        "loadSource": {
+          "params": [],
+          "errors": []
+        },
+        "loadUrl": {
+          "params": [
+            "url"
+          ],
+          "errors": []
+        },
+        "loadHtml": {
+          "params": [
+            "baseUrl",
+            "html"
+          ],
+          "errors": []
+        },
+        "reload": {
+          "params": [],
+          "errors": []
+        },
+        "stop": {
+          "params": [],
+          "errors": []
+        },
+        "goBack": {
+          "params": [],
+          "errors": []
+        },
+        "goForward": {
+          "params": [],
+          "errors": []
+        },
+        "canGoBack": {
+          "params": [],
+          "errors": []
+        },
+        "canGoForward": {
+          "params": [],
+          "errors": []
+        },
+        "clearHistory": {
+          "params": [],
+          "errors": []
+        },
+        "getState": {
+          "params": [],
+          "errors": []
+        },
+        "evaluate": {
+          "params": [
+            "script"
+          ],
+          "errors": [
+            "MAIN_THREAD_BLOCKED"
+          ]
+        },
+        "setZoom": {
+          "params": [],
+          "errors": []
+        },
+        "getZoom": {
+          "params": [],
+          "errors": []
+        },
+        "setTextZoom": {
+          "params": [],
+          "errors": []
+        },
+        "getTextZoom": {
+          "params": [],
+          "errors": []
+        },
+        "setUserAgent": {
+          "params": [
+            "userAgent"
+          ],
+          "errors": []
+        },
+        "getUserAgent": {
+          "params": [],
+          "errors": []
+        },
+        "getSettings": {
+          "params": [],
+          "errors": []
+        },
+        "setSettings": {
+          "params": [],
+          "errors": []
+        },
+        "clearCache": {
+          "params": [],
+          "errors": []
+        },
+        "setCacheMode": {
+          "params": [
+            "mode"
+          ],
+          "errors": []
+        },
+        "setCookie": {
+          "params": [
+            "url",
+            "value"
+          ],
+          "errors": []
+        },
+        "getCookies": {
+          "params": [
+            "url"
+          ],
+          "errors": []
+        },
+        "clearCookies": {
+          "params": [],
+          "errors": []
+        },
+        "setBackgroundColor": {
+          "params": [
+            "color"
+          ],
+          "errors": []
+        },
+        "setProgressBarVisible": {
+          "params": [],
+          "errors": []
+        },
+        "emitEvent": {
+          "params": [
+            "topic"
+          ],
+          "errors": []
+        },
+        "setJavaScript": {
+          "params": [],
+          "errors": []
+        },
+        "setDomStorage": {
+          "params": [],
+          "errors": []
+        },
+        "setAllowFileAccess": {
+          "params": [],
+          "errors": []
+        },
+        "setAllowContentAccess": {
+          "params": [],
+          "errors": []
+        },
+        "setMixedContentMode": {
+          "params": [
+            "mode"
+          ],
+          "errors": []
+        },
+        "setSafeBrowsing": {
+          "params": [],
+          "errors": []
+        },
+        "setSupportZoom": {
+          "params": [],
+          "errors": []
+        },
+        "setBuiltInZoomControls": {
+          "params": [],
+          "errors": []
+        },
+        "setDisplayZoomControls": {
+          "params": [],
+          "errors": []
+        },
+        "setLoadWithOverviewMode": {
+          "params": [],
+          "errors": []
+        },
+        "setUseWideViewPort": {
+          "params": [],
+          "errors": []
+        },
+        "setDefaultTextEncodingName": {
+          "params": [
+            "encoding"
+          ],
+          "errors": []
+        },
+        "setStandardFontFamily": {
+          "params": [
+            "family"
+          ],
+          "errors": []
+        },
+        "setDefaultFontSize": {
+          "params": [],
+          "errors": []
+        },
+        "setMinimumFontSize": {
+          "params": [],
+          "errors": []
+        },
+        "setDatabaseEnabled": {
+          "params": [],
+          "errors": []
+        },
+        "setGeolocationEnabled": {
+          "params": [],
+          "errors": []
+        },
+        "setSaveFormData": {
+          "params": [],
+          "errors": []
+        },
+        "setJavaScriptCanOpenWindowsAutomatically": {
+          "params": [],
+          "errors": []
+        },
+        "setSupportMultipleWindows": {
+          "params": [],
+          "errors": []
+        },
+        "setMediaPlaybackRequiresUserGesture": {
+          "params": [],
+          "errors": []
+        },
+        "setOffscreenPreRaster": {
+          "params": [],
+          "errors": []
+        },
+        "setForceDark": {
+          "params": [
+            "mode"
+          ],
+          "errors": []
+        },
+        "setAlgorithmicDarkeningAllowed": {
+          "params": [],
+          "errors": []
+        },
+        "setBlockNetworkImage": {
+          "params": [],
+          "errors": []
+        },
+        "setBlockNetworkLoads": {
+          "params": [],
+          "errors": []
+        },
+        "setLoadsImagesAutomatically": {
+          "params": [],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "device": {
+      "file": "native-runtime-ui/src/main/java/com/roni/library/ui/handler/NativeDeviceCommandHandler.java",
+      "exists": true,
+      "path": "device",
+      "supported": [
+        "copyToClipboard",
+        "finish",
+        "getAppInfo",
+        "getBattery",
+        "getBrightness",
+        "getClipboard",
+        "getDeviceInfo",
+        "getInfo",
+        "getLocale",
+        "getNetworkState",
+        "getSafeArea",
+        "getScreenInfo",
+        "haptic",
+        "isAppInstalled",
+        "log",
+        "openApp",
+        "openAppSettings",
+        "openExternal",
+        "openFile",
+        "openUrl",
+        "readClipboard",
+        "setBrightness",
+        "setClipboard",
+        "setKeepScreenOn",
+        "setOrientation",
+        "share",
+        "shareText",
+        "vibrate"
+      ],
+      "cases": [
+        "copyToClipboard",
+        "finish",
+        "getAppInfo",
+        "getBattery",
+        "getBrightness",
+        "getClipboard",
+        "getDeviceInfo",
+        "getInfo",
+        "getLocale",
+        "getNetworkState",
+        "getSafeArea",
+        "getScreenInfo",
+        "haptic",
+        "isAppInstalled",
+        "landscape",
+        "log",
+        "openApp",
+        "openAppSettings",
+        "openExternal",
+        "openFile",
+        "openUrl",
+        "portrait",
+        "readClipboard",
+        "reverse_landscape",
+        "reverse_portrait",
+        "sensor",
+        "setBrightness",
+        "setClipboard",
+        "setKeepScreenOn",
+        "setOrientation",
+        "share",
+        "shareText",
+        "vibrate"
+      ],
+      "supported_count": 28,
+      "case_count": 33,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [
+        "landscape",
+        "portrait",
+        "reverse_landscape",
+        "reverse_portrait",
+        "sensor"
+      ],
+      "actions": {
+        "getInfo": {
+          "params": [],
+          "errors": []
+        },
+        "getAppInfo": {
+          "params": [],
+          "errors": []
+        },
+        "getDeviceInfo": {
+          "params": [],
+          "errors": []
+        },
+        "getScreenInfo": {
+          "params": [],
+          "errors": []
+        },
+        "getLocale": {
+          "params": [],
+          "errors": []
+        },
+        "getNetworkState": {
+          "params": [],
+          "errors": []
+        },
+        "getBattery": {
+          "params": [],
+          "errors": []
+        },
+        "getSafeArea": {
+          "params": [],
+          "errors": []
+        },
+        "copyToClipboard": {
+          "params": [],
+          "errors": []
+        },
+        "setClipboard": {
+          "params": [
+            "label",
+            "text"
+          ],
+          "errors": []
+        },
+        "readClipboard": {
+          "params": [],
+          "errors": []
+        },
+        "getClipboard": {
+          "params": [],
+          "errors": []
+        },
+        "shareText": {
+          "params": [],
+          "errors": []
+        },
+        "share": {
+          "params": [
+            "subject",
+            "text",
+            "title"
+          ],
+          "errors": []
+        },
+        "vibrate": {
+          "params": [],
+          "errors": []
+        },
+        "haptic": {
+          "params": [],
+          "errors": []
+        },
+        "openUrl": {
+          "params": [],
+          "errors": []
+        },
+        "openExternal": {
+          "params": [
+            "url"
+          ],
+          "errors": []
+        },
+        "setOrientation": {
+          "params": [
+            "orientation"
+          ],
+          "errors": []
+        },
+        "portrait": {
+          "params": [],
+          "errors": []
+        },
+        "landscape": {
+          "params": [],
+          "errors": []
+        },
+        "reverse_portrait": {
+          "params": [],
+          "errors": []
+        },
+        "reverse_landscape": {
+          "params": [],
+          "errors": []
+        },
+        "sensor": {
+          "params": [],
+          "errors": []
+        },
+        "setKeepScreenOn": {
+          "params": [],
+          "errors": []
+        },
+        "setBrightness": {
+          "params": [],
+          "errors": []
+        },
+        "getBrightness": {
+          "params": [],
+          "errors": []
+        },
+        "finish": {
+          "params": [],
+          "errors": []
+        },
+        "openAppSettings": {
+          "params": [],
+          "errors": []
+        },
+        "isAppInstalled": {
+          "params": [
+            "packageName"
+          ],
+          "errors": []
+        },
+        "openApp": {
+          "params": [
+            "packageName"
+          ],
+          "errors": []
+        },
+        "openFile": {
+          "params": [
+            "mimeType",
+            "uri"
+          ],
+          "errors": []
+        },
+        "log": {
+          "params": [
+            "message",
+            "tag"
+          ],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "storage": {
+      "file": "native-runtime-ui/src/main/java/com/roni/library/ui/handler/NativeStorageCommandHandler.java",
+      "exists": true,
+      "path": "storage",
+      "supported": [
+        "clear",
+        "get",
+        "getAll",
+        "has",
+        "keys",
+        "remove",
+        "set"
+      ],
+      "cases": [
+        "clear",
+        "get",
+        "getAll",
+        "has",
+        "keys",
+        "remove",
+        "set"
+      ],
+      "supported_count": 7,
+      "case_count": 7,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {
+        "get": {
+          "params": [
+            "key"
+          ],
+          "errors": []
+        },
+        "set": {
+          "params": [
+            "key"
+          ],
+          "errors": []
+        },
+        "remove": {
+          "params": [
+            "key"
+          ],
+          "errors": []
+        },
+        "clear": {
+          "params": [],
+          "errors": []
+        },
+        "keys": {
+          "params": [],
+          "errors": []
+        },
+        "has": {
+          "params": [
+            "key"
+          ],
+          "errors": []
+        },
+        "getAll": {
+          "params": [],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "runtime": {
+      "file": "native-runtime-engine/src/main/java/com/roni/library/runtime/handler/RuntimeCommandHandler.java",
+      "exists": true,
+      "path": "runtime",
+      "supported": [],
+      "cases": [
+        "clearCookies",
+        "getCookies",
+        "getVitals",
+        "loadUrl",
+        "resolveSource",
+        "setCookie"
+      ],
+      "supported_count": 0,
+      "case_count": 6,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [
+        "clearCookies",
+        "getCookies",
+        "getVitals",
+        "loadUrl",
+        "resolveSource",
+        "setCookie"
+      ],
+      "actions": {
+        "loadUrl": {
+          "params": [
+            "url"
+          ],
+          "errors": []
+        },
+        "getVitals": {
+          "params": [],
+          "errors": []
+        },
+        "resolveSource": {
+          "params": [
+            "url"
+          ],
+          "errors": []
+        },
+        "setCookie": {
+          "params": [
+            "cookie",
+            "domain"
+          ],
+          "errors": []
+        },
+        "getCookies": {
+          "params": [
+            "domain"
+          ],
+          "errors": []
+        },
+        "clearCookies": {
+          "params": [],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "bridge": {
+      "file": "native-web-bridge-sdk/src/main/java/com/roni/library/bridge/handler/BridgeCommandHandler.java",
+      "exists": true,
+      "path": "/bridge",
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "echo": {
+      "file": "native-router-sdk/src/main/java/com/roni/library/router/handler/EchoCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "system": {
+      "file": "native-router-sdk/src/main/java/com/roni/library/router/handler/SystemDiagnosticHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    }
+  },
+  "unregistered": {
+    "theme": {
+      "file": "native-theme-engine/src/main/java/com/roni/library/theme/handler/ThemeCommandHandler.java",
+      "exists": true,
+      "path": "theme",
+      "supported": [],
+      "cases": [
+        "applyTheme",
+        "getCssVariables",
+        "getTheme",
+        "isSystemDark",
+        "setSystemDark",
+        "setThemeMode"
+      ],
+      "supported_count": 0,
+      "case_count": 6,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [
+        "applyTheme",
+        "getCssVariables",
+        "getTheme",
+        "isSystemDark",
+        "setSystemDark",
+        "setThemeMode"
+      ],
+      "actions": {
+        "getTheme": {
+          "params": [],
+          "errors": []
+        },
+        "setThemeMode": {
+          "params": [
+            "mode"
+          ],
+          "errors": []
+        },
+        "applyTheme": {
+          "params": [],
+          "errors": []
+        },
+        "isSystemDark": {
+          "params": [],
+          "errors": []
+        },
+        "setSystemDark": {
+          "params": [
+            "dark"
+          ],
+          "errors": []
+        },
+        "getCssVariables": {
+          "params": [],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "theme_legacy": {
+      "file": "native-theme-engine/src/main/java/com/roni/library/themeengine/handler/ThemeCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "network": {
+      "file": "native-network-engine/src/main/java/com/roni/library/network/handler/NetworkCommandHandler.java",
+      "exists": true,
+      "path": "network",
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "platform": {
+      "file": "native-platform-engine/src/main/java/com/roni/library/platform/handler/PlatformCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "security": {
+      "file": "native-security-engine/src/main/java/com/roni/library/security/handler/SecurityCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [
+        "biometric.authenticate",
+        "biometric.capability",
+        "diagnostic",
+        "hash.sha256",
+        "keystore.decrypt",
+        "keystore.delete",
+        "keystore.encrypt",
+        "keystore.generate",
+        "keystore.hasKey",
+        "keystore.list",
+        "permission.check"
+      ],
+      "supported_count": 0,
+      "case_count": 11,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [
+        "biometric.authenticate",
+        "biometric.capability",
+        "diagnostic",
+        "hash.sha256",
+        "keystore.decrypt",
+        "keystore.delete",
+        "keystore.encrypt",
+        "keystore.generate",
+        "keystore.hasKey",
+        "keystore.list",
+        "permission.check"
+      ],
+      "actions": {
+        "keystore.generate": {
+          "params": [],
+          "errors": []
+        },
+        "keystore.hasKey": {
+          "params": [],
+          "errors": []
+        },
+        "keystore.delete": {
+          "params": [],
+          "errors": []
+        },
+        "keystore.list": {
+          "params": [],
+          "errors": []
+        },
+        "keystore.encrypt": {
+          "params": [],
+          "errors": []
+        },
+        "keystore.decrypt": {
+          "params": [],
+          "errors": []
+        },
+        "biometric.capability": {
+          "params": [],
+          "errors": []
+        },
+        "biometric.authenticate": {
+          "params": [],
+          "errors": []
+        },
+        "permission.check": {
+          "params": [],
+          "errors": []
+        },
+        "hash.sha256": {
+          "params": [],
+          "errors": []
+        },
+        "diagnostic": {
+          "params": [],
+          "errors": []
+        }
+      }
+    },
+    "analytics": {
+      "file": "native-analytics-engine/src/main/java/com/roni/library/analytics/handler/AnalyticsCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [
+        "clear",
+        "endScreenView",
+        "endSession",
+        "flush",
+        "getStats",
+        "recordMetric",
+        "startScreenView",
+        "startSession",
+        "startTrace",
+        "stopTrace",
+        "trackEvent"
+      ],
+      "supported_count": 0,
+      "case_count": 11,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [
+        "clear",
+        "endScreenView",
+        "endSession",
+        "flush",
+        "getStats",
+        "recordMetric",
+        "startScreenView",
+        "startSession",
+        "startTrace",
+        "stopTrace",
+        "trackEvent"
+      ],
+      "actions": {
+        "trackEvent": {
+          "params": [
+            "name"
+          ],
+          "errors": []
+        },
+        "recordMetric": {
+          "params": [
+            "name",
+            "unit"
+          ],
+          "errors": []
+        },
+        "startSession": {
+          "params": [],
+          "errors": []
+        },
+        "endSession": {
+          "params": [],
+          "errors": []
+        },
+        "startTrace": {
+          "params": [
+            "name"
+          ],
+          "errors": []
+        },
+        "stopTrace": {
+          "params": [
+            "name"
+          ],
+          "errors": []
+        },
+        "startScreenView": {
+          "params": [
+            "screenName"
+          ],
+          "errors": []
+        },
+        "endScreenView": {
+          "params": [
+            "screenName"
+          ],
+          "errors": []
+        },
+        "getStats": {
+          "params": [],
+          "errors": []
+        },
+        "flush": {
+          "params": [],
+          "errors": []
+        },
+        "clear": {
+          "params": [],
+          "errors": []
+        }
+      }
+    },
+    "devtools": {
+      "file": "native-dev-tools-sdk/src/main/java/com/roni/library/devtools/handler/DevToolsCommandHandler.java",
+      "exists": true,
+      "path": "devtools",
+      "supported": [],
+      "cases": [
+        "clearTraffic",
+        "dispatchCdp",
+        "exportHar",
+        "getBridgeMetrics",
+        "getHealth",
+        "getManifest",
+        "getMetrics",
+        "startProfiling",
+        "stopProfiling"
+      ],
+      "supported_count": 0,
+      "case_count": 9,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [
+        "clearTraffic",
+        "dispatchCdp",
+        "exportHar",
+        "getBridgeMetrics",
+        "getHealth",
+        "getManifest",
+        "getMetrics",
+        "startProfiling",
+        "stopProfiling"
+      ],
+      "actions": {
+        "getMetrics": {
+          "params": [],
+          "errors": []
+        },
+        "getHealth": {
+          "params": [],
+          "errors": []
+        },
+        "getBridgeMetrics": {
+          "params": [],
+          "errors": []
+        },
+        "getManifest": {
+          "params": [],
+          "errors": []
+        },
+        "exportHar": {
+          "params": [],
+          "errors": []
+        },
+        "clearTraffic": {
+          "params": [],
+          "errors": []
+        },
+        "startProfiling": {
+          "params": [],
+          "errors": []
+        },
+        "stopProfiling": {
+          "params": [],
+          "errors": []
+        },
+        "dispatchCdp": {
+          "params": [
+            "method"
+          ],
+          "errors": [
+            "UNKNOWN_ACTION"
+          ]
+        }
+      }
+    },
+    "logger": {
+      "file": "native-logger-sdk/src/main/java/com/roni/library/logger/handler/LoggerCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "service": {
+      "file": "native-service-sdk/src/main/java/com/roni/library/service/handler/ServiceCommandHandler.java",
+      "exists": true,
+      "path": null,
+      "supported": [],
+      "cases": [],
+      "supported_count": 0,
+      "case_count": 0,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {}
+    },
+    "storage_engine": {
+      "file": "native-storage-engine/src/main/java/com/roni/library/storage/handler/StorageCommandHandler.java",
+      "exists": true,
+      "path": "storage",
+      "supported": [
+        "clear",
+        "get",
+        "getAll",
+        "has",
+        "keys",
+        "remove",
+        "set"
+      ],
+      "cases": [
+        "clear",
+        "get",
+        "getAll",
+        "has",
+        "keys",
+        "remove",
+        "set"
+      ],
+      "supported_count": 7,
+      "case_count": 7,
+      "in_supported_not_in_switch": [],
+      "in_switch_not_in_supported": [],
+      "actions": {
+        "get": {
+          "params": [],
+          "errors": []
+        },
+        "set": {
+          "params": [],
+          "errors": [
+            "INVALID_ARG"
+          ]
+        },
+        "remove": {
+          "params": [],
+          "errors": []
+        },
+        "clear": {
+          "params": [],
+          "errors": []
+        },
+        "keys": {
+          "params": [],
+          "errors": []
+        },
+        "has": {
+          "params": [],
+          "errors": []
+        },
+        "getAll": {
+          "params": [],
+          "errors": []
+        }
+      }
+    }
+  },
+  "registered_handlers": [
+    "commandHandler",
+    "webCommandHandler",
+    "deviceCommandHandler",
+    "storageCommandHandler"
+  ],
+  "total_registered_actions": 152
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>১১ · Storage</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>১১ · Storage (AES-GCM)</h1>
+  <p>storage.set / get / remove / keys / getAll / clear <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>লেখা</h2>
+    <input id="key" value="demo:name" placeholder="key">
+    <input id="value" value="রনি" placeholder="value">
+    <div class="row">
+      <button id="set">set</button>
+      <button id="set-json" class="secondary">set (JSON)</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>পড়া</h2>
+    <div class="row">
+      <button id="get">get</button>
+      <button id="has" class="secondary">has</button>
+      <button id="remove" class="secondary">remove</button>
+    </div>
+    <div id="result" style="margin-top:10px;font-size:14px"></div>
+  </div>
+
+  <div class="card">
+    <h2>সব key</h2>
+    <div class="row">
+      <button id="keys" class="secondary">keys</button>
+      <button id="all" class="secondary">getAll</button>
+      <button id="clear" class="danger">clear</button>
+    </div>
+    <div class="log" id="log" style="margin-top:10px"></div>
+  </div>
+
+  <div class="card">
+    <h2>Persistence পরীক্ষা</h2>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 8px">
+      একটি মান সেভ করুন, তারপর অ্যাপ বন্ধ করে আবার খুলুন — মান থেকে যাবে।
+    </p>
+    <button id="persist" class="secondary">একটি counter বাড়ান</button>
+    <div id="counter" style="font-size:28px;font-weight:700;margin-top:8px">0</div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var PREFIX = 'demo:';
+
+  function val(id) { return document.getElementById(id).value; }
+
+  function show(obj) {
+    document.getElementById('result').textContent =
+      typeof obj === 'string' ? obj : JSON.stringify(obj, null, 2);
+  }
+
+  function run(action, payload) {
+    Native.call(action, payload).then(function (r) {
+      Native.log('log', action, r);
+      show(r);
+      return r;
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+      show('ERROR: ' + e.message);
+    });
+  }
+
+  document.getElementById('set').addEventListener('click', function () {
+    run('storage.set', { key: val('key'), value: val('value') });
+  });
+
+  document.getElementById('set-json').addEventListener('click', function () {
+    var obj = { name: val('value'), at: Date.now(), tags: ['a', 'b'] };
+    run('storage.set', { key: val('key'), value: JSON.stringify(obj) });
+  });
+
+  document.getElementById('get').addEventListener('click', function () {
+    Native.call('storage.get', { key: val('key') }).then(function (r) {
+      Native.log('log', 'storage.get', r);
+      if (!r.exists) { show('key নেই'); return; }
+      try { show(JSON.parse(r.value)); } catch (e) { show(r.value); }
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+      show('ERROR: ' + e.message);
+    });
+  });
+
+  document.getElementById('has').addEventListener('click', function () {
+    run('storage.has', { key: val('key') });
+  });
+
+  document.getElementById('remove').addEventListener('click', function () {
+    run('storage.remove', { key: val('key') });
+  });
+
+  document.getElementById('keys').addEventListener('click', function () {
+    run('storage.keys');
+  });
+
+  document.getElementById('all').addEventListener('click', function () {
+    run('storage.getAll');
+  });
+
+  document.getElementById('clear').addEventListener('click', function () {
+    Native.on('ui.confirm', function handler(p) {
+      Native.off('ui.confirm', handler);
+      if (!p.confirmed) return;
+      run('storage.clear');
+    });
+    Native.call('ui.showConfirm', {
+      title: 'সব ডেটা মুছবেন?',
+      message: 'storage-এর সব key চলে যাবে'
+    }).catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('persist').addEventListener('click', function () {
+    Native.call('storage.get', { key: PREFIX + 'counter' }).then(function (r) {
+      var n = r.exists ? parseInt(r.value, 10) || 0 : 0;
+      n += 1;
+      document.getElementById('counter').textContent = n;
+      return Native.call('storage.set', { key: PREFIX + 'counter', value: n });
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    Native.call('storage.get', { key: PREFIX + 'counter' }).then(function (r) {
+      document.getElementById('counter').textContent = r.exists ? r.value : '0';
+    }).catch(function () {});
+  });
+})();
+</script>
+</body>
+</html>

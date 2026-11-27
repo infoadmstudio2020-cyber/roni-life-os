@@ -1,0 +1,11 @@
+{
+  "name": "নোটখাতা",
+  "short_name": "নোট",
+  "version": "1.0.0",
+  "entry": "index.html",
+  "description": "RONiLiFEOS-এর জন্য বাংলা নোট অ্যাপ — storage, theme, download, native UI",
+  "theme_color": "#2563EB",
+  "background_color": "#F8FAFC",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "roni-android-library-generator",
+  "version": "0.1.3.6",
+  "description": "RONi Android Library Project Generator & JitPack Manager (Offline-first Vanilla JS ES6 Modules)",
+  "type": "module",
+  "scripts": {
+    "lint": "node test/test-all.js",
+    "test": "node test/test-all.js",
+    "test:all": "for f in test/test-*.js; do echo \"=== $f ===\"; node \"$f\"; done",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "android",
+    "library",
+    "generator",
+    "jitpack",
+    "gradle",
+    "offline-first",
+    "vanilla-js"
+  ],
+  "author": "RONi",
+  "license": "MIT"
+}

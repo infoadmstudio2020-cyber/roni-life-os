@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RONi LiFE OS</string>
+
+    <!-- Splash -->
+    <string name="splash_title">RONi LiFE OS</string>
+    <string name="splash_subtitle">NativeRuntime Consumer Runtime</string>
+    <string name="splash_version">Version 1.4.0</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_subtitle">Native Dashboard // v1.8.0</string>
+    <string name="dashboard_eyebrow">NATIVE DASHBOARD</string>
+    <string name="dashboard_hero_subtitle">Native Android system controller</string>
+
+    <!-- Industrial HUD console -->
+    <string name="hud_core_tag">// CORE</string>
+    <string name="hud_core_title">RENDER CONSOLE</string>
+    <string name="hud_core_node">OBSIDIAN CORE</string>
+    <string name="hud_core_node_id">SYS.CORE.01</string>
+    <string name="hud_engine_load">ENGINE LOAD</string>
+    <string name="hud_runtime">RUNTIME</string>
+    <string name="hud_section_actions">// QUICK ACTIONS</string>
+    <string name="hud_section_slots">// PROJECT SLOTS</string>
+    <string name="hud_slot_count">04 SLOTS</string>
+    <string name="hud_slot_arrow">→</string>
+    <string name="hud_section_sessions">// ACTIVE SESSIONS</string>
+    <string name="hud_session_limit">MAX 05</string>
+    <string name="hud_section_recent">// RECENT</string>
+    <string name="hud_recent_limit">LAST 04</string>
+    <string name="hud_section_registry">// REGISTRY</string>
+    <string name="hud_section_log">// NODE LOG</string>
+    <string name="hud_log_footer">BUFFER 06/06</string>
+    <string name="hud_log_autoscroll">AUTO-SCROLL</string>
+    <string name="hud_empty_code">ERR.REGISTRY.EMPTY</string>
+    <string name="hud_status_online">ONLINE</string>
+    <string name="hud_status_limited">LIMITED</string>
+    <string name="hud_uptime">UP %1$s</string>
+    <string name="hud_engines">ENG %1$s</string>
+    <string name="hud_load_percent">%1$d%%</string>
+    <string name="hud_session_open">OPEN</string>
+    <string name="hud_session_close">CLOSE</string>
+    <string name="hud_session_live">LIVE</string>
+    <string name="hud_session_recover">RECOVER</string>
+    <string name="hud_recent_index">%1$02d</string>
+    <string name="hud_log_line">%1$s  %2$s  %3$s</string>
+    <string name="hud_log_boot">boot sequence complete</string>
+    <string name="hud_log_storage">key-value store ready</string>
+    <string name="hud_log_registry">registry loaded</string>
+    <string name="hud_log_sessions">session accounting active</string>
+    <string name="hud_log_engines">engine matrix resolved</string>
+    <string name="hud_log_ready">runtime online</string>
+    <string name="hud_log_limited">runtime limited — fallback storage</string>
+    <string name="hud_log_empty">no registered projects</string>
+    <string name="hud_log_scan">scanning project registry</string>
+    <string name="hud_log_ok">OK</string>
+    <string name="hud_log_warn">WARN</string>
+    <string name="hud_log_info">INFO</string>
+    <string name="hud_settings_tag">// APP STARTUP</string>
+    <string name="hud_sheet_tag">// PROJECT CONTROL</string>
+    <string name="hud_error_code">ERR.RUNTIME.HALT</string>
+
+    <string name="section_overview">System overview</string>
+    <string name="section_quick_actions">Quick actions</string>
+    <string name="section_recent">Recent projects</string>
+    <string name="section_projects">Registered projects</string>
+    <string name="stat_projects">Projects</string>
+    <string name="stat_sessions">Sessions</string>
+    <string name="stat_engines">Engines</string>
+    <string name="stat_storage">Storage</string>
+    <string name="recent_empty">No project has been opened yet.</string>
+    <string name="runtime_ready">Runtime ready</string>
+    <string name="runtime_limited">Limited mode</string>
+
+    <!-- Bootstrap -->
+    <string name="bootstrap_subtitle">Project Manager &amp; Configuration</string>
+    <string name="action_new_project">New project</string>
+    <string name="action_create">Create</string>
+    <string name="action_import_zip">Import ZIP</string>
+    <string name="action_select_folder">Select folder</string>
+    <string name="empty_title">No projects yet</string>
+    <string name="empty_message">Create a web project to get started. Assets, ZIP bundles, local files, a SAF folder or a remote URL are all supported.</string>
+    <string name="empty_action">Create your first project</string>
+    <string name="project_default_chip">Default</string>
+
+    <!-- Project actions -->
+    <string name="action_preview">Preview</string>
+    <string name="action_run">Run</string>
+    <string name="action_info">Project information</string>
+    <string name="action_remove_registry">Remove from registry</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_duplicate">Duplicate</string>
+    <string name="action_set_default">Set as default</string>
+    <string name="action_delete">Delete</string>
+
+    <!-- Import / SAF -->
+    <string name="import_progress">Importing archive…</string>
+    <string name="import_success">Imported %1$s</string>
+    <string name="import_failed">Import failed: %1$s</string>
+    <string name="folder_linked">Folder linked: %1$s</string>
+    <string name="folder_failed">The folder could not be linked.</string>
+    <string name="register_title">Register this project?</string>
+    <string name="register_message">Registered projects appear on the dashboard. Previewing does not add the project to the registry.</string>
+    <string name="register_now">Register</string>
+    <string name="preview_only">Preview only</string>
+    <string name="remove_registry_title">Remove from registry?</string>
+    <string name="remove_registry_message">The project entry is removed from the dashboard. Your files stay on disk and are never deleted.</string>
+    <string name="session_limit_title">Session limit reached</string>
+    <string name="session_limit_message">Up to 5 project sessions can stay open. Close one before opening another.</string>
+
+    <!-- Project Runtime -->
+    <string name="project_splash_loading">Loading project…</string>
+    <string name="error_title">Project could not start</string>
+    <string name="error_retry">Try again</string>
+    <string name="error_back">Back to project manager</string>
+
+    <!-- Menu -->
+    <string name="menu_settings">App startup settings</string>
+    <string name="menu_open_bootstrap">Open Bootstrap</string>
+    <string name="bootstrap_none_registered">No Bootstrap project is registered</string>
+    <string name="bootstrap_ready">Configuration valid</string>
+    <string name="bootstrap_manual_summary">Rendering: %1$s\nStatus: %2$s</string>
+    <string name="menu_diagnostics">Runtime diagnostics</string>
+    <string name="menu_about">About</string>
+
+    <!-- Settings -->
+
+    <!-- Settings -->
+    <string name="settings_title">App startup settings</string>
+
+    <!-- Dashboard Mode -->
+    <string name="settings_dashboard_mode">Dashboard mode</string>
+    <string name="dashboard_mode_native">Native dashboard (recommended)</string>
+    <string name="dashboard_mode_web">Web dashboard</string>
+    <string name="settings_dashboard_hint">The native dashboard is the authoritative control centre. The web dashboard runs inside the runtime container and can only use approved bridge APIs.</string>
+
+    <!-- Splash Screen -->
+    <string name="settings_dashboard_enabled">Dashboard enabled</string>
+    <string name="bootstrap_management_subtitle">Management</string>
+    <string name="settings_dashboard_enabled_hint">When disabled, startup opens the default project directly. This management screen stays available from Settings.</string>
+    <string name="settings_splash">Main app splash enabled</string>
+    <string name="settings_splash_hint">When disabled, the app goes straight to Bootstrap or Project.</string>
+
+    <!-- Bootstrap -->
+    <string name="settings_bootstrap">Main app bootstrap enabled</string>
+    <string name="settings_bootstrap_hint">When disabled, the last opened or default project opens directly.</string>
+
+    <!-- Telemetry -->
+    <string name="settings_telemetry">Telemetry enabled</string>
+
+    <!-- Debug -->
+    <string name="settings_debug">Debug mode</string>
+
+    <!-- Switch labels -->
+    <string name="settings_switch_on">ON</string>
+    <string name="settings_switch_off">OFF</string>
+
+
+    <!-- Common -->
+    <string name="dialog_save">Save</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_close">Close</string>
+
+
+    <!-- Switch ON/OFF labels -->
+    <string name="switch_on">ON</string>
+    <string name="switch_off">OFF</string>
+
+
+    <!-- Project minimize / multi-project runtime -->
+    <string name="pm_overlay_desc">Project controls</string>
+    <string name="pm_sheet_minimize">Minimize to dashboard</string>
+    <string name="pm_sheet_minimize_sub">Keep it running in the background</string>
+    <string name="pm_sheet_restart">Restart project</string>
+    <string name="pm_sheet_restart_sub">Reload the runtime from scratch</string>
+    <string name="pm_sheet_settings">Project settings</string>
+    <string name="pm_sheet_settings_sub">Splash, bootstrap and UI configuration</string>
+    <string name="pm_sheet_close">Close project</string>
+    <string name="pm_sheet_close_sub">Stop the runtime and free the session</string>
+    <string name="pm_other_sessions">OTHER RUNNING PROJECTS</string>
+    <string name="pm_no_other_sessions">No other projects are running.</string>
+    <string name="pm_state_active">running</string>
+    <string name="pm_state_minimized">minimized · WebView alive</string>
+    <string name="pm_state_recoverable">recoverable · will reload</string>
+    <string name="pm_section_running">Minimized projects / Active sessions</string>
+    <string name="pm_running_empty">No minimized project. Open one and minimize it to keep it running here.</string>
+    <string name="pm_running_chip">RUNNING</string>
+    <string name="pm_session_limit">%1$d of %2$d sessions in use</string>
+    <string name="pm_session_restore">Restore</string>
+    <string name="pm_session_close">Close</string>
+    <string name="pm_session_close_title">Close this project?</string>
+    <string name="pm_session_close_message">%1$s will be stopped and its session freed. Other minimized projects keep running.</string>
+    <string name="pm_session_closed">%1$s closed</string>
+    <string name="pm_session_last_active">last active %1$s</string>
+    <string name="pm_session_never">never</string>
+    <string name="pm_session_just_now">just now</string>
+    <string name="pm_session_minutes_ago">%1$d min ago</string>
+    <string name="pm_session_hours_ago">%1$d h ago</string>
+
+    <!-- Dashboard project section -->
+    <!-- Dashboard project section -->
+    <string name="section_project_slots">Project section</string>
+    <string name="slot_quick_splash">Splash</string>
+    <string name="slot_quick_splash_desc">Single project · native bootstrap</string>
+    <string name="slot_quick_dashboard">Dashboard</string>
+    <string name="slot_quick_dashboard_desc">Single project · native bootstrap</string>
+    <string name="slot_quick_app">App</string>
+    <string name="slot_quick_app_desc">Multiple independent projects</string>
+    <string name="slot_quick_workspace">Workspace</string>
+    <string name="slot_quick_workspace_desc">Single folder reference · preview only</string>
+
+    <!-- Slot screen -->
+    <string name="slot_single_rule">Single project</string>
+    <string name="slot_multi_rule">Multiple projects</string>
+    <string name="slot_section_current">Current project</string>
+    <string name="slot_section_draft">New project</string>
+    <string name="slot_section_projects">Registered projects</string>
+    <string name="slot_no_project">No project configured</string>
+    <string name="slot_no_project_message">Choose a source to set up this slot. Nothing is registered until you confirm.</string>
+    <string name="slot_no_apps">No app projects yet</string>
+    <string name="slot_no_apps_message">Add a project, preview it, test it, then register it to keep it.</string>
+
+    <string name="slot_label_status">Status</string>
+    <string name="slot_label_source">Source</string>
+    <string name="slot_label_location">Location</string>
+    <string name="slot_label_entry">Entry point</string>
+    <string name="slot_status_active">Active</string>
+    <string name="slot_status_draft">Draft — not registered</string>
+    <string name="slot_status_reference">Folder reference</string>
+
+    <string name="slot_action_setup">Set up project</string>
+    <string name="slot_action_add">Add project</string>
+    <string name="slot_action_replace">Replace</string>
+    <string name="slot_action_open">Open</string>
+    <string name="slot_action_preview">Preview</string>
+    <string name="slot_action_test">Test</string>
+    <string name="slot_action_register">Register</string>
+    <string name="slot_action_save_reference">Use this folder</string>
+    <string name="slot_action_configure">Configure</string>
+    <string name="slot_action_delete">Delete</string>
+    <string name="slot_action_discard">Discard</string>
+
+    <string name="slot_choose_source">Choose a source</string>
+    <string name="slot_source_remote">Remote URL</string>
+    <string name="slot_source_zip">ZIP import</string>
+    <string name="slot_source_inline">Inline HTML</string>
+    <string name="slot_source_folder">Select folder</string>
+
+    <string name="slot_remote_title">Remote URL</string>
+    <string name="slot_remote_hint">https://example.com/app</string>
+    <string name="slot_inline_title">Inline HTML</string>
+    <string name="slot_inline_hint">&lt;!doctype html&gt;…</string>
+    <string name="slot_name_title">Project name</string>
+    <string name="slot_name_hint">My project</string>
+    <string name="slot_url_invalid">Enter a valid http:// or https:// URL.</string>
+    <string name="slot_html_empty">The HTML content cannot be empty.</string>
+    <string name="slot_name_empty">The project name cannot be empty.</string>
+
+    <string name="slot_test_title">Test report</string>
+    <string name="slot_test_passed">All checks passed.</string>
+    <string name="slot_test_failed">%1$d check(s) failed.</string>
+    <string name="slot_test_running">Testing the project…</string>
+
+    <string name="slot_register_title">Register this project?</string>
+    <string name="slot_register_message">The source will be copied into the app\'s project storage and added to the registry. The original source is not modified or deleted.</string>
+    <string name="slot_register_done">Registered: %1$s</string>
+    <string name="slot_register_failed">Registration failed: %1$s</string>
+    <string name="slot_reference_done">Workspace saved: %1$s</string>
+    <string name="slot_reference_failed">The workspace could not be saved: %1$s</string>
+
+    <string name="slot_replace_title">Replace the current project?</string>
+    <string name="slot_replace_message">This slot holds one project. The current project and the copy stored by the app will be removed after the new one is registered.</string>
+    <string name="slot_delete_title">Delete this project?</string>
+    <string name="slot_delete_message">The project is removed from the registry. A copy stored by the app is deleted; your original source is never touched.</string>
+    <string name="slot_delete_done">Project deleted</string>
+
+    <string name="slot_workspace_hint">A workspace is a live reference to your folder. It is previewed in place and never registered as an app project.</string>
+    <string name="slot_folder_required">Select a folder to continue.</string>
+    <string name="slot_preview_unavailable">Preview is not available for this project.</string>
+    <string name="slot_open_unavailable">This project cannot be opened yet.</string>
+    <string name="slot_register_unavailable">This slot does not support registration.</string>
+    <string name="slot_importing">Importing…</string>
+    <string name="menu_sources">Splash &amp; Bootstrap sources</string>
+    <string name="menu_repair_storage">Repair storage &amp; projects</string>
+    <string name="pm_sheet_browser">Open in another app</string>
+    <string name="pm_sheet_browser_sub">Remote projects open in your browser · local projects are shared as a ZIP</string>
+    <string name="pm_open_browser_chooser">Open project with</string>
+    <string name="pm_open_browser_failed">No browser is available on this device</string>
+    <string name="pm_share_chooser">Share project archive</string>
+    <string name="pm_share_unavailable">This project has no local folder to share</string>
+    <string name="pm_share_failed">The project archive could not be created</string>
+    <string name="downloads_title">Downloads</string>
+    <string name="downloads_subtitle">Files saved by projects into Download/RONiLiFEOS</string>
+    <string name="downloads_clear_all">Clear all saved files</string>
+    <string name="downloads_empty">No downloads yet.</string>
+    <string name="downloads_saved">Saved</string>
+    <string name="downloads_pending">Queued</string>
+    <string name="downloads_running">Downloading</string>
+    <string name="downloads_paused">Paused</string>
+    <string name="downloads_done">Completed</string>
+    <string name="downloads_failed">Failed</string>
+    <string name="downloads_pause">Pause</string>
+    <string name="downloads_resume">Resume</string>
+    <string name="downloads_cancel">Cancel</string>
+    <string name="downloads_delete">Delete</string>
+    <string name="downloads_action_failed">That action could not be completed</string>
+    <string name="downloads_cleared">Saved files cleared</string>
+    <string name="menu_downloads">Downloads</string>
+    <!-- Consumer lifecycle & navigation -->
+    <string name="exit_dialog_title">অ্যাপ থেকে প্রস্থান করবেন?</string>
+    <string name="exit_dialog_message">এই পেজের আর কোনো পূর্ববর্তী পৃষ্ঠা নেই। আপনি অ্যাপটি মিনিমাইজ করে প্রজেক্ট চালু রাখতে পারেন, অথবা সম্পূর্ণ বন্ধ করতে পারেন।</string>
+    <string name="exit_dialog_minimize">মিনিমাইজ</string>
+    <string name="exit_dialog_exit">প্রস্থান</string>
+    <string name="exit_dialog_cancel">বাতিল</string>
+    <string name="pm_sheet_bootstrap">বুটস্ট্র্যাপ খুলুন</string>
+    <string name="pm_sheet_bootstrap_sub">প্রজেক্ট ম্যানেজার ও কনফিগারেশন</string>
+    <string name="startup_error_tag">// STARTUP CONFIG</string>
+    <string name="startup_error_title">কনফিগারেশন প্রয়োজন</string>
+    <string name="startup_error_message">ড্যাশবোর্ড বন্ধ আছে এবং কোনো ডিফল্ট প্রজেক্ট কনফিগার করা নেই। চালু করতে বুটস্ট্র্যাপ থেকে একটি ডিফল্ট প্রজেক্ট নির্ধারণ করুন।</string>
+    <string name="startup_error_default_reason">dashboard disabled · no default project</string>
+    <string name="startup_error_open_bootstrap">বুটস্ট্র্যাপ খুলুন</string>
+    <string name="startup_error_exit">বন্ধ করুন</string>
+</resources>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RONiLiFEOS · বাংলা ডেমো</title>
+<link rel="stylesheet" href="demo.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .demo-link {
+    display: block;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .demo-link strong { display: block; font-size: 15px; margin-bottom: 2px; }
+  .demo-link span { font-size: 13px; color: var(--muted); }
+  .demo-link:active { transform: scale(0.99); }
+</style>
+</head>
+<body>
+<header>
+  <h1>RONiLiFEOS · বাংলা ডেমো</h1>
+  <p>১৪টি চলমান উদাহরণ <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <div class="card">
+    <h2>শুরু করার আগে</h2>
+    <p style="font-size:14px;margin:0">
+      প্রতিটি ডেমো আলাদা পেজ। নেটিভ কল ব্যর্থ হলে লগে <code>ERROR</code> দেখাবে —
+      ব্রাউজারে খুললে সব <code>NATIVE_UNAVAILABLE</code> হবে, যা স্বাভাবিক।
+    </p>
+  </div>
+
+  <div class="grid">
+    <a class="demo-link" href="01-toast.html"><strong>০১ · Toast</strong><span>ui.showToast — চার ধরনের বার্তা</span></a>
+    <a class="demo-link" href="02-dialog.html"><strong>০২ · Alert ও Confirm</strong><span>ui.showAlert · ui.showConfirm + ui.confirm</span></a>
+    <a class="demo-link" href="03-sheet.html"><strong>০৩ · Sheet ও Menu</strong><span>bottom sheet · action sheet · popup</span></a>
+    <a class="demo-link" href="04-loading.html"><strong>০৪ · Loading</strong><span>showLoading → কাজ → hideLoading</span></a>
+    <a class="demo-link" href="05-toolbar.html"><strong>০৫ · Toolbar</strong><span>শিরোনাম · action বাটন</span></a>
+    <a class="demo-link" href="06-drawer-tabs.html"><strong>০৬ · Drawer ও Tabs</strong><span>drawer · bottom nav · FAB</span></a>
+    <a class="demo-link" href="07-system-ui.html"><strong>০৭ · System UI</strong><span>status bar · fullscreen · theme</span></a>
+    <a class="demo-link" href="08-device-info.html"><strong>০৮ · Device Info</strong><span>মডেল · স্ক্রিন · locale · safe area</span></a>
+    <a class="demo-link" href="09-battery-network.html"><strong>০৯ · Battery ও Network</strong><span>polling দিয়ে live অবস্থা</span></a>
+    <a class="demo-link" href="10-clipboard-share.html"><strong>১০ · Clipboard ও Share</strong><span>কপি · পেস্ট · শেয়ার · haptic</span></a>
+    <a class="demo-link" href="11-storage.html"><strong>১১ · Storage</strong><span>AES-GCM key-value</span></a>
+    <a class="demo-link" href="12-download.html"><strong>১২ · Download</strong><span>text · CSV · JSON · URL</span></a>
+    <a class="demo-link" href="13-navigation.html"><strong>১৩ · Navigation</strong><span>web.* · hash routing</span></a>
+    <a class="demo-link" href="14-upload.html"><strong>১৪ · Upload</strong><span>file picker · preview · read</span></a>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Bridge যাচাই</h2>
+    <div class="row">
+      <button id="ping">ping</button>
+      <button id="config" class="secondary">ui.getConfig</button>
+    </div>
+    <div class="log" id="log" style="margin-top:10px"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  document.getElementById('ping').addEventListener('click', function () {
+    if (!Native.available()) {
+      Native.log('log', 'ping', 'bridge নেই');
+      return;
+    }
+    try {
+      Native.log('log', 'ping', NativeRuntimeBridgeClient.ping());
+    } catch (e) {
+      Native.log('log', 'ping ERROR', e.message);
+    }
+  });
+
+  document.getElementById('config').addEventListener('click', function () {
+    Native.call('ui.getConfig')
+      .then(function (r) { Native.log('log', 'ui.getConfig', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+})();
+</script>
+</body>
+</html>

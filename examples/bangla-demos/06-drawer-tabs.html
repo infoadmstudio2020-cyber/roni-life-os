@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>০৬ · Drawer ও Tabs</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>০৬ · Drawer, Bottom Nav, FAB</h1>
+  <p>নেভিগেশন shell <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>Drawer</h2>
+    <div class="row">
+      <button id="open">openDrawer</button>
+      <button id="close" class="secondary">closeDrawer</button>
+      <button id="toggle" class="secondary">toggleDrawer</button>
+      <button id="is-open" class="secondary">isDrawerOpen</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Drawer আইটেম</h2>
+    <input id="d-id" value="settings" placeholder="id">
+    <input id="d-title" value="সেটিংস" placeholder="title">
+    <div class="row">
+      <button id="d-add">addDrawerItem</button>
+      <button id="d-remove" class="secondary">removeDrawerItem</button>
+      <button id="d-selected" class="secondary">getSelectedDrawerItem</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Bottom Navigation</h2>
+    <input id="t-id" value="inbox" placeholder="tabId">
+    <input id="t-label" value="ইনবক্স" placeholder="label">
+    <div class="row">
+      <button id="t-add">addTab</button>
+      <button id="t-select" class="secondary">selectTab</button>
+      <button id="t-badge" class="secondary">setBadge(5)</button>
+      <button id="t-getbadge" class="secondary">getBadge</button>
+      <button id="t-tabs" class="secondary">getTabs</button>
+      <button id="t-current" class="secondary">getSelectedTab</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>FAB</h2>
+    <div class="row">
+      <button id="fab-on" class="secondary">দেখান</button>
+      <button id="fab-off" class="secondary">লুকান</button>
+      <button id="fab-is" class="secondary">isFabVisible</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  Native.on('ui.drawerItemSelected', function (p) {
+    Native.log('log', 'ui.drawerItemSelected', p);
+    Native.toast('ড্রয়ার: ' + p.title, 'info');
+  });
+
+  function run(action, payload) {
+    Native.call(action, payload)
+      .then(function (r) { Native.log('log', action, r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  }
+
+  function val(id) { return document.getElementById(id).value; }
+
+  document.getElementById('open').addEventListener('click', function () { run('ui.openDrawer'); });
+  document.getElementById('close').addEventListener('click', function () { run('ui.closeDrawer'); });
+  document.getElementById('toggle').addEventListener('click', function () { run('ui.toggleDrawer'); });
+  document.getElementById('is-open').addEventListener('click', function () { run('ui.isDrawerOpen'); });
+
+  document.getElementById('d-add').addEventListener('click', function () {
+    run('ui.addDrawerItem', { id: val('d-id'), title: val('d-title') });
+  });
+  document.getElementById('d-remove').addEventListener('click', function () {
+    run('ui.removeDrawerItem', { id: val('d-id') });
+  });
+  document.getElementById('d-selected').addEventListener('click', function () {
+    run('ui.getSelectedDrawerItem');
+  });
+
+  document.getElementById('t-add').addEventListener('click', function () {
+    run('ui.addTab', { tabId: val('t-id'), label: val('t-label') });
+  });
+  document.getElementById('t-select').addEventListener('click', function () {
+    run('ui.selectTab', { tabId: val('t-id') });
+  });
+  document.getElementById('t-badge').addEventListener('click', function () {
+    run('ui.setBadge', { tabId: val('t-id'), count: 5 });
+  });
+  document.getElementById('t-getbadge').addEventListener('click', function () {
+    run('ui.getBadge', { tabId: val('t-id') });
+  });
+  document.getElementById('t-tabs').addEventListener('click', function () { run('ui.getTabs'); });
+  document.getElementById('t-current').addEventListener('click', function () { run('ui.getSelectedTab'); });
+
+  document.getElementById('fab-on').addEventListener('click', function () {
+    run('ui.setFabVisible', { visible: true });
+  });
+  document.getElementById('fab-off').addEventListener('click', function () {
+    run('ui.setFabVisible', { visible: false });
+  });
+  document.getElementById('fab-is').addEventListener('click', function () { run('ui.isFabVisible'); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>১৩ · Navigation</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>১৩ · WebView নেভিগেশন</h1>
+  <p>web.getState / goBack / goForward / reload <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>অবস্থা</h2>
+    <dl class="kv" id="state-kv"></dl>
+    <div class="row" style="margin-top:10px">
+      <button id="refresh" class="secondary">getState</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>নিয়ন্ত্রণ</h2>
+    <div class="row">
+      <button id="back">goBack</button>
+      <button id="forward" class="secondary">goForward</button>
+      <button id="reload" class="secondary">reload</button>
+      <button id="stop" class="secondary">stop</button>
+      <button id="clear" class="secondary">clearHistory</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>নিজের SPA route (hash)</h2>
+    <div class="row">
+      <button data-route="/">হোম</button>
+      <button data-route="/notes" class="secondary">নোট</button>
+      <button data-route="/settings" class="secondary">সেটিংস</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      hash routing ব্যবহার করা হয়েছে — তাই Android back button কাজ করে।
+    </p>
+    <div id="view" style="margin-top:10px;padding:12px;background:var(--bg);border-radius:10px"></div>
+  </div>
+
+  <div class="card">
+    <h2>বাইরের লিংক</h2>
+    <input id="ext" value="https://example.com" placeholder="https://…">
+    <div class="row">
+      <button id="open-ext">device.openUrl</button>
+      <button id="open-ui" class="secondary">ui.openExternal</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      বাইরের origin-এ <code>web.loadUrl</code> দিলে bridge ভেঙে যাবে — তাই ব্রাউজারে খুলুন।
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function renderState(s) {
+    var kv = document.getElementById('state-kv');
+    kv.innerHTML = '';
+    Object.keys(s).forEach(function (k) {
+      var dt = document.createElement('dt');
+      dt.textContent = k;
+      var dd = document.createElement('dd');
+      dd.textContent = String(s[k]);
+      kv.appendChild(dt);
+      kv.appendChild(dd);
+    });
+  }
+
+  function run(action, payload) {
+    Native.call(action, payload).then(function (r) {
+      Native.log('log', action, r);
+      return Native.call('web.getState').then(renderState).catch(function () {});
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+    });
+  }
+
+  document.getElementById('refresh').addEventListener('click', function () {
+    Native.call('web.getState').then(function (s) {
+      renderState(s);
+      Native.log('log', 'web.getState', s);
+    }).catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('back').addEventListener('click', function () { run('web.goBack'); });
+  document.getElementById('forward').addEventListener('click', function () { run('web.goForward'); });
+  document.getElementById('reload').addEventListener('click', function () { run('web.reload'); });
+  document.getElementById('stop').addEventListener('click', function () { run('web.stop'); });
+  document.getElementById('clear').addEventListener('click', function () { run('web.clearHistory'); });
+
+  var VIEWS = {
+    '/': '<strong>হোম</strong> — স্বাগতম',
+    '/notes': '<strong>নোট</strong> — এখানে নোট থাকবে',
+    '/settings': '<strong>সেটিংস</strong> — এখানে সেটিংস'
+  };
+
+  function renderRoute() {
+    var path = location.hash.replace(/^#/, '') || '/';
+    document.getElementById('view').innerHTML = VIEWS[path] || '৪০৪';
+    Native.call('ui.setToolbarTitle', { title: path === '/' ? 'হোম' : path.slice(1) })
+      .catch(function () {});
+  }
+
+  document.querySelectorAll('[data-route]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      location.hash = '#' + b.getAttribute('data-route');
+    });
+  });
+
+  window.addEventListener('hashchange', renderRoute);
+
+  document.getElementById('open-ext').addEventListener('click', function () {
+    run('device.openUrl', { url: document.getElementById('ext').value });
+  });
+
+  document.getElementById('open-ui').addEventListener('click', function () {
+    run('ui.openExternal', { url: document.getElementById('ext').value });
+  });
+
+  renderRoute();
+  Native.call('web.getState').then(renderState).catch(function () {});
+})();
+</script>
+</body>
+</html>

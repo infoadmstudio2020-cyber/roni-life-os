@@ -1,0 +1,94 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.roni.life.os.app'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.roni.life.os.app'
+        minSdk 21
+        targetSdk 36
+        versionCode 18
+        versionName "1.8.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        debug {
+            matchingFallbacks = ['release']
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    testOptions {
+        unitTests {
+            // The UI configuration store logs through AppLog, which delegates to
+            // android.util.Log. Returning defaults keeps JVM unit tests runnable
+            // without pulling in Robolectric.
+            returnDefaultValues = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    // L4 ফ্যাসাড — UI, RuntimeEngine, Contracts ও WebBridge মডিউল api হিসেবে এক্সপোজ করে।
+    implementation project(':native-runtime-sdk')
+    implementation project(':native-web-bridge-sdk')
+
+    // L4 ফ্যাসাডের implementation নির্ভরতাগুলো :app-এ দৃশ্যমান নয়,
+    // তাই সরাসরি ব্যবহৃত প্রতিটি ইঞ্জিন স্পষ্টভাবে যোগ করা হয়েছে।
+    implementation project(':native-logger-sdk')
+    implementation project(':native-storage-engine')
+    implementation project(':native-network-engine')
+    implementation project(':native-analytics-engine')
+    implementation project(':native-theme-engine')
+    implementation project(':native-platform-engine')
+    implementation project(':native-security-engine')
+    implementation project(':native-router-sdk')
+    implementation project(':native-service-sdk')
+    implementation project(':native-dev-tools-sdk')
+
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'com.github.infoadmstudio2020-cyber:crashguard:1.0.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

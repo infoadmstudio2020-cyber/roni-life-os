@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>RONiLiFEOS Starter</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+  <header class="app-bar">
+    <h1>RONiLiFEOS Starter</h1>
+    <span id="bridge-state" class="badge">যাচাই চলছে…</span>
+  </header>
+
+  <main class="content">
+    <section class="card">
+      <h2>ডিভাইস (platform)</h2>
+      <dl id="device-info" class="kv"><dt>লোড হচ্ছে…</dt><dd></dd></dl>
+    </section>
+
+    <section class="card">
+      <h2>থিম (theme)</h2>
+      <p class="kv"><span>বর্তমান</span><strong id="theme-state">—</strong></p>
+      <div class="row">
+        <button id="theme-light" class="btn">Light</button>
+        <button id="theme-dark" class="btn">Dark</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>কাউন্টার (storage)</h2>
+      <p class="counter" id="counter">0</p>
+      <div class="row">
+        <button id="inc" class="btn primary">+১</button>
+        <button id="reset" class="btn">রিসেট</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>নেটিভ সেবা</h2>
+      <div class="row">
+        <button id="track" class="btn">Analytics</button>
+        <button id="log-native" class="btn">Logger</button>
+        <button id="fetch" class="btn">Network</button>
+        <button id="biometric" class="btn">Biometric</button>
+        <button id="diagnostics" class="btn">DevTools</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>UI</h2>
+      <div class="row">
+        <button id="toast" class="btn">Toast</button>
+        <button id="confirm" class="btn">Confirm</button>
+        <button id="loading" class="btn">Loading</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>ইভেন্ট লগ</h2>
+      <ul id="log" class="log"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

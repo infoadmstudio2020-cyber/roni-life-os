@@ -1,0 +1,182 @@
+/* ── Gradle page ── */
+
+/* File list + editor split (stacks on mobile via responsive/mobile.css) */
+.gradle-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--sp-4);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .gradle-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gradle-files-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.gradle-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-2);
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.gradle-file-list-empty {
+  padding: var(--sp-4);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+.gradle-file-list .settings-nav-item .gradle-file-name {
+  font-size: var(--text-xs);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gradle-editor-card { min-width: 0; }
+
+.gradle-editor-header { gap: var(--sp-2); }
+
+.gradle-active-file {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.gradle-editor-actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.gradle-editor-body {
+  padding: 0;
+  position: relative;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+
+.gradle-editor-body .editor-textarea {
+  position: relative;
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  border-radius: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* ── Source-based Dependency Automation Panel in Gradle Page ── */
+.gradle-deps-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: var(--sp-4);
+  overflow: hidden;
+}
+
+.gradle-deps-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.gradle-deps-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+}
+
+@media (max-width: 900px) {
+  .gradle-deps-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gradle-deps-list-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.gradle-dep-card {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.gradle-dep-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-hover);
+}
+
+.gradle-dep-card.active {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.gradle-dep-coord {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.gradle-source-file-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  gap: 8px;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.gradle-source-file-row:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+.gradle-source-file-row.active {
+  background: var(--accent-subtle);
+  border-color: var(--accent);
+}
+
+.gradle-source-file-path {
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}

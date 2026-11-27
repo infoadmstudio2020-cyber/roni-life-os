@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash -->
+    <string name="splash_tap_to_skip">Tap to skip</string>
+
+    <!-- Project UI editor -->
+    <string name="ui_editor_title">UI Configuration</string>
+    <string name="ui_editor_section_preset">Preset</string>
+    <string name="ui_editor_section_splash">Splash</string>
+    <string name="ui_editor_section_dashboard">Dashboard</string>
+    <string name="ui_editor_section_theme">Theme</string>
+    <string name="ui_editor_section_components">Components</string>
+    <string name="ui_editor_section_webview">WebView</string>
+    <string name="ui_editor_section_navigation">System bars</string>
+
+    <string name="ui_editor_splash_enabled">Splash enabled</string>
+    <string name="ui_editor_splash_mode">Splash mode</string>
+    <string name="ui_editor_splash_duration">Duration (ms)</string>
+    <string name="ui_editor_splash_logo">Logo text</string>
+    <string name="ui_editor_splash_animation">Animation</string>
+    <string name="ui_editor_splash_fullscreen">Fullscreen splash</string>
+    <string name="ui_editor_splash_skip">Tap to skip</string>
+
+    <string name="ui_editor_dashboard_enabled">Dashboard enabled</string>
+    <string name="ui_editor_dashboard_mode">Dashboard mode</string>
+    <string name="ui_editor_dashboard_layout">Layout</string>
+    <string name="ui_editor_dashboard_toolbar">Toolbar</string>
+    <string name="ui_editor_dashboard_drawer">Drawer</string>
+    <string name="ui_editor_dashboard_bottom_nav">Bottom navigation</string>
+    <string name="ui_editor_dashboard_fab">Floating action button</string>
+    <string name="ui_editor_dashboard_fullscreen">Fullscreen dashboard</string>
+    <string name="ui_editor_dashboard_stats">Show statistics</string>
+    <string name="ui_editor_dashboard_recent">Show recent projects</string>
+
+    <string name="ui_editor_theme_mode">Theme mode</string>
+    <string name="ui_editor_theme_primary">Primary colour</string>
+    <string name="ui_editor_theme_accent">Accent colour</string>
+    <string name="ui_editor_theme_animation">Animation duration (ms)</string>
+
+    <string name="ui_editor_webview_enabled">WebView container</string>
+    <string name="ui_editor_webview_fullscreen">Fullscreen WebView</string>
+    <string name="ui_editor_webview_javascript">JavaScript</string>
+    <string name="ui_editor_webview_dom">DOM storage</string>
+    <string name="ui_editor_webview_zoom">Zoom controls</string>
+    <string name="ui_editor_webview_progress">Progress bar</string>
+
+    <string name="ui_editor_nav_status_bar">Status bar visible</string>
+    <string name="ui_editor_nav_nav_bar">Navigation bar visible</string>
+    <string name="ui_editor_nav_fullscreen">Fullscreen</string>
+    <string name="ui_editor_nav_immersive">Immersive mode</string>
+    <string name="ui_editor_nav_edge_to_edge">Edge-to-edge</string>
+    <string name="ui_editor_nav_back">Back navigation</string>
+
+    <string name="ui_editor_components_enabled">%1$d of %2$d components enabled</string>
+    <string name="ui_editor_validation_ok">Configuration is valid</string>
+    <string name="ui_editor_validation_issues">%1$d issue(s) found</string>
+
+    <string name="ui_editor_saved">UI configuration saved</string>
+    <string name="ui_editor_reset_done">Configuration reset to defaults</string>
+    <string name="ui_editor_reset_confirm">Reset this project\'s UI configuration to defaults?</string>
+    <string name="ui_editor_export_title">Exported configuration</string>
+    <string name="ui_editor_import_title">Import configuration</string>
+    <string name="ui_editor_import_hint">Paste an exported configuration string</string>
+    <string name="ui_editor_import_done">Configuration imported</string>
+    <string name="ui_editor_import_failed">The configuration could not be imported</string>
+    <string name="ui_editor_copy">Copy</string>
+    <string name="ui_editor_copied">Copied to clipboard</string>
+
+    <string name="ui_editor_menu_save">Save</string>
+    <string name="ui_editor_menu_reset">Reset</string>
+    <string name="ui_editor_menu_export">Export</string>
+    <string name="ui_editor_menu_import">Import</string>
+    <string name="ui_editor_menu_validate">Validate</string>
+
+    <string name="ui_editor_preset_applied">Preset applied: %1$s</string>
+    <string name="ui_editor_preset_custom">Custom</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_disabled_title">Dashboard is disabled</string>
+    <string name="dashboard_disabled_message">This project has no dashboard. Enable it in the app settings to manage projects here.</string>
+    <string name="dashboard_open_project">Open default project</string>
+    <string name="dashboard_open_settings">Open settings</string>
+
+</resources>

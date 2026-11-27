@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "default",
+  "name": "Default bootstrap",
+  "type": "bootstrap",
+  "protected": true,
+  "entry": "web/index.html",
+  "modes": {
+    "native": "native/",
+    "web": "web/index.html"
+  }
+}

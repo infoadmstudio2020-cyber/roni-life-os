@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "sessionTimeoutMs": 1800000,
+  "logLevel": "INFO",
+  "cacheMaxBytes": 52428800,
+  "generated": true
+}

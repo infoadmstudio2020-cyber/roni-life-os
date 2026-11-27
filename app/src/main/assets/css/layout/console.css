@@ -1,0 +1,141 @@
+/* ── Console panel ── */
+
+/* The panel is ALWAYS rendered — collapsed = 28px header only, expanded = full height.
+   Never use display:none or visibility:hidden on #console-panel. */
+#console-panel {
+  height: var(--console-h);
+  min-height: 28px;   /* always at least the header bar */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+  transition: height 0.25s ease;
+}
+
+#console-panel.collapsed { height: 28px; }
+#console-panel.no-transition { transition: none !important; }
+
+/* ── Header bar ─────────────────────────────────────────────────────── */
+.console-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-2);
+  height: 28px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Terminal icon next to "Console" label */
+.console-header-icon {
+  font-size: 14px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.console-title {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.console-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+/* ── Console action buttons ── */
+.console-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  color: var(--text-secondary);   /* visible against dark bg-elevated */
+  flex-shrink: 0;
+}
+
+.console-btn .material-symbols-outlined {
+  font-size: 14px;
+  color: inherit;
+  pointer-events: none;
+}
+
+.console-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Toggle button: slightly highlighted so it's easy to find */
+.console-btn-toggle {
+  color: var(--text-secondary);
+}
+.console-btn-toggle:hover { color: var(--accent); }
+
+/* ── Tabs (optional, kept for compatibility) ── */
+.console-tabs { display: flex; gap: 0; margin-left: var(--sp-2); }
+.console-tab {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding: 0 var(--sp-3);
+  height: 28px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+.console-tab:hover  { color: var(--text-primary); }
+.console-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Body ── */
+.console-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+/* ── Log entries ── */
+.console-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: 1px 0;
+}
+.console-time { color: var(--text-disabled); flex-shrink: 0; }
+.console-level {
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 52px;
+}
+.console-level.info    { color: var(--info); }
+.console-level.success { color: var(--success); }
+.console-level.warning { color: var(--warning); }
+.console-level.error   { color: var(--error); }
+.console-level.debug   { color: var(--text-muted); }
+.console-message { color: var(--text-secondary); word-break: break-word; flex: 1; }
+
+/* ── Light theme overrides ── */
+[data-theme="light"] .console-btn { color: #374151; }
+[data-theme="light"] .console-btn:hover { color: #111827; background: rgba(0,0,0,0.06); }
+[data-theme="light"] .console-header-icon { color: #374151; }
+[data-theme="light"] .console-title { color: #374151; }

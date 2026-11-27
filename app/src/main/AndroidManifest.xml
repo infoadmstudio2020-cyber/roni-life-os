@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Only needed to write into public Downloads on API 28 and below. -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Required to bring a minimised project's own task back to the front on restore. -->
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <!-- Camera engine: runtime permission is requested by the camera workspace. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+
+        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RONiLiFEOS"
+        android:usesCleartextTraffic="true">
+
+        <!-- ১. Main Launcher ও Startup Router -->
+        <activity
+            android:name=".activity.SplashActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="true"
+            android:theme="@style/Theme.RONiLiFEOS.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ২. Main Application, Project Manager ও Configuration Controller -->
+        <activity
+            android:name=".activity.BootstrapActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.RONiLiFEOS"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ২.১ Configuration fallback — dashboard disabled and no usable default project -->
+        <activity
+            android:name=".activity.StartupErrorActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="false"
+            android:theme="@style/Theme.RONiLiFEOS" />
+
+        <!-- ৩. নির্বাচিত Project-এর Runtime Host -->
+        <activity
+            android:name=".activity.ProjectActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:documentLaunchMode="always"
+            android:exported="false"
+            android:launchMode="standard"
+            android:taskAffinity=""
+            android:theme="@style/Theme.RONiLiFEOS"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.BootstrapWebActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="false"
+            android:launchMode="standard"
+            android:theme="@style/Theme.RONiLiFEOS"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ৪. Per-project UI configuration editor -->
+        <activity
+            android:name=".activity.ProjectUIEditorActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="false"
+            android:label="@string/ui_editor_title"
+            android:parentActivityName=".activity.BootstrapActivity"
+            android:theme="@style/Theme.RONiLiFEOS"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ৪.১ Downloads manager -->
+        <activity
+            android:name=".activity.DownloadsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="false"
+            android:label="@string/downloads_title"
+            android:parentActivityName=".activity.BootstrapActivity"
+            android:theme="@style/Theme.RONiLiFEOS" />
+
+        <!-- ৫. Dashboard Project Section — one management screen per slot -->
+        <activity
+            android:name=".activity.ProjectSlotActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:exported="false"
+            android:parentActivityName=".activity.BootstrapActivity"
+            android:theme="@style/Theme.RONiLiFEOS"
+            android:windowSoftInputMode="adjustResize" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".notification.NotificationCenterActivity"
+            android:exported="false"
+            android:label="Notifications"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <activity
+            android:name=".notification.NotificationSettingsActivity"
+            android:exported="false"
+            android:label="Notification settings"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <activity
+            android:name=".camera.CameraActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name=".camera.CameraGalleryActivity"
+            android:exported="false"
+            android:label="Camera media"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <activity
+            android:name=".camera.CameraReviewActivity"
+            android:exported="false"
+            android:label="Review" />
+
+        <activity
+            android:name=".camera.CameraSettingsActivity"
+            android:exported="false"
+            android:label="Camera settings"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <activity
+            android:name=".filemanager.FileManagerActivity"
+            android:exported="false"
+            android:label="File manager"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <activity
+            android:name=".filemanager.FileDetailsActivity"
+            android:exported="false"
+            android:label="File details" />
+
+        <activity
+            android:name=".filemanager.StorageAnalyzerActivity"
+            android:exported="false"
+            android:label="Storage analyzer" />
+
+        <activity
+            android:name=".filemanager.FileManagerSettingsActivity"
+            android:exported="false"
+            android:label="File manager settings" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".automation.AutomationActivity"
+            android:exported="false"
+            android:label="Automation"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <activity
+            android:name=".automation.AutomationEventsActivity"
+            android:exported="false"
+            android:label="Automation events" />
+
+        <activity
+            android:name=".quickball.QuickBallSettingsActivity"
+            android:exported="false"
+            android:label="Quick Ball"
+            android:parentActivityName=".activity.BootstrapActivity" />
+
+        <receiver
+            android:name="com.roni.library.platform.automation.AutomationAlarmReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.roni.library.platform.automation.ALARM" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.roni.library.platform.automation.AutomationBootReceiver"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

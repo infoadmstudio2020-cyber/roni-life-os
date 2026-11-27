@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2563EB">
+<title>নোটখাতা</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="app-bar">
+  <button class="icon-btn" id="menu" aria-label="মেনু">☰</button>
+  <div class="titles">
+    <h1 id="page-title">হোম</h1>
+    <p id="page-sub">নোটখাতা</p>
+  </div>
+  <button class="icon-btn" id="theme-btn" aria-label="থিম">◐</button>
+</header>
+
+<main id="app"></main>
+
+<nav class="tabbar" id="tabbar">
+  <button data-route="/" class="active"><span>হোম</span></button>
+  <button data-route="/notes"><span>নোট</span></button>
+  <button data-route="/settings"><span>সেটিংস</span></button>
+</nav>
+
+<div class="offline-banner" id="offline">ইন্টারনেট নেই — অফলাইনে চলছে</div>
+
+<script src="native.js"></script>
+<script src="store.js"></script>
+<script src="router.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

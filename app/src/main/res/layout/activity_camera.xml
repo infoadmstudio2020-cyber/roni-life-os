@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TextureView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.roni.life.os.app.camera.CameraGridOverlay
+        android:id="@+id/grid_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="#66000000">
+
+        <Button
+            android:id="@+id/close_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="✕"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close camera" />
+
+        <TextView
+            android:id="@+id/recording_timer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#FF5252"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/flash_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="⚡"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Toggle flash" />
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="⚙"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Camera settings" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#66000000">
+
+        <TextView
+            android:id="@+id/zoom_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:text="1.0x" />
+
+        <SeekBar
+            android:id="@+id/zoom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:contentDescription="Zoom" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+
+            <Button
+                android:id="@+id/gallery_button"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:text="▤"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Open gallery" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/shutter_button"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:text="◉"
+                android:textSize="30sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bg_shutter"
+                android:contentDescription="Take photo" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/switch_button"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:text="⟳"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Switch camera" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="4dp">
+
+            <Button
+                android:id="@+id/mode_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="PHOTO"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+            <Button
+                android:id="@+id/mode_video"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="VIDEO"
+                android:textSize="12sp"
+                android:textColor="#AAAAAA"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+            <Button
+                android:id="@+id/pro_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="PRO"
+                android:textSize="12sp"
+                android:textColor="#AAAAAA"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+            <Button
+                android:id="@+id/timer_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="TIMER OFF"
+                android:textSize="12sp"
+                android:textColor="#AAAAAA"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pro_panel"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#99000000"
+        android:visibility="gone">
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="ISO" android:textColor="#FFFFFF" android:textSize="11sp" />
+        <SeekBar android:id="@+id/iso_bar" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:max="100" android:contentDescription="ISO" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="SHUTTER" android:textColor="#FFFFFF" android:textSize="11sp" />
+        <SeekBar android:id="@+id/shutter_bar" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:max="100" android:contentDescription="Shutter speed" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="FOCUS" android:textColor="#FFFFFF" android:textSize="11sp" />
+        <SeekBar android:id="@+id/focus_bar" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:max="100" android:contentDescription="Manual focus" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="EXPOSURE" android:textColor="#FFFFFF" android:textSize="11sp" />
+        <SeekBar android:id="@+id/exposure_bar" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:max="100" android:contentDescription="Exposure compensation" />
+
+        <Button
+            android:id="@+id/white_balance_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="WB AUTO"
+            android:textSize="11sp"
+            android:textColor="#FFFFFF"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="24dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:visibility="gone" />
+</FrameLayout>

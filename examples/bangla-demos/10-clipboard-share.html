@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>১০ · Clipboard ও Share</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header>
+  <h1>১০ · Clipboard, Share, Haptic</h1>
+  <p>device.copyToClipboard / readClipboard / shareText / vibrate <span id="bridge-state" class="badge">…</span></p>
+</header>
+<main>
+  <a class="back" href="index.html">← তালিকায় ফিরুন</a>
+
+  <div class="card">
+    <h2>Clipboard</h2>
+    <input id="copy-text" value="কোড: 1234" placeholder="কপি করার টেক্সট">
+    <input id="copy-label" value="কোড" placeholder="label">
+    <div class="row">
+      <button id="copy">কপি করুন</button>
+      <button id="read" class="secondary">পেস্ট করুন</button>
+    </div>
+    <textarea id="paste-out" rows="3" readonly placeholder="পেস্ট করা টেক্সট এখানে আসবে"></textarea>
+  </div>
+
+  <div class="card">
+    <h2>Share</h2>
+    <input id="share-text" value="RONiLiFEOS দেখুন!" placeholder="টেক্সট">
+    <input id="share-subject" value="শেয়ার" placeholder="subject">
+    <button id="share">শেয়ার করুন</button>
+  </div>
+
+  <div class="card">
+    <h2>Haptic</h2>
+    <div class="row">
+      <button id="vibrate" class="secondary">vibrate</button>
+      <button id="haptic" class="secondary">haptic</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0">
+      এটি ছোট একটি স্পন্দন (<code>performHapticFeedback</code>) — duration parameter নেই।
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>লগ</h2>
+    <div class="log" id="log"></div>
+  </div>
+</main>
+
+<script src="native.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  function val(id) { return document.getElementById(id).value; }
+
+  document.getElementById('copy').addEventListener('click', function () {
+    Native.call('device.copyToClipboard', {
+      text: val('copy-text'),
+      label: val('copy-label')
+    }).then(function (r) {
+      Native.log('log', 'copyToClipboard', r);
+      Native.toast('কপি হয়েছে', 'success');
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+      /* ব্রাউজার fallback */
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(val('copy-text')).then(function () {
+          Native.log('log', 'navigator.clipboard fallback', 'ok');
+        });
+      }
+    });
+  });
+
+  document.getElementById('read').addEventListener('click', function () {
+    Native.call('device.readClipboard').then(function (r) {
+      Native.log('log', 'readClipboard', r);
+      document.getElementById('paste-out').value = r.text || '';
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+      if (navigator.clipboard) {
+        navigator.clipboard.readText().then(function (t) {
+          document.getElementById('paste-out').value = t;
+        }).catch(function () {});
+      }
+    });
+  });
+
+  document.getElementById('share').addEventListener('click', function () {
+    Native.call('device.shareText', {
+      text: val('share-text'),
+      subject: val('share-subject'),
+      title: 'শেয়ার'
+    }).then(function (r) {
+      Native.log('log', 'shareText', r);
+    }).catch(function (e) {
+      Native.log('log', 'ERROR', e.message);
+      if (navigator.share) {
+        navigator.share({ text: val('share-text') }).catch(function () {});
+      }
+    });
+  });
+
+  document.getElementById('vibrate').addEventListener('click', function () {
+    Native.call('device.vibrate')
+      .then(function (r) { Native.log('log', 'vibrate', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+
+  document.getElementById('haptic').addEventListener('click', function () {
+    Native.call('device.haptic')
+      .then(function (r) { Native.log('log', 'haptic', r); })
+      .catch(function (e) { Native.log('log', 'ERROR', e.message); });
+  });
+})();
+</script>
+</body>
+</html>
